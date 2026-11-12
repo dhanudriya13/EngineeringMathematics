@@ -1,0 +1,53 @@
+<figure class="diagram-figure">
+  <svg viewBox="0 0 640 400" role="img" aria-labelledby="operations-diagram-title operations-diagram-desc">
+    <title id="operations-diagram-title">Penjumlahan dan pengurangan dua vektor</title>
+    <desc id="operations-diagram-desc">
+      Vektor a dan b disusun dari titik awal yang sama. Resultan a + b membentuk diagonal
+      jajargenjang, sedangkan a − b menghubungkan ujung b ke ujung a.
+    </desc>
+
+    <defs>
+      <pattern id="operations-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+        <path d="M32 0H0V32" fill="none" stroke="var(--color-grid)" stroke-width="1" />
+      </pattern>
+      <marker id="operations-arrow-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0 0 10 5 0 10z" fill="var(--color-vector-a)" />
+      </marker>
+      <marker id="operations-arrow-b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0 0 10 5 0 10z" fill="var(--color-vector-b)" />
+      </marker>
+      <marker id="operations-arrow-result" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0 0 10 5 0 10z" fill="var(--color-vector-result)" />
+      </marker>
+      <marker id="operations-arrow-diff" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0 0 10 5 0 10z" fill="var(--color-vector-projection)" />
+      </marker>
+    </defs>
+
+    <rect width="640" height="400" fill="url(#operations-grid)" rx="12" />
+    <line x1="75" y1="330" x2="575" y2="330" stroke="var(--color-axis)" stroke-width="1.5" />
+    <line x1="75" y1="330" x2="75" y2="55" stroke="var(--color-axis)" stroke-width="1.5" />
+    <text x="560" y="354" class="diagram-axis" text-anchor="end">x</text>
+    <text x="57" y="70" class="diagram-axis">y</text>
+
+    <line x1="75" y1="330" x2="315" y2="225" stroke="var(--color-vector-a)" stroke-width="3" marker-end="url(#operations-arrow-a)" />
+    <line x1="75" y1="330" x2="190" y2="115" stroke="var(--color-vector-b)" stroke-width="3" marker-end="url(#operations-arrow-b)" />
+    <line x1="75" y1="330" x2="430" y2="70" stroke="var(--color-vector-result)" stroke-width="3" marker-end="url(#operations-arrow-result)" />
+    <line x1="190" y1="115" x2="430" y2="70" stroke="var(--color-vector-projection)" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#operations-arrow-diff)" />
+
+    <line x1="315" y1="225" x2="430" y2="70" stroke="var(--color-vector-result)" stroke-width="1.5" stroke-dasharray="5 6" opacity="0.45" />
+    <line x1="190" y1="115" x2="315" y2="225" stroke="var(--color-vector-projection)" stroke-width="1.5" stroke-dasharray="5 6" opacity="0.35" />
+
+    <circle cx="75" cy="330" r="4.5" fill="var(--color-primary)" />
+    <text x="322" y="216" class="diagram-label diagram-label--a">a</text>
+    <text x="125" y="135" class="diagram-label diagram-label--b">b</text>
+    <text x="445" y="78" class="diagram-label diagram-label--result">a + b</text>
+    <text x="295" y="70" class="diagram-label diagram-label--projection">a − b</text>
+
+    <text x="100" y="372" class="diagram-axis">kedua vektor disusun dari titik awal yang sama</text>
+  </svg>
+  <figcaption>
+    <strong>a + b</strong> adalah diagonal jajargenjang. <strong>a − b</strong> menghubungkan
+    ujung b ke ujung a; arahnya penting dan tidak sama dengan b − a.
+  </figcaption>
+</figure>

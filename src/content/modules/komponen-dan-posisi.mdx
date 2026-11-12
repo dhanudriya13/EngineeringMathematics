@@ -1,0 +1,218 @@
+---
+title: 'Komponen Vektor dan Vektor Posisi'
+description: 'Menguraikan vektor menjadi komponen horizontal dan vertikal serta menyatakan posisi dan perpindahan.'
+order: 7
+difficulty: 'dasar'
+estimatedDuration: 35
+prerequisites:
+  - 'perkalian-skalar'
+objectives:
+  - 'Menguraikan vektor menjadi komponen berdasarkan panjang dan sudut.'
+  - 'Menghitung komponen vektor dari komponen yang diketahui.'
+  - 'Membedakan vektor posisi dan vektor perpindahan pada bidang koordinat.'
+summary: 'Dekomposisi vektor dengan trigonometri, hubungan komponen dengan magnitudo dan sudut, serta vektor posisi.'
+quizId: 'quiz-komponen-dan-posisi'
+draft: false
+---
+
+import ComponentsDiagram from '../../components/mathematics/diagrams/ComponentsDiagram.astro';
+
+## Konsep dan Intuisi
+
+Sebuah vektor miring dapat dipandang sebagai gabungan dua gerakan: satu pada arah horizontal dan satu pada arah vertikal. Jika Anda mendorong kotak dengan gaya miring, sebagian gaya bekerja ke kanan dan sebagian ke atas. Menguraikan vektor menjadi komponen memungkinkan kita menghitung pengaruh pada setiap arah secara terpisah.
+
+Dekomposisi tidak mengubah vektor asal. Vektor yang sama hanya dituliskan sebagai jumlah dua vektor yang saling tegak lurus. Setelah komponen ditemukan, operasi vektor dapat dilakukan dengan bilangan biasa.
+
+## Definisi Matematis
+
+Misalkan vektor $\mathbf{v}$ memiliki magnitudo $r$ dan membentuk sudut $\theta$ terhadap sumbu x positif. Komponen horizontal dan vertikalnya adalah:
+
+$$
+x = r\cos\theta
+$$
+
+$$
+y = r\sin\theta
+$$
+
+Sebaliknya, jika komponen $x$ dan $y$ diketahui, magnitudo dan arahnya dapat dihitung:
+
+$$
+r = \sqrt{x^2+y^2}
+$$
+
+$$
+\tan\theta = \frac{y}{x}
+$$
+
+Sudut $\theta$ harus disesuaikan dengan kuadran vektor. Vektor posisi titik $P(x,y)$ terhadap titik asal adalah:
+
+$$
+\overrightarrow{OP}=(x,y)
+$$
+
+Vektor perpindahan dari $A(x_A,y_A)$ ke $B(x_B,y_B)$ adalah:
+
+$$
+\overrightarrow{AB}=(x_B-x_A,\;y_B-y_A)
+$$
+
+## Notasi dan Simbol
+
+- $r$: magnitudo atau panjang vektor.
+- $\theta$: sudut terhadap sumbu x positif, diukur berlawanan arah jarum jam.
+- $x,y$: komponen horizontal dan vertikal.
+- $\overrightarrow{OP}$: vektor posisi titik P relatif terhadap titik asal O.
+
+Sudut harus diukur dari acuan yang benar. Jika sudut diberikan terhadap sumbu y, pertukaran sinus dan kosinus mungkin diperlukan. Selalu periksa gambar atau definisi sudut sebelum memakai rumus.
+
+## Penjelasan Rumus
+
+Rumus $x=r\cos\theta$ dan $y=r\sin\theta$ berasal dari segitiga siku-siku. Sisi miring adalah $r$, sisi samping sudut adalah $x$, dan sisi di depan sudut adalah $y$. Kosinus adalah sisi samping dibagi sisi miring, sedangkan sinus adalah sisi depan dibagi sisi miring.
+
+Tanda komponen mengikuti kuadran. Jika $\theta$ berada di kuadran II, $\cos\theta$ negatif sehingga komponen $x$ negatif. Jika $\theta$ berada di kuadran III, kedua komponen negatif. Jangan menghilangkan tanda hanya karena panjang sisi selalu positif.
+
+## Ilustrasi Visual
+
+<ComponentsDiagram />
+
+Diagram menunjukkan vektor dengan panjang $r$ dan sudut $\theta$. Garis putus-putus membentuk segitiga siku-siku yang memperlihatkan komponen $x$ dan $y$.
+
+## Contoh Bertahap
+
+### Contoh 1 — Dari panjang dan sudut ke komponen
+
+Sebuah vektor memiliki panjang 10 dan sudut 30° terhadap sumbu x positif. Tentukan komponennya.
+
+**Langkah 1.** Hitung komponen horizontal:
+
+$$
+x=10\cos30^\circ=10\cdot\frac{\sqrt{3}}{2}=5\sqrt{3}
+$$
+
+**Langkah 2.** Hitung komponen vertikal:
+
+$$
+y=10\sin30^\circ=10\cdot\frac{1}{2}=5
+$$
+
+Jadi, vektornya adalah $(5\sqrt{3},5)$, kira-kira $(8{,}66;5)$.
+
+### Contoh 2 — Dari komponen ke magnitudo dan arah
+
+Diketahui vektor $\mathbf{v}=(3,4)$. Tentukan magnitudo dan sudutnya.
+
+**Langkah 1.** Hitung magnitudo:
+
+$$
+r=\sqrt{3^2+4^2}=5
+$$
+
+**Langkah 2.** Hitung sudut acuan:
+
+$$
+\tan\theta=\frac{4}{3}\quad\Rightarrow\quad\theta\approx53{,}13^\circ
+$$
+
+Karena $x>0$ dan $y>0$, vektor berada di kuadran I, sehingga sudut sebenarnya juga sekitar 53,13°.
+
+### Contoh 3 — Vektor posisi dan perpindahan
+
+Diketahui $A(1,2)$ dan $B(4,6)$. Tentukan vektor posisi masing-masing dan vektor perpindahannya.
+
+**Langkah 1.** Vektor posisi:
+
+$$
+\overrightarrow{OA}=(1,2),\qquad\overrightarrow{OB}=(4,6)
+$$
+
+**Langkah 2.** Vektor perpindahan:
+
+$$
+\overrightarrow{AB}=(4-1,\;6-2)=(3,4)
+$$
+
+Vektor posisi bergantung pada titik asal, sedangkan vektor perpindahan hanya bergantung pada kedua titik.
+
+## Penerapan Komputasi
+
+- **Fisika:** gaya miring diuraikan menjadi komponen horizontal dan vertikal untuk menghitung percepatan.
+- **Gim:** kecepatan dengan sudut tertentu diubah menjadi komponen x dan y agar posisi dapat diperbarui setiap frame.
+- **Grafika:** arah kamera dan vektor normal permukaan sering disimpan sebagai komponen.
+- **Antarmuka:** gerakan diagonal pada layar dihitung dari komponen horizontal dan vertikal.
+
+## Kesalahan Umum
+
+1. **Menukar sinus dan kosinus.** Pastikan sudut diukur dari sumbu x positif. Jika acuannya sumbu y, rumusnya berbeda.
+2. **Mengabaikan kuadran.** Tanda komponen harus sesuai posisi vektor.
+3. **Menganggap komponen selalu positif.** Komponen dapat bernilai negatif.
+4. **Menganggap vektor posisi tidak bergantung pada titik asal.** Jika titik asal berubah, vektor posisi berubah.
+5. **Menggunakan vektor posisi sebagai vektor perpindahan.** Perpindahan adalah selisih dua vektor posisi.
+
+## Latihan Mandiri
+
+### Latihan 1
+
+Vektor memiliki panjang 8 dan sudut 60° terhadap sumbu x positif. Tentukan komponennya.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+$$
+x=8\cos60^\circ=8\cdot\frac{1}{2}=4
+$$
+
+$$
+y=8\sin60^\circ=8\cdot\frac{\sqrt{3}}{2}=4\sqrt{3}
+$$
+
+Vektornya adalah $(4,4\sqrt{3})$.
+
+</details>
+
+### Latihan 2
+
+Diketahui $P(-2,2)$ dan $Q(1,6)$. Tentukan $\overrightarrow{PQ}$ dan magnitudonya.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+$$
+\overrightarrow{PQ}=(1-(-2),\;6-2)=(3,4)
+$$
+
+$$
+\lVert \overrightarrow{PQ} \rVert=\sqrt{3^2+4^2}=5
+$$
+
+</details>
+
+### Latihan 3
+
+Vektor $\mathbf{v}$ memiliki komponen $(-3,3)$. Tentukan sudut terhadap sumbu x positif.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+Sudut acuan dari $\tan\theta=|3/(-3)|=1$ adalah 45°. Karena $x<0$ dan $y>0$, vektor berada di kuadran II, sehingga sudutnya $180^\circ-45^\circ=135^\circ$.
+
+</details>
+
+## Kuis Topik
+
+Kuis interaktif untuk topik ini tersedia di [halaman Kuis](/kuis). Setiap kuis berisi lima soal dari modul ini, dengan umpan balik langsung, penjelasan, skor, dan percobaan ulang. Skor terbaik disimpan secara lokal di peramban.
+
+## Ringkasan
+
+- Vektor dapat diuraikan menjadi komponen horizontal dan vertikal.
+- $x=r\cos\theta$ dan $y=r\sin\theta$ berlaku jika sudut diukur dari sumbu x positif.
+- Komponen menentukan magnitudo dan arah melalui $r=\sqrt{x^2+y^2}$ dan $\tan\theta=y/x$.
+- Vektor posisi bergantung pada titik asal; vektor perpindahan adalah selisih dua vektor posisi.
+
+## Referensi Rumus
+
+| Nama | Rumus | Keterangan |
+|---|---|---|
+| Komponen | $x=r\cos\theta,\;y=r\sin\theta$ | Dekomposisi dari panjang dan sudut. |
+| Magnitudo | $r=\sqrt{x^2+y^2}$ | Panjang dari komponen. |
+| Perpindahan | $\overrightarrow{AB}=(x_B-x_A,\;y_B-y_A)$ | Selisih vektor posisi. |

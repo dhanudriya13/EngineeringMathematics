@@ -1,0 +1,95 @@
+---
+import type { CurriculumModule } from '../../types';
+
+interface Props {
+  module: CurriculumModule;
+}
+
+const { module } = Astro.props;
+const number = String(module.number).padStart(2, '0');
+const href = `/materi/${module.id}`;
+---
+
+<a class="module-card" href={href}>
+  <span class="module-number" aria-hidden="true">{number}</span>
+  <span class="module-copy">
+    <span class="module-title"><span class="visually-hidden">Modul {number}: </span>{module.title}</span>
+    <span class="module-description">{module.description}</span>
+  </span>
+  <span class="module-arrow" aria-hidden="true">→</span>
+</a>
+
+<style>
+  .module-card {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr) auto;
+    gap: var(--space-3);
+    height: 100%;
+    padding: var(--space-5);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    color: var(--color-text);
+    text-decoration: none;
+    transition:
+      border-color var(--transition-fast),
+      background-color var(--transition-fast),
+      transform var(--transition-fast);
+  }
+
+  .module-card:hover {
+    border-color: var(--color-accent);
+    background: var(--color-accent-soft);
+    color: var(--color-text);
+    transform: translateY(-1px);
+  }
+
+  .module-number {
+    display: inline-flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: 2px;
+    color: var(--color-accent-strong);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 650;
+    letter-spacing: 0.04em;
+  }
+
+  .module-copy {
+    display: grid;
+    gap: 6px;
+  }
+
+  .module-title {
+    font-size: 1rem;
+    font-weight: 650;
+    letter-spacing: -0.01em;
+    line-height: 1.4;
+  }
+
+  .module-description {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+  }
+
+  .module-arrow {
+    align-self: start;
+    padding-top: 2px;
+    color: var(--color-accent-strong);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    opacity: 0;
+    transform: translateX(-3px);
+    transition:
+      opacity var(--transition-fast),
+      transform var(--transition-fast);
+  }
+
+  .module-card:hover .module-arrow,
+  .module-card:focus-visible .module-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+</style>

@@ -1,0 +1,179 @@
+---
+title: 'Sistem Koordinat 2D dan 3D'
+description: 'Menempatkan titik dan vektor dalam bidang dua dimensi serta ruang tiga dimensi.'
+order: 8
+difficulty: 'dasar'
+estimatedDuration: 30
+prerequisites:
+  - 'komponen-dan-posisi'
+objectives:
+  - 'Membaca koordinat titik pada sistem Cartesius 2D dan 3D.'
+  - 'Menjelaskan peran sumbu, titik asal, dan bidang koordinat.'
+  - 'Menghitung vektor dan jarak dalam ruang tiga dimensi.'
+summary: 'Sistem koordinat Cartesius, orientasi tangan kanan, bidang koordinat, serta posisi titik dan vektor di ruang 2D dan 3D.'
+quizId: 'quiz-koordinat-2d-3d'
+draft: false
+---
+
+import Coordinate3D from '../../components/mathematics/diagrams/Coordinate3D.astro';
+
+## Konsep dan Intuisi
+
+Sistem koordinat adalah kerangka acuan untuk menyebut lokasi dan arah. Di bidang dua dimensi, kita menggunakan dua sumbu: horizontal (x) dan vertikal (y). Dengan dua angka, sebuah titik dapat ditemukan secara unik. Di ruang tiga dimensi, dibutuhkan sumbu ketiga (z) untuk menyatakan kedalaman atau ketinggian.
+
+Koordinat bukan sekadar label. Jarak, arah, dan perpindahan dihitung dari selisih koordinat. Memilih sistem koordinat yang tepat membuat masalah geometri menjadi perhitungan aljabar yang dapat diselesaikan secara sistematis.
+
+## Definisi Matematis
+
+Titik pada bidang dua dimensi dinyatakan sebagai pasangan terurut $(x,y)$. Titik pada ruang tiga dimensi dinyatakan sebagai tripel terurut $(x,y,z)$.
+
+Titik asal $O$ memiliki koordinat $(0,0)$ pada 2D dan $(0,0,0)$ pada 3D. Sumbu x, y, dan z bertemu di titik asal dan saling tegak lurus.
+
+Vektor dari titik $A(x_A,y_A,z_A)$ ke titik $B(x_B,y_B,z_B)$ adalah:
+
+$$
+\overrightarrow{AB}=(x_B-x_A,\;y_B-y_A,\;z_B-z_A)
+$$
+
+Jarak antara kedua titik adalah magnitudo vektor tersebut:
+
+$$
+d=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2+(z_B-z_A)^2}
+$$
+
+Pada ruang 3D, terdapat tiga bidang koordinat:
+
+- Bidang $xy$: $z=0$
+- Bidang $xz$: $y=0$
+- Bidang $yz$: $x=0$
+
+## Notasi dan Simbol
+
+- $(x,y)$: koordinat titik pada bidang.
+- $(x,y,z)$: koordinat titik pada ruang.
+- $O$: titik asal.
+- $\overrightarrow{AB}$: vektor dari A ke B.
+- $d$: jarak antara dua titik.
+
+Urutan koordinat selalu $(x,y,z)$. Menukar urutan akan menghasilkan titik atau vektor yang berbeda.
+
+## Penjelasan Rumus
+
+Rumus jarak tiga dimensi adalah perluasan dari teorema Pythagoras. Selisih koordinat pada setiap sumbu dikuadratkan, dijumlahkan, lalu diakarkan. Mengapa semua dikuadratkan? Karena arah negatif dan positif sama-sama menyumbang jarak, dan kuadrat menghilangkan tanda tanpa menghilangkan besar.
+
+Vektor perpindahan menggunakan pengurangan yang sama seperti pada 2D, tetapi dengan tambahan komponen z. Jika komponen z bernilai nol, vektor tersebut seluruhnya berada pada bidang xy.
+
+## Ilustrasi Visual
+
+<Coordinate3D />
+
+Diagram menunjukkan tiga sumbu yang bertemu di titik asal. Titik $P$ diproyeksikan ke bidang $xy$ dan ke masing-masing sumbu untuk memperlihatkan koordinatnya. Sumbu-sumbu membentuk sistem tangan kanan: jika jari-jari tangan kanan diputar dari x ke y, ibu jari menunjuk ke arah z positif.
+
+## Contoh Bertahap
+
+### Contoh 1 — Membaca koordinat
+
+Tentukan posisi titik $P(2,3,1)$ terhadap titik asal.
+
+**Penyelesaian:** Dari titik asal, bergerak 2 satuan pada sumbu x, 3 satuan pada sumbu y, dan 1 satuan pada sumbu z. Vektor posisinya adalah:
+
+$$
+\overrightarrow{OP}=(2,3,1)
+$$
+
+### Contoh 2 — Vektor dan jarak 3D
+
+Diketahui $A(1,2,0)$ dan $B(4,6,3)$. Tentukan $\overrightarrow{AB}$ dan jaraknya.
+
+**Langkah 1.** Hitung vektor perpindahan:
+
+$$
+\overrightarrow{AB}=(4-1,\;6-2,\;3-0)=(3,4,3)
+$$
+
+**Langkah 2.** Hitung jarak:
+
+$$
+d=\sqrt{3^2+4^2+3^2}=\sqrt{9+16+9}=\sqrt{34}
+$$
+
+Jadi, jaraknya adalah $\sqrt{34}$ satuan, sekitar 5,83 satuan.
+
+### Contoh 3 — Titik pada bidang koordinat
+
+Tentukan bidang yang memuat titik $Q(5,0,-2)$.
+
+**Penyelesaian:** Komponen $y$ bernilai nol, sehingga titik tersebut berada pada bidang $xz$. Bidang $xz$ adalah himpunan titik dengan $y=0$.
+
+## Penerapan Komputasi
+
+- **Grafika 3D:** posisi kamera, lampu, dan objek dinyatakan dalam koordinat tiga dimensi.
+- **Gim:** ruang permainan 3D menggunakan sumbu x, y, dan z untuk posisi serta arah.
+- **CAD dan teknik:** model tiga dimensi menggunakan koordinat untuk menggambarkan titik dan permukaan.
+- **Ilmu data:** data dengan tiga fitur dapat divisualisasikan sebagai titik dalam ruang 3D, meskipun dimensi yang lebih tinggi tidak dapat digambar secara langsung.
+
+## Kesalahan Umum
+
+1. **Menukar urutan koordinat.** $(2,3,1)$ berbeda dari $(3,2,1)$.
+2. **Mengabaikan orientasi sumbu.** Arah positif setiap sumbu harus konsisten dengan sistem yang dipilih.
+3. **Menganggap semua titik 3D berada pada bidang xy.** Komponen z dapat bernilai positif atau negatif.
+4. **Mengurangi koordinat dengan urutan terbalik.** Arah vektor akan berbalik.
+5. **Lupa menambahkan komponen z saat menghitung jarak 3D.**
+
+## Latihan Mandiri
+
+### Latihan 1
+
+Tentukan vektor dari $P(2,-1,3)$ ke $Q(5,1,7)$.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+$$
+\overrightarrow{PQ}=(5-2,\;1-(-1),\;7-3)=(3,2,4)
+$$
+
+</details>
+
+### Latihan 2
+
+Hitung jarak antara titik $(0,0,0)$ dan $(2,3,6)$.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+$$
+d=\sqrt{2^2+3^2+6^2}=\sqrt{4+9+36}=\sqrt{49}=7
+$$
+
+</details>
+
+### Latihan 3
+
+Pada bidang apa titik $(-3,4,0)$ berada?
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+Komponen $z$ bernilai nol, sehingga titik tersebut berada pada bidang $xy$.
+
+</details>
+
+## Kuis Topik
+
+Kuis interaktif untuk topik ini tersedia di [halaman Kuis](/kuis). Setiap kuis berisi lima soal dari modul ini, dengan umpan balik langsung, penjelasan, skor, dan percobaan ulang. Skor terbaik disimpan secara lokal di peramban.
+
+## Ringkasan
+
+- Titik 2D dinyatakan sebagai $(x,y)$ dan titik 3D sebagai $(x,y,z)$.
+- Sumbu x, y, dan z saling tegak lurus dan bertemu di titik asal.
+- Bidang koordinat ditentukan oleh komponen yang bernilai nol.
+- Vektor perpindahan 3D dihitung per komponen.
+- Jarak 3D adalah magnitudo vektor perpindahan.
+
+## Referensi Rumus
+
+| Nama | Rumus | Keterangan |
+|---|---|---|
+| Vektor 3D | $\overrightarrow{AB}=(x_B-x_A,\;y_B-y_A,\;z_B-z_A)$ | Perpindahan dari A ke B. |
+| Jarak 3D | $d=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2+(z_2-z_1)^2}$ | Jarak Euclidean dua titik. |

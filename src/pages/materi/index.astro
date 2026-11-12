@@ -1,0 +1,321 @@
+---
+import Breadcrumbs from '../../components/navigation/Breadcrumbs.astro';
+import CurriculumModuleCard from '../../components/learning/CurriculumModuleCard.astro';
+import Badge from '../../components/ui/Badge.astro';
+import { curriculumGroups, curriculumModules } from '../../data/curriculum';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Kurikulum Vektor"
+  description="Struktur 16 modul Matematika Teknik untuk mempelajari vektor dari konsep dasar hingga penerapan komputasi."
+>
+  <div class="container materi-page">
+    <Breadcrumbs
+      items={[
+        { label: 'Beranda', href: '/' },
+        { label: 'Kurikulum' },
+      ]}
+    />
+
+    <header class="materi-header">
+      <p class="eyebrow">Kurikulum</p>
+      <h1>Kurikulum vektor dalam empat tahap.</h1>
+      <p class="lede">
+        Enam belas modul disusun berurutan agar setiap konsep memiliki prasyarat yang jelas.
+        Setiap modul memuat penjelasan konsep, definisi, notasi, contoh bertahap, penerapan
+        komputasi, latihan mandiri, ringkasan, dan referensi rumus.
+      </p>
+      <div class="materi-status">
+        <Badge variant="accent">16 modul tersedia</Badge>
+        <p>
+          Mulai dari Modul 01 atau pilih topik yang ingin ditinjau. Prasyarat setiap modul
+          membantu Anda menjaga urutan belajar.
+        </p>
+      </div>
+    </header>
+
+    <div class="materi-layout">
+      <aside class="materi-sidebar" aria-label="Daftar tahap kurikulum">
+        <p class="sidebar-heading">Tahap belajar</p>
+        <nav aria-label="Navigasi tahap">
+          <ul>
+            {
+              curriculumGroups.map((group, index) => (
+                <li>
+                  <a href={`#group-${group.id}`}>
+                    <span class="sidebar-number">{String(index + 1).padStart(2, '0')}</span>
+                    <span>{group.title}</span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+        <div class="sidebar-note">
+          <p class="sidebar-heading">Jumlah modul</p>
+          <p class="sidebar-count">16</p>
+          <p class="sidebar-caption">Empat tahap, satu alur belajar.</p>
+        </div>
+      </aside>
+
+      <div class="materi-content">
+        {
+          curriculumGroups.map((group, index) => {
+            const modules = curriculumModules.filter((module) => module.group === group.id);
+
+            return (
+              <section class="group" aria-labelledby={`group-${group.id}`}>
+                <div class="group-header">
+                  <span class="group-index" aria-hidden="true">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <div>
+                    <h2 id={`group-${group.id}`}>{group.title}</h2>
+                    <p>{group.description}</p>
+                  </div>
+                </div>
+                <div class="module-grid">
+                  {modules.map((module) => (
+                    <CurriculumModuleCard module={module} />
+                  ))}
+                </div>
+              </section>
+            );
+          })
+        }
+
+        <aside class="next-step">
+          <div>
+            <h2>Apa yang tersedia di setiap modul?</h2>
+            <p>
+              Tujuan pembelajaran, prasyarat, estimasi waktu, penjelasan konsep, definisi formal,
+              contoh bertahap, penerapan komputasi, kesalahan umum, latihan mandiri, ringkasan,
+              dan referensi rumus. Kuis interaktif tersedia melalui <a href="/kuis">halaman Kuis</a>.
+            </p>
+          </div>
+          <a class="next-link" href="/materi/pengantar-vektor">Mulai dari Modul 01 <span aria-hidden="true">→</span></a>
+        </aside>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .materi-page {
+    padding-top: var(--space-8);
+  }
+
+  .materi-header {
+    display: grid;
+    gap: var(--space-4);
+    max-width: 820px;
+    padding-block: var(--space-10) var(--space-10);
+  }
+
+  .materi-header h1 {
+    font-size: clamp(2.25rem, 4vw, 3.35rem);
+    letter-spacing: -0.04em;
+  }
+
+  .materi-status {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    margin-top: var(--space-2);
+    padding: var(--space-4) var(--space-5);
+    border: 1px solid #bfdbfe;
+    border-radius: var(--radius-md);
+    background: var(--color-accent-soft);
+  }
+
+  .materi-status p {
+    color: var(--color-primary);
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+  }
+
+  .materi-layout {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+    gap: var(--space-12);
+    align-items: start;
+    padding-bottom: var(--space-16);
+  }
+
+  .materi-sidebar {
+    position: sticky;
+    top: calc(var(--header-height) + 32px);
+    display: grid;
+    gap: var(--space-6);
+    padding: var(--space-5);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+  }
+
+  .sidebar-heading {
+    color: var(--color-text-secondary);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .sidebar-heading + ul,
+  .sidebar-heading + .sidebar-count {
+    margin-top: var(--space-3);
+  }
+
+  .materi-sidebar ul {
+    display: grid;
+    gap: 2px;
+    list-style: none;
+  }
+
+  .materi-sidebar a {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 8px;
+    border-radius: var(--radius-sm);
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    text-decoration: none;
+  }
+
+  .materi-sidebar a:hover {
+    background: var(--color-surface-muted);
+    color: var(--color-primary);
+  }
+
+  .sidebar-number {
+    color: var(--color-accent-strong);
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+  }
+
+  .sidebar-note {
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .sidebar-count {
+    color: var(--color-primary);
+    font-family: var(--font-mono);
+    font-size: 2rem;
+    font-weight: 650;
+    line-height: 1;
+  }
+
+  .sidebar-caption {
+    margin-top: var(--space-2);
+    color: var(--color-text-secondary);
+    font-size: var(--text-xs);
+    line-height: var(--leading-normal);
+  }
+
+  .materi-content {
+    display: grid;
+    gap: var(--space-12);
+  }
+
+  .group-header {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: var(--space-3);
+    margin-bottom: var(--space-5);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .group-index {
+    color: var(--color-accent-strong);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    font-weight: 650;
+  }
+
+  .group-header h2 {
+    margin-bottom: var(--space-1);
+    font-size: var(--text-2xl);
+    letter-spacing: -0.025em;
+  }
+
+  .group-header p {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+  }
+
+  .module-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3);
+  }
+
+  .next-step {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+    padding: var(--space-6);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface-muted);
+  }
+
+  .next-step h2 {
+    margin-bottom: var(--space-2);
+    font-size: var(--text-lg);
+    letter-spacing: -0.01em;
+  }
+
+  .next-step p {
+    max-width: 620px;
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+  }
+
+  .next-link {
+    flex: none;
+    color: var(--color-primary);
+    font-size: var(--text-sm);
+    font-weight: 650;
+    text-decoration: none;
+  }
+
+  .next-link:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 1000px) {
+    .materi-layout {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+
+    .materi-sidebar {
+      position: static;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: start;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .module-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .next-step {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .materi-sidebar {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

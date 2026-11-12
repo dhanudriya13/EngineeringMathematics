@@ -1,0 +1,213 @@
+---
+title: 'Perkalian Silang (Cross Product)'
+description: 'Menghitung perkalian silang vektor tiga dimensi dan menafsirkan arah serta magnitudonya.'
+order: 12
+difficulty: 'menengah'
+estimatedDuration: 40
+prerequisites:
+  - 'proyeksi-vektor'
+objectives:
+  - 'Menghitung perkalian silang dua vektor tiga dimensi.'
+  - 'Menjelaskan sifat tegak lurus dan aturan tangan kanan.'
+  - 'Menghubungkan magnitudo perkalian silang dengan luas jajargenjang.'
+summary: 'Definisi perkalian silang, determinan, aturan tangan kanan, magnitudo, dan penerapannya pada geometri serta grafika 3D.'
+quizId: 'quiz-perkalian-silang'
+draft: false
+---
+
+import CrossProductDiagram from '../../components/mathematics/diagrams/CrossProductDiagram.astro';
+
+## Konsep dan Intuisi
+
+Perkalian titik menghasilkan skalar yang mengukur seberapa searah dua vektor. Perkalian silang menghasilkan hal yang berbeda: sebuah **vektor baru** yang tegak lurus terhadap kedua vektor asal. Jika dua vektor membentuk sebuah bidang, hasil perkalian silang menunjuk keluar dari bidang tersebut.
+
+Perkalian silang secara mendasar didefinisikan untuk vektor tiga dimensi. Vektor dua dimensi dapat disisipkan ke ruang tiga dimensi dengan komponen z sama dengan nol, tetapi hasilnya akan memiliki komponen z. Karena itu, perkalian silang selalu dikaitkan dengan ruang 3D.
+
+## Definisi Matematis
+
+Untuk $\mathbf{a}=(a_1,a_2,a_3)$ dan $\mathbf{b}=(b_1,b_2,b_3)$:
+
+$$
+\mathbf{a}\times\mathbf{b}=(a_2b_3-a_3b_2,\;a_3b_1-a_1b_3,\;a_1b_2-a_2b_1)
+$$
+
+Rumus ini dapat ditulis sebagai determinan simbolik:
+
+$$
+\mathbf{a}\times\mathbf{b}=
+\begin{vmatrix}
+\mathbf{i} & \mathbf{j} & \mathbf{k}\\
+a_1 & a_2 & a_3\\
+b_1 & b_2 & b_3
+\end{vmatrix}
+$$
+
+Hasilnya tegak lurus terhadap $\mathbf{a}$ dan $\mathbf{b}$:
+
+$$
+(\mathbf{a}\times\mathbf{b})\cdot\mathbf{a}=0,\qquad
+(\mathbf{a}\times\mathbf{b})\cdot\mathbf{b}=0
+$$
+
+Magnitudo perkalian silang adalah:
+
+$$
+\lVert\mathbf{a}\times\mathbf{b}\rVert=\lVert\mathbf{a}\rVert\,\lVert\mathbf{b}\rVert\sin\theta
+$$
+
+Nilai ini sama dengan luas jajargenjang yang dibentuk oleh $\mathbf{a}$ dan $\mathbf{b}$.
+
+## Notasi dan Simbol
+
+- $\times$: operator perkalian silang.
+- $\mathbf{i},\mathbf{j},\mathbf{k}$: vektor satuan pada sumbu x, y, dan z.
+- $\theta$: sudut antara kedua vektor.
+- $\mathbf{a}\times\mathbf{b}$: vektor hasil, bukan skalar.
+
+Urutan operasi penting. Perkalian silang bersifat anti-komutatif:
+
+$$
+\mathbf{a}\times\mathbf{b}=-(\mathbf{b}\times\mathbf{a})
+$$
+
+## Penjelasan Rumus
+
+Setiap komponen hasil perkalian silang melibatkan dua komponen dari masing-masing vektor. Pola pengurangan dan perkalian silang komponen ini berasal dari determinan. Tanda negatif pada komponen tertentu bukan kesalahan; tanda tersebut memastikan hasil akhirnya tegak lurus terhadap kedua vektor.
+
+Aturan tangan kanan membantu menentukan arah. Arahkan jari-jari tangan kanan dari $\mathbf{a}$ menuju $\mathbf{b}$ melalui sudut terkecil. Ibu jari kemudian menunjuk ke arah $\mathbf{a}\times\mathbf{b}$. Jika urutan dibalik, arah hasilnya juga berbalik.
+
+## Ilustrasi Visual
+
+<CrossProductDiagram />
+
+Diagram menunjukkan $\mathbf{a}$ dan $\mathbf{b}$ beserta hasil $\mathbf{a}\times\mathbf{b}$ yang keluar dari bidang. Garis putus-putus membantu memperlihatkan hubungan tegak lurus antara hasil dan kedua vektor asal.
+
+## Contoh Bertahap
+
+### Contoh 1 — Perkalian silang 3D
+
+Diketahui $\mathbf{a}=(1,2,3)$ dan $\mathbf{b}=(4,5,6)$. Hitung $\mathbf{a}\times\mathbf{b}$.
+
+**Langkah 1.** Hitung komponen pertama:
+
+$$
+a_2b_3-a_3b_2=2\cdot6-3\cdot5=12-15=-3
+$$
+
+**Langkah 2.** Hitung komponen kedua:
+
+$$
+a_3b_1-a_1b_3=3\cdot4-1\cdot6=12-6=6
+$$
+
+**Langkah 3.** Hitung komponen ketiga:
+
+$$
+a_1b_2-a_2b_1=1\cdot5-2\cdot4=5-8=-3
+$$
+
+Jadi:
+
+$$
+\mathbf{a}\times\mathbf{b}=(-3,6,-3)
+$$
+
+### Contoh 2 — Memeriksa tegak lurus
+
+Gunakan hasil sebelumnya untuk memeriksa apakah $\mathbf{a}\times\mathbf{b}$ tegak lurus terhadap $\mathbf{a}$.
+
+$$
+(-3,6,-3)\cdot(1,2,3)=-3+12-9=0
+$$
+
+Hasilnya nol, sehingga vektor tersebut tegak lurus terhadap $\mathbf{a}$. Pemeriksaan terhadap $\mathbf{b}$ juga menghasilkan nol.
+
+### Contoh 3 — Magnitudo dan luas
+
+Hitung magnitudo hasil perkalian silang pada Contoh 1.
+
+$$
+\lVert(-3,6,-3)\rVert=\sqrt{(-3)^2+6^2+(-3)^2}=\sqrt{9+36+9}=\sqrt{54}=3\sqrt{6}
+$$
+
+Luas jajargenjang yang dibentuk $\mathbf{a}$ dan $\mathbf{b}$ adalah $3\sqrt{6}$ satuan luas.
+
+### Catatan tentang vektor 2D
+
+Jika $\mathbf{a}=(a_1,a_2,0)$ dan $\mathbf{b}=(b_1,b_2,0)$, hasil perkalian silangnya adalah $(0,0,a_1b_2-a_2b_1)$. Hasil ini hanya memiliki komponen z, sesuai dengan arah keluar bidang xy.
+
+## Penerapan Komputasi
+
+- **Grafika 3D:** perkalian silang digunakan untuk menghitung vektor normal permukaan dan sistem koordinat kamera.
+- **Gim:** arah sumbu lokal objek dapat dibentuk dari dua vektor menggunakan perkalian silang.
+- **Robotika:** orientasi dan sumbu putar dapat dihitung dari vektor arah.
+- **Fisika:** torsi adalah hasil perkalian silang antara vektor posisi dan gaya.
+
+## Kesalahan Umum
+
+1. **Menganggap perkalian silang komutatif.** Urutan operasi membalik arah hasil.
+2. **Menggunakan perkalian silang untuk vektor 2D tanpa penjelasan.** Perkalian silang didefinisikan untuk 3D; vektor 2D perlu disisipkan dengan komponen z nol.
+3. **Salah menghitung tanda pada determinan.** Perhatikan pola pengurangan setiap komponen.
+4. **Menganggap hasilnya skalar.** Hasil perkalian silang adalah vektor.
+5. **Menggunakan aturan tangan kiri.** Gunakan tangan kanan untuk sistem koordinat tangan kanan.
+
+## Latihan Mandiri
+
+### Latihan 1
+
+Hitung $(1,0,0)\times(0,1,0)$.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+$$
+(1,0,0)\times(0,1,0)=(0,0,1)
+$$
+
+Hasilnya adalah vektor satuan pada sumbu z, sesuai aturan tangan kanan.
+
+</details>
+
+### Latihan 2
+
+Diketahui $\mathbf{a}=(2,1,0)$ dan $\mathbf{b}=(0,3,0)$. Hitung $\mathbf{a}\times\mathbf{b}$.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+$$
+\mathbf{a}\times\mathbf{b}=(1\cdot0-0\cdot3,\;0\cdot0-2\cdot0,\;2\cdot3-1\cdot0)=(0,0,6)
+$$
+
+</details>
+
+### Latihan 3
+
+Mengapa $\mathbf{a}\times\mathbf{a}=\mathbf{0}$?
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+Sudut antara vektor dengan dirinya sendiri adalah 0°, sehingga $\lVert\mathbf{a}\times\mathbf{a}\rVert=\lVert\mathbf{a}\rVert^2\sin0^\circ=0$. Secara komponen, setiap suku saling menghilangkan. Hasilnya vektor nol.
+
+</details>
+
+## Kuis Topik
+
+Kuis interaktif untuk topik ini tersedia di [halaman Kuis](/kuis). Setiap kuis berisi lima soal dari modul ini, dengan umpan balik langsung, penjelasan, skor, dan percobaan ulang. Skor terbaik disimpan secara lokal di peramban.
+
+## Ringkasan
+
+- Perkalian silang menghasilkan vektor yang tegak lurus terhadap kedua vektor asal.
+- Perkalian silang didefinisikan secara mendasar untuk vektor 3D.
+- Hasilnya anti-komutatif: $\mathbf{a}\times\mathbf{b}=-(\mathbf{b}\times\mathbf{a})$.
+- Magnitudonya sama dengan luas jajargenjang.
+- Arah hasil ditentukan oleh aturan tangan kanan.
+
+## Referensi Rumus
+
+| Nama | Rumus | Keterangan |
+|---|---|---|
+| Komponen | $\mathbf{a}\times\mathbf{b}=(a_2b_3-a_3b_2,\;a_3b_1-a_1b_3,\;a_1b_2-a_2b_1)$ | Hasil vektor tegak lurus. |
+| Magnitudo | $\lVert\mathbf{a}\times\mathbf{b}\rVert=\lVert\mathbf{a}\rVert\lVert\mathbf{b}\rVert\sin\theta$ | Luas jajargenjang. |
+| Anti-komutatif | $\mathbf{a}\times\mathbf{b}=-(\mathbf{b}\times\mathbf{a})$ | Urutan membalik arah. |

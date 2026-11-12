@@ -1,0 +1,197 @@
+---
+title: 'Sudut Antara Dua Vektor'
+description: 'Menentukan sudut antarvektor melalui perkalian titik dan mengenali sudut lancip, siku-siku, serta tumpul.'
+order: 10
+difficulty: 'menengah'
+estimatedDuration: 30
+prerequisites:
+  - 'perkalian-titik'
+objectives:
+  - 'Menghitung sudut antara dua vektor tak nol menggunakan kosinus.'
+  - 'Menafsirkan tanda perkalian titik sebagai jenis sudut.'
+  - 'Mengenali kasus vektor nol dan pembatasan domain fungsi arccos.'
+summary: 'Hubungan perkalian titik dengan sudut, klasifikasi sudut, ortogonalitas, dan penanganan kasus khusus.'
+quizId: 'quiz-sudut-antarvektor'
+draft: false
+---
+
+import DotProductAngleDiagram from '../../components/mathematics/diagrams/DotProductAngleDiagram.astro';
+
+## Konsep dan Intuisi
+
+Sudut antara dua vektor menunjukkan seberapa sejajar arah keduanya. Jika keduanya menunjuk ke arah yang sama, sudutnya 0°. Jika tegak lurus, sudutnya 90°. Jika berlawanan, sudutnya 180°. Perkalian titik menyediakan cara menghitung sudut ini tanpa menggambar.
+
+Sudut selalu diukur antara 0° dan 180°. Arah putaran tidak membuat sudut menjadi negatif, karena sudut yang dimaksud adalah sudut terkecil antara kedua arah.
+
+## Definisi Matematis
+
+Untuk dua vektor tak nol $\mathbf{a}$ dan $\mathbf{b}$, kosinus sudut di antaranya adalah:
+
+$$
+\cos\theta=\frac{\mathbf{a}\cdot\mathbf{b}}{\lVert\mathbf{a}\rVert\,\lVert\mathbf{b}\rVert}
+$$
+
+Sudutnya diperoleh dengan fungsi invers kosinus:
+
+$$
+\theta=\arccos\left(\frac{\mathbf{a}\cdot\mathbf{b}}{\lVert\mathbf{a}\rVert\,\lVert\mathbf{b}\rVert}\right)
+$$
+
+Karena nilai kosinus selalu berada pada rentang $-1$ sampai $1$, hasil bagi di dalam arccos juga harus berada pada rentang tersebut. Dalam perhitungan komputer, hasil bagi kadang sedikit melewati batas karena pembulatan floating-point, sehingga perlu dijepit ke rentang $[-1,1]$.
+
+## Notasi dan Simbol
+
+- $\theta$: sudut antara kedua vektor.
+- $\arccos$: fungsi invers kosinus.
+- $\mathbf{a}\cdot\mathbf{b}$: perkalian titik.
+- $\lVert\mathbf{a}\rVert\lVert\mathbf{b}\rVert$: hasil kali magnitudo.
+
+Rumus ini hanya berlaku untuk vektor tak nol. Jika salah satu vektor nol, arahnya tidak terdefinisi sehingga sudut juga tidak dapat dihitung.
+
+## Penjelasan Rumus
+
+Perkalian titik mengukur seberapa besar kedua vektor searah. Membaginya dengan hasil kali magnitudo menormalkan skala, sehingga hasilnya hanya bergantung pada arah. Inilah sebabnya kosinus sudut dapat dibandingkan lintas panjang vektor yang berbeda.
+
+Tanda kosinus memberi informasi jenis sudut:
+
+- $\cos\theta>0$: sudut lancip, kedua vektor cenderung searah.
+- $\cos\theta=0$: sudut siku-siku, vektor ortogonal.
+- $\cos\theta<0$: sudut tumpul, kedua vektor cenderung berlawanan arah.
+
+## Ilustrasi Visual
+
+<DotProductAngleDiagram />
+
+Diagram memperlihatkan sudut $\theta$ antara dua vektor. Sudut diukur dari arah satu vektor ke vektor lainnya, dengan titik awal yang sama. Nilai $\theta$ selalu berada antara 0° dan 180°.
+
+## Contoh Bertahap
+
+### Contoh 1 — Sudut 45°
+
+Diketahui $\mathbf{a}=(1,0)$ dan $\mathbf{b}=(1,1)$. Tentukan sudut di antara keduanya.
+
+**Langkah 1.** Hitung perkalian titik:
+
+$$
+\mathbf{a}\cdot\mathbf{b}=1\cdot1+0\cdot1=1
+$$
+
+**Langkah 2.** Hitung magnitudo:
+
+$$
+\lVert\mathbf{a}\rVert=1,\qquad\lVert\mathbf{b}\rVert=\sqrt{1^2+1^2}=\sqrt{2}
+$$
+
+**Langkah 3.** Hitung kosinus:
+
+$$
+\cos\theta=\frac{1}{1\cdot\sqrt{2}}=\frac{1}{\sqrt{2}}=\frac{\sqrt{2}}{2}
+$$
+
+**Langkah 4.** Tentukan sudut:
+
+$$
+\theta=\arccos\left(\frac{\sqrt{2}}{2}\right)=45^\circ
+$$
+
+### Contoh 2 — Sudut siku-siku
+
+Diketahui $\mathbf{u}=(1,2)$ dan $\mathbf{v}=(2,-1)$.
+
+$$
+\mathbf{u}\cdot\mathbf{v}=1\cdot2+2\cdot(-1)=0
+$$
+
+Karena hasilnya nol, $\cos\theta=0$ dan $\theta=90^\circ$. Kedua vektor ortogonal.
+
+### Contoh 3 — Sudut tumpul
+
+Diketahui $\mathbf{p}=(1,0)$ dan $\mathbf{q}=(-1,1)$.
+
+$$
+\mathbf{p}\cdot\mathbf{q}=-1,\qquad\lVert\mathbf{p}\rVert=1,\qquad\lVert\mathbf{q}\rVert=\sqrt{2}
+$$
+
+$$
+\cos\theta=\frac{-1}{\sqrt{2}}=-\frac{\sqrt{2}}{2}\quad\Rightarrow\quad\theta=135^\circ
+$$
+
+Sudutnya tumpul, sesuai dengan tanda perkalian titik yang negatif.
+
+## Penerapan Komputasi
+
+- **Grafika:** sudut antara arah pandang dan vektor normal menentukan apakah permukaan terlihat.
+- **Ilmu data:** kosinus sudut dipakai sebagai ukuran kemiripan arah antara dua vektor fitur.
+- **Robotika:** sudut antara arah gerak dan arah target membantu menentukan koreksi arah.
+- **Gim:** sudut antara arah hadap karakter dan arah musuh menentukan apakah musuh berada di depan.
+
+## Kesalahan Umum
+
+1. **Menghitung sudut untuk vektor nol.** Vektor nol tidak memiliki arah, sehingga sudutnya tidak terdefinisi.
+2. **Lupa menghitung magnitudo.** Rumus memerlukan hasil kali magnitudo kedua vektor.
+3. **Menggunakan derajat dan radian secara campur.** Fungsi arccos biasanya mengembalikan radian; konversikan sesuai kebutuhan.
+4. **Memberi nilai di luar rentang $[-1,1]$ ke arccos.** Jaga hasil bagi tetap valid, terutama dalam pemrograman.
+5. **Menganggap sudut negatif.** Sudut antara dua vektor berada pada rentang 0° sampai 180°.
+
+## Latihan Mandiri
+
+### Latihan 1
+
+Tentukan sudut antara $(1,1)$ dan $(1,0)$.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+$$
+\cos\theta=\frac{1}{\sqrt{2}\cdot1}=\frac{\sqrt{2}}{2}
+$$
+
+Sudutnya 45°.
+
+</details>
+
+### Latihan 2
+
+Tentukan apakah $(2,3)$ dan $(6,-4)$ ortogonal.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+$$
+2\cdot6+3\cdot(-4)=12-12=0
+$$
+
+Karena hasilnya nol, kedua vektor ortogonal.
+
+</details>
+
+### Latihan 3
+
+Mengapa nilai di dalam arccos harus dijepit ke rentang $[-1,1]$ dalam program komputer?
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+Pembulatan floating-point dapat menghasilkan nilai seperti 1,0000000002 untuk kasus yang seharusnya 1. Fungsi arccos tidak menerima nilai di luar $[-1,1]$, sehingga hasilnya perlu dijepit agar program tidak menghasilkan NaN atau error.
+
+</details>
+
+## Kuis Topik
+
+Kuis interaktif untuk topik ini tersedia di [halaman Kuis](/kuis). Setiap kuis berisi lima soal dari modul ini, dengan umpan balik langsung, penjelasan, skor, dan percobaan ulang. Skor terbaik disimpan secara lokal di peramban.
+
+## Ringkasan
+
+- Kosinus sudut adalah perkalian titik dibagi hasil kali magnitudo.
+- Sudut berada pada rentang 0° sampai 180°.
+- Kosinus positif berarti lancip, nol berarti siku-siku, negatif berarti tumpul.
+- Vektor nol tidak memiliki sudut yang terdefinisi.
+- Dalam pemrograman, jepit hasil bagi ke $[-1,1]$ sebelum memanggil arccos.
+
+## Referensi Rumus
+
+| Nama | Rumus | Keterangan |
+|---|---|---|
+| Kosinus sudut | $\cos\theta=\frac{\mathbf{a}\cdot\mathbf{b}}{\lVert\mathbf{a}\rVert\lVert\mathbf{b}\rVert}$ | Normalisasi perkalian titik. |
+| Sudut | $\theta=\arccos\left(\cos\theta\right)$ | Invers kosinus. |
+| Ortogonal | $\mathbf{a}\cdot\mathbf{b}=0$ | Sudut 90° untuk vektor tak nol. |

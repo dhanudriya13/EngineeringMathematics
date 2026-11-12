@@ -1,0 +1,152 @@
+---
+import Playground from '../../components/playground/Playground';
+import Breadcrumbs from '../../components/navigation/Breadcrumbs.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Playground Vektor"
+  description="Eksperimen interaktif penjumlahan, pengurangan, perkalian skalar, komponen, perkalian titik, sudut, proyeksi, dan perkalian silang vektor."
+>
+  <div class="container playground-page">
+    <Breadcrumbs
+      items={[
+        { label: 'Beranda', href: '/' },
+        { label: 'Playground Vektor' },
+      ]}
+    />
+
+    <header class="playground-header">
+      <p class="eyebrow">Laboratorium interaktif</p>
+      <h1>Playground vektor.</h1>
+      <p class="lede">
+        Ubah koordinat, geser slider, dan tarik ujung panah untuk melihat bagaimana operasi vektor
+        bekerja. Setiap perubahan langsung memperbarui visualisasi, perhitungan, dan rumus yang
+        digunakan.
+      </p>
+      <p class="playground-note">
+        Visualisasi 2D menggunakan SVG. Visualisasi 3D dimuat hanya ketika dibutuhkan, sehingga
+        halaman tetap ringan saat dibuka pertama kali.
+      </p>
+    </header>
+
+    <noscript>
+      <div class="noscript-note">
+        Playground membutuhkan JavaScript untuk menghitung dan memperbarui visualisasi. Materi
+        pembelajaran tetap dapat dibaca tanpa JavaScript melalui
+        <a href="/materi">halaman kurikulum</a>.
+      </div>
+    </noscript>
+
+    <Playground client:load />
+
+    <section class="playground-help" aria-labelledby="playground-help-title">
+      <h2 id="playground-help-title">Cara menggunakan</h2>
+      <div class="help-grid">
+        <article>
+          <h3>Pilih alat</h3>
+          <p>
+            Delapan alat tersedia di bagian atas. Setiap alat memiliki rumus dan hasil perhitungan
+            yang sesuai.
+          </p>
+        </article>
+        <article>
+          <h3>Ubah nilai</h3>
+          <p>
+            Gunakan kolom angka, slider, atau tarik ujung panah pada tampilan 2D. Nilai negatif dan
+            desimal didukung.
+          </p>
+        </article>
+        <article>
+          <h3>Baca hasil</h3>
+          <p>
+            Panel hasil menampilkan komponen, magnitudo, sudut, proyeksi, atau hasil silang beserta
+            penjelasannya.
+          </p>
+        </article>
+        <article>
+          <h3>Atur ulang</h3>
+          <p>
+            Setiap alat menyediakan contoh dan tombol atur ulang. Operasi yang tidak terdefinisi,
+            seperti proyeksi pada vektor nol, ditampilkan sebagai pesan kesalahan yang jelas.
+          </p>
+        </article>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .playground-page {
+    padding-top: var(--space-8);
+  }
+
+  .playground-header {
+    display: grid;
+    gap: var(--space-4);
+    max-width: 880px;
+    padding-block: var(--space-10) var(--space-8);
+  }
+
+  .playground-header h1 {
+    font-size: clamp(2.25rem, 4vw, 3.35rem);
+    letter-spacing: -0.04em;
+  }
+
+  .playground-note {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+  }
+
+  .noscript-note {
+    margin-bottom: var(--space-6);
+    padding: var(--space-4) var(--space-5);
+    border: 1px solid #fde68a;
+    border-radius: var(--radius-md);
+    background: var(--color-warning-soft);
+    color: #713f12;
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+  }
+
+  .playground-help {
+    padding-block: var(--space-12) var(--space-16);
+  }
+
+  .playground-help h2 {
+    margin-bottom: var(--space-6);
+    font-size: var(--text-2xl);
+    letter-spacing: -0.025em;
+  }
+
+  .help-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-4);
+  }
+
+  .help-grid article {
+    padding: var(--space-5);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+  }
+
+  .help-grid h3 {
+    margin-bottom: var(--space-2);
+    font-size: var(--text-base);
+  }
+
+  .help-grid p {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+  }
+
+  @media (max-width: 720px) {
+    .help-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

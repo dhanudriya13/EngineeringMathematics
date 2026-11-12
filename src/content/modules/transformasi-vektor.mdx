@@ -1,0 +1,244 @@
+---
+title: 'Transformasi Vektor dan Penerapannya'
+description: 'Menghubungkan translasi, penskalaan, dan rotasi dengan matriks serta penerapannya dalam komputasi.'
+order: 16
+difficulty: 'lanjut'
+estimatedDuration: 40
+prerequisites:
+  - 'basis-dan-dimensi'
+objectives:
+  - 'Menyatakan rotasi, penskalaan, dan translasi menggunakan matriks.'
+  - 'Menghitung hasil transformasi pada vektor dua dimensi.'
+  - 'Menjelaskan penerapan transformasi vektor dalam grafika, gim, dan ilmu data.'
+summary: 'Transformasi linear, matriks rotasi dan penskalaan, translasi dengan koordinat homogen, serta penerapannya.'
+quizId: 'quiz-transformasi-vektor'
+draft: false
+---
+
+import TransformationDiagram from '../../components/mathematics/diagrams/TransformationDiagram.astro';
+
+## Konsep dan Intuisi
+
+Transformasi mengubah posisi, ukuran, atau orientasi objek. Dalam grafika komputer, setiap kali objek digeser, diputar, atau diperbesar, transformasi vektor sedang digunakan. Dalam ilmu data, transformasi juga dipakai untuk mengubah representasi fitur.
+
+Tiga transformasi dasar yang penting:
+
+- **Translasi:** memindahkan objek tanpa mengubah bentuk.
+- **Penskalaan:** memperbesar atau memperkecil ukuran.
+- **Rotasi:** memutar objek terhadap titik tertentu.
+
+Penskalaan dan rotasi dapat dinyatakan sebagai perkalian matriks dengan vektor. Translasi memerlukan koordinat homogen agar dapat ditulis sebagai perkalian matriks.
+
+## Definisi Matematis
+
+Transformasi linear $T$ memenuhi dua sifat:
+
+$$
+T(\mathbf{u}+\mathbf{v})=T(\mathbf{u})+T(\mathbf{v})
+$$
+
+$$
+T(c\mathbf{u})=cT(\mathbf{u})
+$$
+
+**Matriks rotasi 2D** untuk sudut $\theta$ berlawanan arah jarum jam:
+
+$$
+R(\theta)=
+\begin{pmatrix}
+\cos\theta & -\sin\theta\\
+\sin\theta & \cos\theta
+\end{pmatrix}
+$$
+
+**Matriks penskalaan 2D**:
+
+$$
+S(s_x,s_y)=
+\begin{pmatrix}
+s_x & 0\\
+0 & s_y
+\end{pmatrix}
+$$
+
+**Translasi** dengan koordinat homogen:
+
+$$
+\begin{pmatrix}
+x'\\y'\\1
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 & 0 & t_x\\
+0 & 1 & t_y\\
+0 & 0 & 1
+\end{pmatrix}
+\begin{pmatrix}
+x\\y\\1
+\end{pmatrix}
+$$
+
+## Notasi dan Simbol
+
+- $R(\theta)$: matriks rotasi.
+- $S(s_x,s_y)$: matriks penskalaan.
+- $t_x,t_y$: besar perpindahan pada sumbu x dan y.
+- $(x',y')$: koordinat setelah transformasi.
+- Koordinat homogen menambahkan komponen ketiga bernilai 1 pada titik 2D.
+
+## Penjelasan Rumus
+
+Matriks rotasi memutar setiap vektor tanpa mengubah panjangnya. Kosinus dan sinus menentukan seberapa besar komponen x dan y saling bertukar. Matriks penskalaan mengalikan setiap komponen dengan faktor yang sesuai; jika faktor x dan y berbeda, bentuk objek dapat berubah.
+
+Translasi tidak memenuhi definisi transformasi linear biasa karena $T(\mathbf{0})\neq\mathbf{0}$. Dengan koordinat homogen, translasi dapat diperlakukan sebagai perkalian matriks $3\times3$. Cara ini memungkinkan translasi, rotasi, dan penskalaan digabungkan dalam satu urutan perkalian matriks.
+
+## Ilustrasi Visual
+
+<TransformationDiagram />
+
+Diagram memperlihatkan vektor sebelum dan sesudah rotasi 90°. Panjang vektor tetap, tetapi arahnya berubah. Pada transformasi yang lebih kompleks, beberapa matriks dapat dikalikan terlebih dahulu sebelum diterapkan ke vektor.
+
+## Contoh Bertahap
+
+### Contoh 1 — Rotasi 90°
+
+Rotasikan $\mathbf{v}=(1,0)$ sebesar 90° berlawanan arah jarum jam.
+
+**Langkah 1.** Substitusi $\theta=90^\circ$:
+
+$$
+R(90^\circ)=
+\begin{pmatrix}
+0 & -1\\
+1 & 0
+\end{pmatrix}
+$$
+
+**Langkah 2.** Kalikan dengan vektor:
+
+$$
+R(90^\circ)
+\begin{pmatrix}1\\0\end{pmatrix}
+=
+\begin{pmatrix}0\\1\end{pmatrix}
+$$
+
+Hasilnya adalah $(0,1)$, sesuai dengan arah sumbu y positif.
+
+### Contoh 2 — Penskalaan
+
+Skalakan $\mathbf{v}=(2,3)$ dengan faktor $s_x=2$ dan $s_y=0{,}5$.
+
+$$
+S(2,0{,}5)
+\begin{pmatrix}2\\3\end{pmatrix}
+=
+\begin{pmatrix}2\cdot2\\0{,}5\cdot3\end{pmatrix}
+=
+\begin{pmatrix}4\\1{,}5\end{pmatrix}
+$$
+
+### Contoh 3 — Translasi dengan koordinat homogen
+
+Translasi titik $(3,4)$ sebesar $(2,1)$.
+
+$$
+\begin{pmatrix}
+1&0&2\\
+0&1&1\\
+0&0&1
+\end{pmatrix}
+\begin{pmatrix}3\\4\\1\end{pmatrix}
+=
+\begin{pmatrix}5\\5\\1\end{pmatrix}
+$$
+
+Koordinat akhirnya adalah $(5,5)$. Komponen ketiga tetap 1 dan tidak dibaca sebagai koordinat spasial.
+
+## Penerapan Komputasi
+
+- **Grafika komputer:** setiap objek memiliki matriks transformasi untuk posisi, rotasi, dan skala.
+- **Pengembangan gim:** kamera dan karakter menggunakan transformasi untuk bergerak di dunia 3D.
+- **Antarmuka pengguna:** animasi pergeseran dan pembesaran elemen menggunakan transformasi.
+- **Ilmu data:** normalisasi dan perubahan basis adalah bentuk transformasi fitur.
+- **Pembelajaran mesin:** transformasi linear digunakan dalam layer jaringan saraf dan proyeksi data.
+
+## Kesalahan Umum
+
+1. **Mengalikan matriks dengan urutan yang salah.** Urutan transformasi memengaruhi hasil akhir.
+2. **Menganggap translasi adalah transformasi linear 2D.** Translasi memerlukan koordinat homogen.
+3. **Salah menentukan arah rotasi.** Sudut positif biasanya berlawanan arah jarum jam, tetapi konvensi dapat berbeda.
+4. **Mengabaikan perbedaan skala sumbu.** Faktor skala x dan y dapat berbeda.
+5. **Menerapkan transformasi ke titik dan vektor dengan cara yang sama tanpa memahami perbedaan ruang.**
+
+## Latihan Mandiri
+
+### Latihan 1
+
+Rotasikan $(0,1)$ sebesar 90° berlawanan arah jarum jam.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+$$
+R(90^\circ)\begin{pmatrix}0\\1\end{pmatrix}
+=
+\begin{pmatrix}0&-1\\1&0\end{pmatrix}
+\begin{pmatrix}0\\1\end{pmatrix}
+=
+\begin{pmatrix}-1\\0\end{pmatrix}
+$$
+
+Hasilnya adalah $(-1,0)$.
+
+</details>
+
+### Latihan 2
+
+Skalakan $(4,-2)$ dengan faktor $s_x=0{,}5$ dan $s_y=3$.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+$$
+(0{,}5\cdot4,\;3\cdot(-2))=(2,-6)
+$$
+
+</details>
+
+### Latihan 3
+
+Translasi titik $(-1,3)$ sebesar $(4,-2)$.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+Translasi dilakukan dengan penjumlahan vektor:
+
+$$
+(-1,3)+(4,-2)=(3,1)
+$$
+
+Dengan koordinat homogen, hasil yang sama diperoleh dari perkalian matriks translasi.
+
+</details>
+
+## Kuis Topik
+
+Kuis interaktif untuk topik ini tersedia di [halaman Kuis](/kuis). Setiap kuis berisi lima soal dari modul ini, dengan umpan balik langsung, penjelasan, skor, dan percobaan ulang. Skor terbaik disimpan secara lokal di peramban.
+
+## Ringkasan
+
+- Transformasi linear mempertahankan penjumlahan dan perkalian skalar.
+- Rotasi dan penskalaan dapat ditulis sebagai matriks.
+- Translasi memerlukan koordinat homogen.
+- Urutan transformasi memengaruhi hasil.
+- Transformasi vektor menjadi dasar grafika, gim, antarmuka, dan ilmu data.
+
+## Referensi Rumus
+
+| Nama | Rumus | Keterangan |
+|---|---|---|
+| Rotasi 2D | $R(\theta)=\begin{pmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{pmatrix}$ | Memutar tanpa mengubah panjang. |
+| Penskalaan 2D | $S(s_x,s_y)=\begin{pmatrix}s_x&0\\0&s_y\end{pmatrix}$ | Mengubah ukuran per sumbu. |
+| Translasi | $\begin{pmatrix}1&0&t_x\\0&1&t_y\\0&0&1\end{pmatrix}$ | Perpindahan dengan koordinat homogen. |

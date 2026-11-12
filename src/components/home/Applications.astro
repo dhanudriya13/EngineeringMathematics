@@ -1,0 +1,82 @@
+---
+import { applications } from '../../data/curriculum';
+import SectionHeading from '../ui/SectionHeading.astro';
+---
+
+<section class="applications">
+  <div class="container">
+    <SectionHeading
+      eyebrow="Mengapa vektor penting"
+      title="Dari ruang kelas ke sistem komputasi."
+      description="Vektor bukan topik yang berhenti di buku catatan. Konsep yang sama dipakai untuk menggerakkan objek, mengukur kemiripan data, dan memodelkan gaya."
+    />
+
+    <div class="application-grid">
+      {
+        applications.map((application, index) => (
+          <article class="application">
+            <span class="application-index" aria-hidden="true">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <h3>{application.title}</h3>
+            <p>{application.description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .applications {
+    padding-block: var(--section-space);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .application-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-4);
+    margin-top: var(--space-10);
+  }
+
+  .application {
+    padding: var(--space-6);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+  }
+
+  .application-index {
+    display: block;
+    margin-bottom: var(--space-5);
+    color: var(--color-accent-strong);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 650;
+  }
+
+  .application h3 {
+    margin-bottom: var(--space-2);
+    font-size: var(--text-lg);
+    letter-spacing: -0.01em;
+  }
+
+  .application p {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+  }
+
+  @media (max-width: 900px) {
+    .application-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 560px) {
+    .application-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

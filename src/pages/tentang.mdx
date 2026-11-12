@@ -1,0 +1,59 @@
+---
+layout: ../layouts/ProseLayout.astro
+title: Tentang Vector Lab
+description: Tujuan, pendekatan belajar, dan prinsip teknis di balik Vector Lab.
+eyebrow: Tentang
+---
+
+Vector Lab adalah platform belajar Matematika Teknik untuk mahasiswa Sistem Informasi. Fokusnya bukan menghafal rumus, melainkan membangun pemahaman vektor yang dapat digunakan untuk membaca, menghitung, dan menerapkan konsep dalam pekerjaan komputasi.
+
+## Cara platform ini belajar
+
+Setiap topik disusun mengikuti urutan yang konsisten:
+
+1. **Konsep** — makna dan representasi geometris diperkenalkan terlebih dahulu.
+2. **Matematika** — definisi formal, notasi, dan langkah perhitungan dijelaskan setelah intuisi terbentuk.
+3. **Aplikasi** — konsep dihubungkan dengan grafika komputer, pengembangan gim, ilmu data, dan bidang teknik.
+
+Urutan ini penting karena vektor memiliki dua wajah: objek geometris yang dapat dilihat, dan objek aljabar yang dapat dihitung. Memahami keduanya secara bersamaan membuat rumus lebih mudah diingat dan digunakan.
+
+## Contoh notasi
+
+Magnitudo sebuah vektor tiga dimensi $\mathbf{v} = (x, y, z)$ dihitung dengan:
+
+$$
+\lVert \mathbf{v} \rVert = \sqrt{x^2 + y^2 + z^2}
+$$
+
+Di sini, $x$, $y$, dan $z$ adalah komponen vektor pada sumbu koordinat. Simbol $\lVert \mathbf{v} \rVert$ menyatakan panjang vektor, sedangkan tanda akar menjumlahkan kuadrat setiap komponen.
+
+Perkalian titik antara dua vektor didefinisikan sebagai:
+
+$$
+\mathbf{a} \cdot \mathbf{b} = a_1b_1 + a_2b_2 + a_3b_3 = \lVert \mathbf{a} \rVert \, \lVert \mathbf{b} \rVert \cos\theta
+$$
+
+Ruas kiri menunjukkan perhitungan dari komponen, sedangkan ruas kanan menghubungkan hasilnya dengan sudut $\theta$ antara kedua vektor. Hubungan inilah yang membuat perkalian titik berguna untuk mengukur kemiripan arah.
+
+## Prinsip teknis
+
+- **Statis sejak awal.** Halaman dirender sebagai situs statis agar cepat dan tidak membutuhkan server aplikasi.
+- **React hanya untuk interaksi.** Komponen React dimuat hanya ketika benar-benar diperlukan.
+- **Perhitungan terpisah dari tampilan.** Fungsi matematika akan ditempatkan pada lapisan utilitas yang dapat diuji secara independen.
+- **Tanpa akun dan tanpa pelacakan.** Tidak ada pendaftaran, autentikasi, atau pengumpulan data pribadi.
+- **Progres di perangkat.** Progres belajar akan disimpan di Local Storage peramban pada fase penilaian.
+- **Kebenaran matematika diutamakan.** Rumus, contoh, dan kunci jawaban diverifikasi sebelum dipublikasikan.
+
+## Status pengembangan
+
+Vector Lab dikembangkan secara bertahap dan seluruh fase inti telah diselesaikan:
+
+- **Fase 1 — Fondasi:** Astro, React, MDX, KaTeX, sistem desain, navigasi, dan beranda.
+- **Fase 2 — Materi:** 16 modul pembelajaran, referensi rumus, dan glosarium.
+- **Fase 3 — Mesin matematika:** fungsi vektor murni, validasi masukan, dan pengujian unit.
+- **Fase 4 — Playground:** delapan alat interaktif dengan visualisasi SVG 2D dan Three.js 3D.
+- **Fase 5 — Penilaian:** latihan adaptif, kuis topik, dan progres lokal.
+- **Fase 6 — QA:** pengujian end-to-end, audit aksesibilitas, pemeriksaan tipe, linting, dan build produksi.
+- **Fase 7 — Deployment:** konfigurasi build statis, header keamanan, dan panduan Netlify/Cloudflare Pages.
+
+Tidak ada akun, backend, atau pengiriman data pengguna. Progres belajar tersimpan di Local Storage peramban dan bersifat spesifik per perangkat.

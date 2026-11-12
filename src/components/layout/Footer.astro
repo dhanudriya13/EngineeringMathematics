@@ -1,0 +1,167 @@
+---
+import { footerNavigation, site } from '../../data/site';
+import { isActivePath } from '../../lib/navigation';
+import Logo from '../navigation/Logo.astro';
+
+interface Props {
+  pathname: string;
+}
+
+const { pathname } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="footer-logo" href="/" aria-label="Vector Lab — beranda">
+        <Logo />
+      </a>
+      <p class="footer-tagline">{site.tagline}</p>
+      <p class="footer-note">
+        Dirancang tanpa akun dan tanpa server. Progres belajar tersimpan secara lokal di
+        peramban ini dan tidak disinkronkan antar perangkat.
+      </p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Navigasi footer">
+      {
+        footerNavigation.map((group) => (
+          <div class="footer-group">
+            <h2 class="footer-heading">{group.title}</h2>
+            <ul>
+              {group.links.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class:list={{ 'is-active': isActivePath(pathname, link.href) }}
+                    aria-current={isActivePath(pathname, link.href) ? 'page' : undefined}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </nav>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; {year} Vector Lab. Materi untuk pembelajaran Matematika Teknik.</p>
+    <p class="footer-meta">
+      Fase 7 — Siap Deploy · Astro, React, Three.js, dan KaTeX
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: var(--space-24);
+    border-top: 1px solid var(--color-border);
+    background: var(--color-surface-muted);
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: minmax(260px, 1.3fr) minmax(0, 2fr);
+    gap: var(--space-16);
+    width: min(100% - (var(--gutter) * 2), var(--max-width));
+    margin-inline: auto;
+    padding-block: var(--space-16) var(--space-10);
+  }
+
+  .footer-brand {
+    max-width: 360px;
+  }
+
+  .footer-logo {
+    display: inline-flex;
+    text-decoration: none;
+  }
+
+  .footer-tagline {
+    margin-top: var(--space-4);
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+  }
+
+  .footer-note {
+    margin-top: var(--space-4);
+    color: var(--color-text-secondary);
+    font-size: var(--text-xs);
+    line-height: var(--leading-normal);
+  }
+
+  .footer-nav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-8);
+  }
+
+  .footer-heading {
+    margin-bottom: var(--space-4);
+    color: var(--color-primary);
+    font-size: 0.6875rem;
+    font-weight: 750;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .footer-nav ul {
+    display: grid;
+    gap: var(--space-2);
+    list-style: none;
+  }
+
+  .footer-nav a {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    text-decoration: none;
+  }
+
+  .footer-nav a:hover,
+  .footer-nav a.is-active {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    width: min(100% - (var(--gutter) * 2), var(--max-width));
+    margin-inline: auto;
+    padding-block: var(--space-5);
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    font-size: var(--text-xs);
+  }
+
+  .footer-meta {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+  }
+
+  @media (max-width: 860px) {
+    .footer-inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-10);
+      padding-block: var(--space-12) var(--space-8);
+    }
+
+    .footer-bottom {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 540px) {
+    .footer-nav {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

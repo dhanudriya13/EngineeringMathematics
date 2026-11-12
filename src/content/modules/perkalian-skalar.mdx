@@ -1,0 +1,188 @@
+---
+title: 'Perkalian Skalar'
+description: 'Memahami bagaimana sebuah skalar mengubah panjang dan arah vektor.'
+order: 6
+difficulty: 'dasar'
+estimatedDuration: 25
+prerequisites:
+  - 'penjumlahan-pengurangan'
+objectives:
+  - 'Menghitung hasil perkalian vektor dengan skalar.'
+  - 'Menjelaskan pengaruh skalar positif, negatif, dan nol terhadap magnitudo serta arah.'
+  - 'Menggunakan perkalian skalar untuk menyelesaikan masalah perbandingan arah.'
+summary: 'Perkalian setiap komponen vektor dengan skalar, perubahan magnitudo, pembalikan arah, dan vektor nol.'
+quizId: 'quiz-perkalian-skalar'
+draft: false
+---
+
+import ScalarMultiplicationDiagram from '../../components/mathematics/diagrams/ScalarMultiplicationDiagram.astro';
+
+## Konsep dan Intuisi
+
+Perkalian skalar mengubah ukuran vektor tanpa mengubah "jalur" arahnya, kecuali jika skalarnya negatif. Jika sebuah vektor merepresentasikan kecepatan, mengalikannya dengan 2 berarti kecepatannya menjadi dua kali lipat. Mengalikannya dengan 0,5 berarti kecepatannya menjadi setengah. Mengalikannya dengan -1 berarti arahnya berbalik.
+
+Operasi ini berbeda dari perkalian titik dan perkalian silang. Perkalian skalar melibatkan satu vektor dan satu bilangan, bukan dua vektor.
+
+## Definisi Matematis
+
+Untuk skalar $k$ dan vektor $\mathbf{v}=(v_1,v_2)$, perkalian skalar didefinisikan sebagai:
+
+$$
+k\mathbf{v}=(kv_1,\;kv_2)
+$$
+
+Untuk vektor tiga dimensi:
+
+$$
+k\mathbf{v}=(kv_1,\;kv_2,\;kv_3)
+$$
+
+Setiap komponen dikalikan dengan $k$. Jika $k=0$, hasilnya adalah vektor nol. Jika $k<0$, arah vektor berbalik. Jika $k>0$, arah tetap sama.
+
+Magnitudo hasil perkalian skalar memenuhi:
+
+$$
+\lVert k\mathbf{v} \rVert = |k|\,\lVert \mathbf{v} \rVert
+$$
+
+Nilai absolut $|k|$ digunakan karena magnitudo selalu tak negatif.
+
+## Notasi dan Simbol
+
+- $k$: skalar pengali, dapat berupa bilangan bulat, pecahan, atau desimal.
+- $k\mathbf{v}$: vektor hasil perkalian.
+- $|k|$: nilai absolut skalar, yaitu besar tanpa tanda.
+- $\mathbf{0}$: vektor nol yang dihasilkan ketika $k=0$.
+
+Perhatikan bahwa $k\mathbf{v}$ adalah vektor, sedangkan hasil perkalian titik $\mathbf{a}\cdot\mathbf{b}$ adalah skalar. Kedua operasi ini tidak boleh dicampur.
+
+## Penjelasan Rumus
+
+Mengalikan setiap komponen dengan $k$ berarti setiap arah sumbu diperbesar atau diperkecil dengan faktor yang sama. Karena itu, vektor hasil tetap segaris dengan vektor asal ketika $k$ positif. Ketika $k$ negatif, setiap komponen berubah tanda, sehingga vektor menunjuk ke arah yang berlawanan.
+
+Rumus magnitudo $\lVert k\mathbf{v}\rVert=|k|\lVert\mathbf{v}\rVert$ masuk akal karena penskalaan memperbesar setiap komponen dengan faktor $|k|$. Jika $k=-3$, panjangnya menjadi tiga kali lipat, bukan negatif. Tanda negatif hanya memengaruhi arah.
+
+## Ilustrasi Visual
+
+<ScalarMultiplicationDiagram />
+
+Diagram memperlihatkan vektor $\mathbf{v}$, hasil $2\mathbf{v}$ yang lebih panjang dengan arah sama, dan hasil $-0{,}5\mathbf{v}$ yang lebih pendek dengan arah berlawanan.
+
+## Contoh Bertahap
+
+### Contoh 1 — Skalar positif
+
+Diketahui $\mathbf{v}=(2,-1)$. Hitung $3\mathbf{v}$ dan magnitudonya jika $\lVert\mathbf{v}\rVert=\sqrt{5}$.
+
+**Langkah 1.** Kalikan setiap komponen:
+
+$$
+3\mathbf{v}=(3\cdot2,\;3\cdot(-1))=(6,-3)
+$$
+
+**Langkah 2.** Hitung magnitudo hasil:
+
+$$
+\lVert 3\mathbf{v} \rVert = |3|\sqrt{5}=3\sqrt{5}
+$$
+
+Hasilnya searah dengan $\mathbf{v}$, tetapi tiga kali lebih panjang.
+
+### Contoh 2 — Skalar negatif
+
+Diketahui $\mathbf{u}=(4,2)$. Hitung $-0{,}5\mathbf{u}$.
+
+$$
+-0{,}5\mathbf{u}=(-0{,}5\cdot4,\;-0{,}5\cdot2)=(-2,-1)
+$$
+
+Vektor hasil memiliki arah berlawanan dengan $\mathbf{u}$ dan panjang setengahnya.
+
+### Contoh 3 — Skalar nol
+
+$$
+0\cdot(5,-3)=(0,0)=\mathbf{0}
+$$
+
+Hasilnya adalah vektor nol. Vektor nol tidak memiliki arah yang terdefinisi, sehingga tidak dapat dinormalisasi.
+
+## Penerapan Komputasi
+
+- **Gim:** kecepatan karakter dapat dipercepat dengan mengalikan vektor kecepatan dengan skalar.
+- **Grafika:** penskalaan objek menggunakan faktor skala pada setiap sumbu.
+- **Fisika:** gaya gesek dapat dimodelkan sebagai kelipatan negatif dari arah gerak.
+- **Animasi:** interpolasi posisi menggunakan kombinasi skalar dari dua posisi, misalnya $0{,}7\mathbf{p}_1+0{,}3\mathbf{p}_2$.
+
+## Kesalahan Umum
+
+1. **Mengalikan hanya satu komponen.** Skalar harus dikalikan ke setiap komponen.
+2. **Menganggap magnitudo dapat negatif.** Magnitudo hasil adalah $|k|\lVert\mathbf{v}\rVert$, bukan $k\lVert\mathbf{v}\rVert$.
+3. **Menganggap arah selalu tetap.** Skalar negatif membalik arah.
+4. **Menganggap $0\mathbf{v}$ memiliki arah.** Hasilnya vektor nol yang arahnya tidak terdefinisi.
+5. **Mencampur perkalian skalar dengan perkalian titik.** Hasil perkalian skalar adalah vektor; hasil perkalian titik adalah skalar.
+
+## Latihan Mandiri
+
+### Latihan 1
+
+Diketahui $\mathbf{a}=(-3,6)$. Hitung $2\mathbf{a}$ dan $-1\mathbf{a}$.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+$$
+2\mathbf{a}=(-6,12)
+$$
+
+$$
+-1\mathbf{a}=(3,-6)
+$$
+
+Vektor kedua memiliki arah berlawanan dengan $\mathbf{a}$.
+
+</details>
+
+### Latihan 2
+
+Diketahui $\lVert\mathbf{v}\rVert=7$. Tentukan magnitudo $-4\mathbf{v}$.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+$$
+\lVert -4\mathbf{v} \rVert = |-4|\cdot7=28
+$$
+
+Tanda negatif membalik arah, tetapi tidak membuat magnitudo negatif.
+
+</details>
+
+### Latihan 3
+
+Tentukan skalar $k$ sehingga $k(2,3)=(-4,-6)$.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+Bandingkan komponen pertama: $2k=-4$, sehingga $k=-2$. Periksa komponen kedua: $3(-2)=-6$, sesuai. Jadi $k=-2$.
+
+</details>
+
+## Kuis Topik
+
+Kuis interaktif untuk topik ini tersedia di [halaman Kuis](/kuis). Setiap kuis berisi lima soal dari modul ini, dengan umpan balik langsung, penjelasan, skor, dan percobaan ulang. Skor terbaik disimpan secara lokal di peramban.
+
+## Ringkasan
+
+- Perkalian skalar mengalikan setiap komponen dengan $k$.
+- Skalar positif mempertahankan arah; skalar negatif membalik arah.
+- Magnitudo hasil adalah $|k|$ kali magnitudo asal.
+- Skalar nol menghasilkan vektor nol.
+- Hasil perkalian skalar adalah vektor, bukan skalar.
+
+## Referensi Rumus
+
+| Nama | Rumus | Keterangan |
+|---|---|---|
+| Perkalian skalar | $k\mathbf{v}=(kv_1,kv_2)$ | Setiap komponen dikalikan k. |
+| Magnitudo hasil | $\lVert k\mathbf{v}\rVert=\lvert k\rvert\lVert\mathbf{v}\rVert$ | Panjang berubah sesuai nilai absolut k. |

@@ -1,0 +1,121 @@
+---
+import { getCollection, render } from 'astro:content';
+import Breadcrumbs from '../../components/navigation/Breadcrumbs.astro';
+import ModuleHeader from '../../components/learning/ModuleHeader.astro';
+import ModulePager from '../../components/learning/ModulePager.astro';
+import ModuleProgress from '../../components/learning/ModuleProgress';
+import ModuleSidebar from '../../components/learning/ModuleSidebar.astro';
+import TableOfContents from '../../components/learning/TableOfContents.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getModuleId, toModuleSummary, type ModuleEntry } from '../../lib/content';
+
+interface Props {
+  entry: ModuleEntry;
+  previous: ModuleEntry | null;
+  next: ModuleEntry | null;
+  modules: ModuleEntry[];
+}
+
+export async function getStaticPaths() {
+  const entries = await getCollection('modules', ({ data }) => !data.draft);
+  const sorted = [...entries].sort((a, b) => a.data.order - b.data.order);
+
+  return sorted.map((entry, index) => ({
+    params: { slug: getModuleId(entry.id) },
+    props: {
+      entry,
+      previous: sorted[index - 1] ?? null,
+      next: sorted[index + 1] ?? null,
+      modules: sorted,
+    },
+  }));
+}
+
+const { entry, previous, next, modules } = Astro.props as Props;
+const { Content, headings } = await render(entry);
+const summaries = modules.map(toModuleSummary);
+const currentId = getModuleId(entry.id);
+const moduleSummary = summaries.find((module) => module.id === currentId) ?? toModuleSummary(entry);
+
+const prerequisites = entry.data.prerequisites.flatMap((id) => {
+  const prerequisite = summaries.find((module) => module.id === id);
+
+  return prerequisite
+    ? [{ title: prerequisite.title, href: `/materi/${prerequisite.id}` }]
+    : [];
+});
+---
+
+<BaseLayout title={entry.data.title} description={entry.data.description}>
+  <div class="container module-page">
+    <Breadcrumbs
+      items={[
+        { label: 'Beranda', href: '/' },
+        { label: 'Kurikulum', href: '/materi' },
+        { label: entry.data.title },
+      ]}
+    />
+
+    <div class="module-layout">
+      <ModuleSidebar modules={summaries} currentId={currentId} />
+
+      <article class="module-content">
+        <ModuleHeader
+          module={moduleSummary}
+          difficulty={entry.data.difficulty}
+          estimatedDuration={entry.data.estimatedDuration}
+          objectives={entry.data.objectives}
+          prerequisites={prerequisites}
+        />
+
+        <TableOfContents headings={headings} />
+
+        <div class="prose module-prose">
+          <Content />
+        </div>
+
+        <ModuleProgress moduleId={currentId} client:idle />
+
+        <ModulePager
+          previous={previous ? toModuleSummary(previous) : null}
+          next={next ? toModuleSummary(next) : null}
+        />
+      </article>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .module-page {
+    padding-top: var(--space-8);
+  }
+
+  .module-layout {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+    gap: var(--space-12);
+    align-items: start;
+    padding-block: var(--space-6) var(--space-16);
+  }
+
+  .module-content {
+    min-width: 0;
+    max-width: 840px;
+  }
+
+  .module-prose {
+    max-width: var(--reading-width);
+    margin-top: var(--space-8);
+  }
+
+  @media (max-width: 1040px) {
+    .module-layout {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+
+    .module-content {
+      max-width: 100%;
+    }
+  }
+</style>

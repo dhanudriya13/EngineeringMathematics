@@ -1,0 +1,215 @@
+---
+title: 'Penjumlahan dan Pengurangan Vektor'
+description: 'Menjumlahkan dan mengurangkan vektor secara geometris maupun melalui komponen.'
+order: 5
+difficulty: 'dasar'
+estimatedDuration: 35
+prerequisites:
+  - 'magnitudo-dan-arah'
+objectives:
+  - 'Menjumlahkan dua vektor dengan aturan ujung-ke-ujung dan jajargenjang.'
+  - 'Menghitung penjumlahan dan pengurangan vektor secara per komponen.'
+  - 'Menjelaskan sifat-sifat penjumlahan vektor dan makna geometris pengurangan.'
+summary: 'Operasi penjumlahan dan pengurangan vektor, sifat-sifatnya, serta hubungannya dengan vektor negatif.'
+quizId: 'quiz-penjumlahan-pengurangan'
+draft: false
+---
+
+import VectorOperationsDiagram from '../../components/mathematics/diagrams/VectorOperationsDiagram.astro';
+
+## Konsep dan Intuisi
+
+Menjumlahkan vektor bukan berarti menjumlahkan panjangnya. Jika Anda berjalan 3 satuan ke timur lalu 4 satuan ke utara, perpindahan total bukan 7 satuan, melainkan vektor yang menghubungkan titik awal ke titik akhir. Panjang perpindahan itu adalah 5 satuan. Arah juga berubah, sehingga hasilnya harus dihitung sebagai vektor.
+
+Secara geometris, penjumlahan dapat dilakukan dengan menyusun vektor kedua mulai dari ujung vektor pertama. Metode ini disebut **aturan ujung-ke-ujung** (head-to-tail). Alternatifnya, kedua vektor disusun dari titik awal yang sama dan resultan digambar sebagai diagonal jajargenjang.
+
+Pengurangan adalah penjumlahan dengan vektor negatif. Arah vektor yang dikurangkan dibalik, lalu dijumlahkan seperti biasa.
+
+## Definisi Matematis
+
+Untuk vektor dua dimensi $\mathbf{a}=(a_1,a_2)$ dan $\mathbf{b}=(b_1,b_2)$:
+
+$$
+\mathbf{a}+\mathbf{b}=(a_1+b_1,\;a_2+b_2)
+$$
+
+$$
+\mathbf{a}-\mathbf{b}=(a_1-b_1,\;a_2-b_2)
+$$
+
+Untuk vektor tiga dimensi, komponen ketiga ditambahkan atau dikurangkan dengan aturan yang sama:
+
+$$
+\mathbf{a}+\mathbf{b}=(a_1+b_1,\;a_2+b_2,\;a_3+b_3)
+$$
+
+Pengurangan vektor juga dapat ditulis sebagai:
+
+$$
+\mathbf{a}-\mathbf{b}=\mathbf{a}+(-\mathbf{b})
+$$
+
+Sifat-sifat penjumlahan vektor:
+
+- **Komutatif:** $\mathbf{a}+\mathbf{b}=\mathbf{b}+\mathbf{a}$
+- **Asosiatif:** $(\mathbf{a}+\mathbf{b})+\mathbf{c}=\mathbf{a}+(\mathbf{b}+\mathbf{c})$
+- **Identitas:** $\mathbf{a}+\mathbf{0}=\mathbf{a}$
+- **Invers:** $\mathbf{a}+(-\mathbf{a})=\mathbf{0}$
+
+Pengurangan **tidak** komutatif: $\mathbf{a}-\mathbf{b}\neq\mathbf{b}-\mathbf{a}$ kecuali kedua vektor sama.
+
+## Notasi dan Simbol
+
+- $\mathbf{a}+\mathbf{b}$: resultan penjumlahan.
+- $\mathbf{a}-\mathbf{b}$: selisih yang arahnya dari ujung $\mathbf{b}$ ke ujung $\mathbf{a}$ ketika kedua vektor disusun dari titik awal yang sama.
+- $-\mathbf{b}$: vektor dengan arah berlawanan terhadap $\mathbf{b}$.
+
+Pada penjumlahan komponen, setiap posisi komponen hanya boleh dijumlahkan dengan komponen pada posisi yang sama. Komponen x dijumlahkan dengan komponen x, bukan dengan komponen y.
+
+## Penjelasan Rumus
+
+Rumus penjumlahan per komponen bekerja karena sumbu koordinat saling tegak lurus. Pengaruh pada sumbu x tidak mengubah komponen pada sumbu y. Dengan demikian, kedua arah dapat dihitung secara terpisah lalu digabungkan kembali menjadi vektor resultan.
+
+Pengurangan $\mathbf{a}-\mathbf{b}$ dapat dipahami sebagai vektor yang harus ditambahkan ke $\mathbf{b}$ untuk menghasilkan $\mathbf{a}$. Karena itu, arah $\mathbf{a}-\mathbf{b}$ berlawanan dengan arah $\mathbf{b}-\mathbf{a}$.
+
+## Ilustrasi Visual
+
+<VectorOperationsDiagram />
+
+Pada diagram, $\mathbf{a}+\mathbf{b}$ adalah diagonal jajargenjang yang dibentuk oleh kedua vektor. Vektor $\mathbf{a}-\mathbf{b}$ digambarkan dari ujung $\mathbf{b}$ menuju ujung $\mathbf{a}$. Perhatikan bahwa membalik urutan pengurangan akan membalik arah hasilnya.
+
+## Contoh Bertahap
+
+### Contoh 1 — Penjumlahan dan pengurangan 2D
+
+Diketahui $\mathbf{a}=(2,1)$ dan $\mathbf{b}=(1,3)$. Tentukan $\mathbf{a}+\mathbf{b}$ dan $\mathbf{a}-\mathbf{b}$.
+
+**Langkah 1.** Jumlahkan komponen yang bersesuaian:
+
+$$
+\mathbf{a}+\mathbf{b}=(2+1,\;1+3)=(3,4)
+$$
+
+**Langkah 2.** Kurangkan komponen yang bersesuaian:
+
+$$
+\mathbf{a}-\mathbf{b}=(2-1,\;1-3)=(1,-2)
+$$
+
+Hasil $\mathbf{a}-\mathbf{b}=(1,-2)$ berbeda dari $\mathbf{b}-\mathbf{a}=(-1,2)$. Keduanya memiliki panjang sama tetapi arah berlawanan.
+
+### Contoh 2 — Penjumlahan 3D
+
+Diketahui $\mathbf{u}=(1,-2,3)$ dan $\mathbf{v}=(4,0,-1)$.
+
+$$
+\mathbf{u}+\mathbf{v}=(1+4,\;-2+0,\;3+(-1))=(5,-2,2)
+$$
+
+$$
+\mathbf{u}-\mathbf{v}=(1-4,\;-2-0,\;3-(-1))=(-3,-2,4)
+$$
+
+### Contoh 3 — Menentukan vektor yang diperlukan
+
+Diketahui $\mathbf{a}=(3,1)$ dan resultan $\mathbf{r}=(7,4)$. Tentukan $\mathbf{b}$ sehingga $\mathbf{a}+\mathbf{b}=\mathbf{r}$.
+
+**Langkah 1.** Susun persamaan komponen:
+
+$$
+\mathbf{b}=\mathbf{r}-\mathbf{a}
+$$
+
+**Langkah 2.** Hitung:
+
+$$
+\mathbf{b}=(7-3,\;4-1)=(4,3)
+$$
+
+**Langkah 3.** Periksa:
+
+$$
+(3,1)+(4,3)=(7,4)
+$$
+
+## Penerapan Komputasi
+
+- **Fisika:** resultan gaya adalah penjumlahan vektor gaya-gaya yang bekerja pada benda.
+- **Gim:** perpindahan karakter dalam satu frame adalah penjumlahan vektor kecepatan dikali waktu.
+- **Grafika:** posisi akhir objek setelah beberapa transformasi dapat dihitung melalui penjumlahan vektor perpindahan.
+- **Navigasi:** vektor dari posisi saat ini ke target adalah selisih antara vektor posisi target dan vektor posisi saat ini.
+
+## Kesalahan Umum
+
+1. **Menjumlahkan magnitudo secara langsung.** $(3,4)$ dan $(1,0)$ bukan vektor dengan panjang $5+1=6$; resultannya harus dihitung per komponen.
+2. **Menganggap pengurangan komutatif.** $\mathbf{a}-\mathbf{b}$ dan $\mathbf{b}-\mathbf{a}$ berlawanan arah.
+3. **Menjumlahkan komponen yang tidak sejenis.** Komponen x tidak boleh dijumlahkan dengan komponen y.
+4. **Lupa membalik arah vektor saat mengubah pengurangan menjadi penjumlahan.**
+5. **Mengabaikan tanda negatif pada komponen.** Tanda negatif tetap dipertahankan selama perhitungan.
+
+## Latihan Mandiri
+
+### Latihan 1
+
+Diketahui $\mathbf{p}=(4,-1)$ dan $\mathbf{q}=(-2,5)$. Hitung $\mathbf{p}+\mathbf{q}$ dan $\mathbf{p}-\mathbf{q}$.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+$$
+\mathbf{p}+\mathbf{q}=(4-2,\;-1+5)=(2,4)
+$$
+
+$$
+\mathbf{p}-\mathbf{q}=(4-(-2),\;-1-5)=(6,-6)
+$$
+
+</details>
+
+### Latihan 2
+
+Diketahui $\mathbf{a}=(1,2,3)$ dan $\mathbf{b}=(0,-1,4)$. Hitung $\mathbf{a}+\mathbf{b}$ dan $\mathbf{b}-\mathbf{a}$.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+$$
+\mathbf{a}+\mathbf{b}=(1,1,7)
+$$
+
+$$
+\mathbf{b}-\mathbf{a}=(0-1,\;-1-2,\;4-3)=(-1,-3,1)
+$$
+
+</details>
+
+### Latihan 3
+
+Jelaskan mengapa $\mathbf{a}-\mathbf{b}$ dapat dipandang sebagai vektor dari ujung $\mathbf{b}$ ke ujung $\mathbf{a}$.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+Jika kedua vektor disusun dari titik awal yang sama, maka $\mathbf{b}+(\mathbf{a}-\mathbf{b})=\mathbf{a}$. Artinya, menambahkan $\mathbf{a}-\mathbf{b}$ ke $\mathbf{b}$ menghasilkan $\mathbf{a}$. Karena itu, $\mathbf{a}-\mathbf{b}$ menghubungkan ujung $\mathbf{b}$ ke ujung $\mathbf{a}$.
+
+</details>
+
+## Kuis Topik
+
+Kuis interaktif untuk topik ini tersedia di [halaman Kuis](/kuis). Setiap kuis berisi lima soal dari modul ini, dengan umpan balik langsung, penjelasan, skor, dan percobaan ulang. Skor terbaik disimpan secara lokal di peramban.
+
+## Ringkasan
+
+- Penjumlahan dan pengurangan vektor dilakukan per komponen.
+- Secara geometris, penjumlahan mengikuti aturan ujung-ke-ujung atau jajargenjang.
+- Pengurangan sama dengan penjumlahan vektor negatif.
+- Penjumlahan vektor komutatif dan asosiatif; pengurangan tidak komutatif.
+- $\mathbf{a}-\mathbf{b}$ mengarah dari ujung $\mathbf{b}$ ke ujung $\mathbf{a}$.
+
+## Referensi Rumus
+
+| Nama | Rumus | Keterangan |
+|---|---|---|
+| Penjumlahan | $\mathbf{a}+\mathbf{b}=(a_1+b_1,\;a_2+b_2)$ | Resultan dua vektor. |
+| Pengurangan | $\mathbf{a}-\mathbf{b}=(a_1-b_1,\;a_2-b_2)$ | Selisih dua vektor. |
+| Sifat invers | $\mathbf{a}+(-\mathbf{a})=\mathbf{0}$ | Vektor dan negatifnya menghasilkan vektor nol. |

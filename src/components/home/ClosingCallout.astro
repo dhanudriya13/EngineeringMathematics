@@ -1,0 +1,96 @@
+---
+import Formula from '../mathematics/Formula.astro';
+---
+
+<section class="closing">
+  <div class="container closing-inner">
+    <div>
+      <p class="eyebrow closing-eyebrow">Mulai dari fondasi</p>
+      <h2>Bangun pemahaman vektor secara berurutan.</h2>
+      <p>
+        Tinjau seluruh kurikulum, pahami prasyarat setiap modul, lalu ikuti alur belajar dari
+        konsep dasar hingga penerapan komputasi.
+      </p>
+    </div>
+    <div class="closing-action">
+      <a class="closing-link" href="/materi">Lihat kurikulum <span aria-hidden="true">→</span></a>
+      <Formula tex="\lVert \mathbf{v} \rVert = \sqrt{x^2 + y^2 + z^2}" label="Magnitudo vektor 3D" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .closing {
+    padding-block: var(--space-12);
+    background: var(--color-primary);
+    color: #fff;
+  }
+
+  .closing-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    align-items: center;
+    gap: var(--space-10);
+  }
+
+  .closing h2 {
+    max-width: 640px;
+    color: #fff;
+    font-size: clamp(1.75rem, 3vw, 2.4rem);
+    letter-spacing: -0.03em;
+  }
+
+  .closing-eyebrow {
+    margin-bottom: var(--space-3);
+    color: #93c5fd;
+  }
+
+  .closing p:not(.eyebrow) {
+    max-width: 620px;
+    margin-top: var(--space-4);
+    color: #cbd5e1;
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+  }
+
+  .closing-action {
+    display: grid;
+    gap: var(--space-4);
+    justify-items: start;
+  }
+
+  .closing-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 10px 18px;
+    border: 1px solid rgb(255 255 255 / 35%);
+    border-radius: var(--radius-md);
+    color: #fff;
+    font-size: var(--text-sm);
+    font-weight: 650;
+    text-decoration: none;
+  }
+
+  .closing-link:hover {
+    background: rgb(255 255 255 / 10%);
+    color: #fff;
+  }
+
+  .closing-action :global(.formula) {
+    width: 100%;
+    border-color: rgb(255 255 255 / 18%);
+    background: rgb(255 255 255 / 7%);
+    color: #fff;
+  }
+
+  .closing-action :global(.formula figcaption) {
+    color: #cbd5e1;
+  }
+
+  @media (max-width: 860px) {
+    .closing-inner {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

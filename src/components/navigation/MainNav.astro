@@ -1,0 +1,81 @@
+---
+import { navItems } from '../../data/site';
+import { isActivePath } from '../../lib/navigation';
+
+interface Props {
+  pathname: string;
+}
+
+const { pathname } = Astro.props;
+---
+
+<nav class="main-nav" aria-label="Navigasi utama">
+  <ul>
+    {
+      navItems.map((item) => {
+        const active = isActivePath(pathname, item.href);
+
+        return (
+          <li>
+            <a
+              href={item.href}
+              class:list={['main-nav-link', { 'is-active': active }]}
+              aria-current={active ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</nav>
+
+<style>
+  .main-nav {
+    display: none;
+  }
+
+  .main-nav ul {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    list-style: none;
+  }
+
+  .main-nav-link {
+    display: inline-block;
+    padding: 8px 10px;
+    border-radius: var(--radius-sm);
+    color: var(--color-text-secondary);
+    font-size: 0.8125rem;
+    font-weight: 550;
+    text-decoration: none;
+    white-space: nowrap;
+    transition:
+      color var(--transition-fast),
+      background-color var(--transition-fast);
+  }
+
+  .main-nav-link:hover {
+    background: var(--color-surface-muted);
+    color: var(--color-primary);
+  }
+
+  .main-nav-link.is-active {
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+    font-weight: 650;
+  }
+
+  @media (min-width: 1100px) {
+    .main-nav {
+      display: block;
+    }
+
+    .main-nav-link {
+      padding-inline: 11px;
+      font-size: 0.84375rem;
+    }
+  }
+</style>

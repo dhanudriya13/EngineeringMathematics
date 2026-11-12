@@ -1,0 +1,129 @@
+---
+import { curriculumGroups, curriculumModules } from '../../data/curriculum';
+import CurriculumModuleCard from '../learning/CurriculumModuleCard.astro';
+import SectionHeading from '../ui/SectionHeading.astro';
+---
+
+<section class="curriculum">
+  <div class="container">
+    <div class="curriculum-header">
+      <SectionHeading
+        eyebrow="Kurikulum"
+        title="16 modul dalam empat tahap."
+        description="Setiap modul mengikuti struktur yang sama: tujuan, prasyarat, konsep, definisi, contoh bertahap, penerapan, kesalahan umum, latihan, kuis, dan ringkasan."
+      />
+      <a class="section-link" href="/materi">Buka ringkasan kurikulum <span aria-hidden="true">→</span></a>
+    </div>
+
+    <div class="curriculum-groups">
+      {
+        curriculumGroups.map((group) => {
+          const modules = curriculumModules.filter((module) => module.group === group.id);
+
+          return (
+            <section class="curriculum-group" aria-labelledby={`group-${group.id}`}>
+              <div class="group-heading">
+                <h3 id={`group-${group.id}`}>{group.title}</h3>
+                <p>{group.description}</p>
+              </div>
+              <div class="module-list">
+                {modules.map((module) => (
+                  <CurriculumModuleCard module={module} />
+                ))}
+              </div>
+            </section>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .curriculum {
+    padding-block: var(--section-space);
+    border-block: 1px solid var(--color-border);
+    background: var(--color-surface-muted);
+  }
+
+  .curriculum-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-8);
+    margin-bottom: var(--space-12);
+  }
+
+  .section-link {
+    flex: none;
+    padding-bottom: 4px;
+    color: var(--color-primary);
+    font-size: var(--text-sm);
+    font-weight: 650;
+    text-decoration: none;
+  }
+
+  .section-link:hover {
+    text-decoration: underline;
+  }
+
+  .curriculum-groups {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-6);
+  }
+
+  .curriculum-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .group-heading {
+    min-height: 88px;
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--color-border-strong);
+  }
+
+  .group-heading h3 {
+    margin-bottom: var(--space-2);
+    color: var(--color-primary);
+    font-size: var(--text-base);
+    letter-spacing: 0;
+  }
+
+  .group-heading p {
+    color: var(--color-text-secondary);
+    font-size: var(--text-xs);
+    line-height: var(--leading-normal);
+  }
+
+  .module-list {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  @media (max-width: 1100px) {
+    .curriculum-groups {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .group-heading {
+      min-height: auto;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .curriculum-header {
+      align-items: flex-start;
+      flex-direction: column;
+      margin-bottom: var(--space-8);
+    }
+  }
+
+  @media (max-width: 620px) {
+    .curriculum-groups {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

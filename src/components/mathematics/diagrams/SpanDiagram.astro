@@ -1,0 +1,40 @@
+<figure class="diagram-figure">
+  <svg viewBox="0 0 640 360" role="img" aria-labelledby="span-diagram-title span-diagram-desc">
+    <title id="span-diagram-title">Span satu vektor dan vektor di luar span</title>
+    <desc id="span-diagram-desc">
+      Perkalian skalar dari vektor v membentuk garis melalui titik asal. Titik w berada di luar
+      garis tersebut sehingga bukan kombinasi linear dari v saja.
+    </desc>
+
+    <defs>
+      <pattern id="span-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+        <path d="M32 0H0V32" fill="none" stroke="var(--color-grid)" stroke-width="1" />
+      </pattern>
+      <marker id="span-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0 0 10 5 0 10z" fill="var(--color-vector-a)" />
+      </marker>
+    </defs>
+
+    <rect width="640" height="360" fill="url(#span-grid)" rx="12" />
+    <line x1="90" y1="300" x2="560" y2="300" stroke="var(--color-axis)" stroke-width="1.5" />
+    <line x1="90" y1="300" x2="90" y2="55" stroke="var(--color-axis)" stroke-width="1.5" />
+
+    <line x1="90" y1="300" x2="530" y2="80" stroke="var(--color-accent)" stroke-width="2" stroke-dasharray="7 6" />
+    <line x1="90" y1="300" x2="310" y2="190" stroke="var(--color-vector-a)" stroke-width="3" marker-end="url(#span-arrow)" />
+
+    <circle cx="90" cy="300" r="4.5" fill="var(--color-primary)" />
+    <circle cx="310" cy="190" r="4" fill="var(--color-vector-a)" />
+    <circle cx="530" cy="80" r="3.5" fill="var(--color-vector-a)" />
+
+    <circle cx="430" cy="210" r="5" fill="var(--color-vector-b)" />
+    <text x="442" y="234" class="diagram-label diagram-label--b">w</text>
+    <text x="322" y="184" class="diagram-label diagram-label--a">v</text>
+    <text x="180" y="260" class="diagram-axis">span&#123;v&#125;</text>
+    <text x="520" y="65" class="diagram-axis">2v</text>
+    <text x="105" y="325" class="diagram-axis">O</text>
+  </svg>
+  <figcaption>
+    Semua kelipatan skalar dari v berada pada satu garis melalui titik asal. Titik w tidak dapat
+    dicapai hanya dengan mengalikan v, sehingga w berada di luar span&#123;v&#125;.
+  </figcaption>
+</figure>

@@ -1,0 +1,89 @@
+:root {
+  /* Academic Modern — color palette */
+  --color-primary: #233b63;
+  --color-primary-strong: #182a49;
+  --color-primary-soft: #e8edf5;
+  --color-accent: #3b82f6;
+  --color-accent-strong: #2563eb;
+  --color-accent-soft: #eff6ff;
+  --color-background: #fafaf8;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f4f5f2;
+  --color-surface-raised: #ffffff;
+  --color-text: #20252d;
+  --color-text-secondary: #667085;
+  --color-border: #e5e7eb;
+  --color-border-strong: #d0d5dd;
+  --color-success: #15803d;
+  --color-success-soft: #ecfdf3;
+  --color-error: #dc2626;
+  --color-error-soft: #fef3f2;
+  --color-warning: #b45309;
+  --color-warning-soft: #fffbeb;
+
+  /* Vector diagram colors */
+  --color-vector-a: #2563eb;
+  --color-vector-b: #b45309;
+  --color-vector-result: #7c3aed;
+  --color-vector-projection: #0f766e;
+  --color-axis: #98a2b3;
+  --color-grid: #eef0f3;
+
+  /* Typography */
+  --font-sans: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, SFMono-Regular,
+    Menlo, Consolas, monospace;
+  --font-math: 'KaTeX_Main', 'Times New Roman', serif;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: clamp(2.25rem, 4vw, 3.25rem);
+  --text-5xl: clamp(2.5rem, 5vw, 4rem);
+
+  --leading-tight: 1.15;
+  --leading-snug: 1.35;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.75;
+
+  /* Layout */
+  --max-width: 1280px;
+  --header-height: 68px;
+  --sidebar-width: 256px;
+  --reading-width: 760px;
+  --gutter: 24px;
+  --section-space: clamp(64px, 8vw, 104px);
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* Shape and elevation */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
+
+  --shadow-sm: 0 1px 2px rgb(16 24 40 / 5%);
+  --shadow-md: 0 8px 24px rgb(16 24 40 / 7%);
+  --shadow-lg: 0 20px 48px rgb(16 24 40 / 9%);
+
+  /* Motion */
+  --transition-fast: 120ms ease;
+  --transition-base: 180ms ease;
+}

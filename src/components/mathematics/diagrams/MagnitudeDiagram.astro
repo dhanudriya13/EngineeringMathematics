@@ -1,0 +1,38 @@
+<figure class="diagram-figure">
+  <svg viewBox="0 0 640 360" role="img" aria-labelledby="magnitude-diagram-title magnitude-diagram-desc">
+    <title id="magnitude-diagram-title">Magnitudo vektor sebagai sisi miring segitiga</title>
+    <desc id="magnitude-diagram-desc">
+      Komponen x dan y membentuk segitiga siku-siku. Panjang vektor adalah sisi miring yang
+      dihitung dengan teorema Pythagoras.
+    </desc>
+
+    <defs>
+      <pattern id="magnitude-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+        <path d="M32 0H0V32" fill="none" stroke="var(--color-grid)" stroke-width="1" />
+      </pattern>
+      <marker id="magnitude-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0 0 10 5 0 10z" fill="var(--color-vector-a)" />
+      </marker>
+    </defs>
+
+    <rect width="640" height="360" fill="url(#magnitude-grid)" rx="12" />
+    <line x1="90" y1="290" x2="560" y2="290" stroke="var(--color-axis)" stroke-width="1.5" />
+    <line x1="90" y1="290" x2="90" y2="55" stroke="var(--color-axis)" stroke-width="1.5" />
+
+    <line x1="90" y1="290" x2="450" y2="290" stroke="var(--color-vector-b)" stroke-width="2" stroke-dasharray="6 5" />
+    <line x1="450" y1="290" x2="450" y2="110" stroke="var(--color-vector-b)" stroke-width="2" stroke-dasharray="6 5" />
+    <line x1="90" y1="290" x2="450" y2="110" stroke="var(--color-vector-a)" stroke-width="3" marker-end="url(#magnitude-arrow)" />
+
+    <path d="M450 274h16v16" fill="none" stroke="var(--color-text-secondary)" stroke-width="1.5" />
+    <circle cx="90" cy="290" r="4" fill="var(--color-primary)" />
+
+    <text x="250" y="315" class="diagram-axis">x</text>
+    <text x="462" y="205" class="diagram-axis">y</text>
+    <text x="250" y="178" class="diagram-label diagram-label--a">‖v‖</text>
+    <text x="285" y="270" class="diagram-axis">komponen horizontal</text>
+  </svg>
+  <figcaption>
+    Panjang vektor <strong>v</strong> = (x, y) adalah sisi miring segitiga dengan kaki x dan y,
+    sehingga ‖v‖ = √(x² + y²).
+  </figcaption>
+</figure>

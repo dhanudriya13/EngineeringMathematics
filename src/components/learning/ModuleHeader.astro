@@ -1,0 +1,145 @@
+---
+import type { ModuleSummary } from '../../types';
+
+interface Props {
+  module: ModuleSummary;
+  difficulty: 'dasar' | 'menengah' | 'lanjut';
+  estimatedDuration: number;
+  objectives: readonly string[];
+  prerequisites: readonly { title: string; href: string }[];
+}
+
+const { module, difficulty, estimatedDuration, objectives, prerequisites } = Astro.props;
+const difficultyLabel = {
+  dasar: 'Dasar',
+  menengah: 'Menengah',
+  lanjut: 'Lanjut',
+}[difficulty];
+const number = String(module.order).padStart(2, '0');
+---
+
+<header class="module-header">
+  <p class="eyebrow">Modul {number}</p>
+  <h1>{module.title}</h1>
+  <p class="lede">{module.description}</p>
+
+  <dl class="module-meta">
+    <div>
+      <dt>Tingkat</dt>
+      <dd>{difficultyLabel}</dd>
+    </div>
+    <div>
+      <dt>Estimasi waktu</dt>
+      <dd>± {estimatedDuration} menit</dd>
+    </div>
+    <div>
+      <dt>Prasyarat</dt>
+      <dd>
+        {
+          prerequisites.length > 0 ? (
+            <span class="prerequisite-list">
+              {prerequisites.map((prerequisite, index) => (
+                <>
+                  {index > 0 && <span aria-hidden="true">, </span>}
+                  <a href={prerequisite.href}>{prerequisite.title}</a>
+                </>
+              ))}
+            </span>
+          ) : (
+            'Tidak ada'
+          )
+        }
+      </dd>
+    </div>
+  </dl>
+
+  <section class="objectives" aria-labelledby="objectives-title">
+    <h2 id="objectives-title">Tujuan Pembelajaran</h2>
+    <ul>
+      {objectives.map((objective) => <li>{objective}</li>)}
+    </ul>
+  </section>
+</header>
+
+<style>
+  .module-header {
+    display: grid;
+    gap: var(--space-4);
+    padding-block: var(--space-8) var(--space-6);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .module-header h1 {
+    max-width: 800px;
+    font-size: clamp(2.25rem, 4vw, 3.15rem);
+    letter-spacing: -0.04em;
+  }
+
+  .module-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-8);
+    margin: var(--space-2) 0 0;
+    padding: var(--space-4) 0;
+    border-block: 1px solid var(--color-border);
+  }
+
+  .module-meta div {
+    display: grid;
+    gap: 2px;
+  }
+
+  .module-meta dt {
+    color: var(--color-text-secondary);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .module-meta dd {
+    margin: 0;
+    color: var(--color-text);
+    font-size: var(--text-sm);
+    font-weight: 550;
+  }
+
+  .prerequisite-list a {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .prerequisite-list a:hover {
+    text-decoration: underline;
+  }
+
+  .objectives {
+    margin-top: var(--space-2);
+    padding: var(--space-5) var(--space-6);
+    border: 1px solid #bfdbfe;
+    border-radius: var(--radius-md);
+    background: var(--color-accent-soft);
+  }
+
+  .objectives h2 {
+    margin-bottom: var(--space-3);
+    color: var(--color-primary);
+    font-size: var(--text-sm);
+    font-weight: 750;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .objectives ul {
+    display: grid;
+    gap: var(--space-2);
+    padding-left: 1.2em;
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+  }
+
+  .objectives li::marker {
+    color: var(--color-accent-strong);
+  }
+</style>

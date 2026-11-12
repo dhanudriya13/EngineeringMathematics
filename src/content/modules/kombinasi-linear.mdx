@@ -1,0 +1,192 @@
+---
+title: 'Kombinasi Linear'
+description: 'Menyusun vektor baru dari kombinasi vektor lain dan memahami rentang serta kebebasan linear.'
+order: 13
+difficulty: 'lanjut'
+estimatedDuration: 35
+prerequisites:
+  - 'perkalian-silang'
+objectives:
+  - 'Membentuk kombinasi linear dari sejumlah vektor dan koefisien.'
+  - 'Menentukan apakah sebuah vektor berada dalam rentang sekumpulan vektor.'
+  - 'Membedakan himpunan vektor yang bebas linear dan bergantung linear.'
+summary: 'Kombinasi linear, koefisien, rentang, serta hubungan kebebasan linear dengan representasi vektor.'
+quizId: 'quiz-kombinasi-linear'
+draft: false
+---
+
+import SpanDiagram from '../../components/mathematics/diagrams/SpanDiagram.astro';
+
+## Konsep dan Intuisi
+
+Kombinasi linear adalah cara menyusun vektor baru dari vektor-vektor yang sudah ada. Bayangkan Anda memiliki dua arah dasar: timur dan utara. Setiap perpindahan dapat dibentuk dengan mengambil sejumlah langkah ke timur dan sejumlah langkah ke utara. Koefisien menentukan seberapa banyak setiap arah digunakan.
+
+Konsep ini menjadi dasar aljabar linear. Representasi data, penyelesaian sistem persamaan, dan transformasi koordinat semuanya melibatkan kombinasi linear.
+
+## Definisi Matematis
+
+Diberikan vektor $\mathbf{v}_1,\mathbf{v}_2,\ldots,\mathbf{v}_n$ dan skalar $c_1,c_2,\ldots,c_n$. Kombinasi linear dibentuk sebagai:
+
+$$
+\mathbf{w}=c_1\mathbf{v}_1+c_2\mathbf{v}_2+\cdots+c_n\mathbf{v}_n
+$$
+
+Skalar $c_i$ disebut **koefisien**. Himpunan semua kombinasi linear yang mungkin disebut **rentang** (span) dari vektor-vektor tersebut.
+
+Sekumpulan vektor disebut **bebas linear** jika persamaan:
+
+$$
+c_1\mathbf{v}_1+c_2\mathbf{v}_2+\cdots+c_n\mathbf{v}_n=\mathbf{0}
+$$
+
+hanya dipenuhi oleh $c_1=c_2=\cdots=c_n=0$. Jika ada solusi lain yang tidak semuanya nol, himpunan tersebut **bergantung linear**.
+
+## Notasi dan Simbol
+
+- $c_i$: koefisien skalar untuk vektor ke-i.
+- $\operatorname{span}\{\mathbf{v}_1,\ldots,\mathbf{v}_n\}$: himpunan semua kombinasi linear.
+- $\mathbf{0}$: vektor nol.
+- Solusi trivial: semua koefisien bernilai nol.
+
+Dalam dua dimensi, dua vektor yang tidak segaris merentang seluruh bidang. Dalam tiga dimensi, tiga vektor yang bebas linear merentang seluruh ruang.
+
+## Penjelasan Rumus
+
+Mengalikan vektor dengan koefisien mengubah panjang dan mungkin membalik arahnya. Menjumlahkan hasilnya menggabungkan pengaruh setiap arah. Jika sebuah vektor dapat ditulis sebagai kombinasi linear, berarti vektor tersebut dapat dicapai dengan menggunakan arah-arah yang tersedia.
+
+Kebebasan linear mengukur apakah ada vektor yang "berlebihan". Jika satu vektor dapat dinyatakan dari vektor lain, himpunan tersebut bergantung linear. Dalam kasus itu, rentangnya tidak bertambah meskipun jumlah vektornya bertambah.
+
+## Ilustrasi Visual
+
+<SpanDiagram />
+
+Diagram menunjukkan rentang satu vektor berupa garis melalui titik asal. Titik $w$ berada di luar garis, sehingga tidak dapat dibentuk hanya dari kelipatan $\mathbf{v}$. Untuk mencapai $w$, dibutuhkan arah lain yang bebas linear.
+
+## Contoh Bertahap
+
+### Contoh 1 — Kombinasi linear sederhana
+
+Diketahui $\mathbf{u}=(1,0)$ dan $\mathbf{v}=(0,1)$. Tentukan $3\mathbf{u}+4\mathbf{v}$.
+
+$$
+3(1,0)+4(0,1)=(3,0)+(0,4)=(3,4)
+$$
+
+### Contoh 2 — Menentukan koefisien
+
+Tentukan $c_1$ dan $c_2$ sehingga:
+
+$$
+c_1(1,1)+c_2(1,-1)=(3,1)
+$$
+
+**Langkah 1.** Susun persamaan komponen:
+
+$$
+c_1+c_2=3
+$$
+
+$$
+c_1-c_2=1
+$$
+
+**Langkah 2.** Jumlahkan kedua persamaan:
+
+$$
+2c_1=4\quad\Rightarrow\quad c_1=2
+$$
+
+**Langkah 3.** Substitusi ke persamaan pertama:
+
+$$
+2+c_2=3\quad\Rightarrow\quad c_2=1
+$$
+
+**Langkah 4.** Periksa:
+
+$$
+2(1,1)+1(1,-1)=(2,2)+(1,-1)=(3,1)
+$$
+
+### Contoh 3 — Bebas atau bergantung linear?
+
+Periksa himpunan $\{(1,2),(2,4)\}$.
+
+**Penyelesaian:** Vektor kedua adalah $2$ kali vektor pertama. Jika $c_1(1,2)+c_2(2,4)=(0,0)$, maka:
+
+$$
+c_1+2c_2=0
+$$
+
+Banyak solusi tak nol, misalnya $c_1=-2$ dan $c_2=1$. Karena ada solusi nontrivial, himpunan tersebut **bergantung linear**.
+
+## Penerapan Komputasi
+
+- **Aljabar linear:** menyelesaikan sistem persamaan adalah mencari koefisien kombinasi linear.
+- **Ilmu data:** data baru dapat dinyatakan sebagai kombinasi fitur dasar.
+- **Grafika:** warna dan transformasi dapat dikombinasikan secara linear.
+- **Pembelajaran mesin:** representasi fitur dan proyeksi data menggunakan kombinasi linear.
+
+## Kesalahan Umum
+
+1. **Menganggap setiap kombinasi linear unik.** Representasi tidak unik jika vektor-vektornya bergantung linear.
+2. **Menganggap dua vektor selalu merentang bidang.** Dua vektor yang segaris hanya merentang garis.
+3. **Menyimpulkan kebebasan linear hanya dari jumlah vektor.** Jumlah vektor tidak menjamin kebebasan linear.
+4. **Mengabaikan solusi trivial.** Kebebasan linear mensyaratkan hanya solusi trivial yang valid.
+5. **Mencampur koefisien dengan komponen.** Koefisien adalah skalar pengali, bukan komponen vektor hasil.
+
+## Latihan Mandiri
+
+### Latihan 1
+
+Hitung $2(3,-1)-3(1,2)$.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+$$
+2(3,-1)-3(1,2)=(6,-2)-(3,6)=(3,-8)
+$$
+
+</details>
+
+### Latihan 2
+
+Tentukan apakah $(4,6)$ dapat dinyatakan sebagai kombinasi linear dari $(1,0)$ dan $(0,1)$.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+Ya, $(4,6)=4(1,0)+6(0,1)$. Basis standar merentang seluruh ruang dua dimensi.
+
+</details>
+
+### Latihan 3
+
+Mengapa himpunan $\{(1,0),(2,0)\}$ bergantung linear?
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+Vektor kedua adalah $2$ kali vektor pertama, sehingga dapat ditulis $2(1,0)-(2,0)=(0,0)$ dengan koefisien tidak semuanya nol. Karena ada solusi nontrivial, himpunan tersebut bergantung linear.
+
+</details>
+
+## Kuis Topik
+
+Kuis interaktif untuk topik ini tersedia di [halaman Kuis](/kuis). Setiap kuis berisi lima soal dari modul ini, dengan umpan balik langsung, penjelasan, skor, dan percobaan ulang. Skor terbaik disimpan secara lokal di peramban.
+
+## Ringkasan
+
+- Kombinasi linear adalah jumlah kelipatan skalar dari sejumlah vektor.
+- Rentang adalah himpunan semua kombinasi linear yang mungkin.
+- Himpunan bebas linear hanya memiliki solusi trivial untuk persamaan nol.
+- Himpunan bergantung linear memiliki solusi nontrivial.
+- Dua vektor yang segaris hanya merentang garis, bukan bidang.
+
+## Referensi Rumus
+
+| Nama | Rumus | Keterangan |
+|---|---|---|
+| Kombinasi linear | $c_1\mathbf{v}_1+\cdots+c_n\mathbf{v}_n$ | Vektor baru dari koefisien skalar. |
+| Bebas linear | $c_1\mathbf{v}_1+\cdots+c_n\mathbf{v}_n=\mathbf{0}\Rightarrow c_i=0$ | Hanya solusi trivial. |

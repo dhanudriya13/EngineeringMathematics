@@ -1,0 +1,174 @@
+---
+title: 'Ruang Vektor'
+description: 'Mengenal struktur abstrak ruang vektor, aksioma dasar, dan syarat subruang.'
+order: 14
+difficulty: 'lanjut'
+estimatedDuration: 40
+prerequisites:
+  - 'kombinasi-linear'
+objectives:
+  - 'Menjelaskan aksioma dasar ruang vektor dan operasi yang berlaku.'
+  - 'Menguji apakah suatu himpunan merupakan subruang.'
+  - 'Mengenali contoh ruang vektor selain pasangan bilangan.'
+summary: 'Definisi ruang vektor, sifat-sifat operasi, subruang, serta contoh dan noncontoh ruang vektor.'
+quizId: 'quiz-ruang-vektor'
+draft: false
+---
+
+import SpanDiagram from '../../components/mathematics/diagrams/SpanDiagram.astro';
+
+## Konsep dan Intuisi
+
+Ruang vektor adalah generalisasi dari himpunan vektor yang kita kenal. Di R², kita dapat menjumlahkan vektor dan mengalikannya dengan skalar. Ternyata banyak objek lain, seperti polinomial, matriks, dan fungsi, juga dapat dijumlahkan dan dikalikan dengan skalar dengan aturan yang serupa. Semua objek yang memenuhi aturan tersebut dapat diperlakukan sebagai "vektor" dalam pengertian abstrak.
+
+Yang penting bukan bentuk objeknya, melainkan **operasi** yang berlaku. Jika penjumlahan dan perkalian skalar memenuhi aksioma ruang vektor, maka himpunan tersebut adalah ruang vektor.
+
+## Definisi Matematis
+
+Ruang vektor $V$ atas bilangan real adalah himpunan objek yang dilengkapi dua operasi:
+
+1. **Penjumlahan:** setiap $\mathbf{u},\mathbf{v}\in V$ menghasilkan $\mathbf{u}+\mathbf{v}\in V$.
+2. **Perkalian skalar:** setiap $c\in\mathbb{R}$ dan $\mathbf{u}\in V$ menghasilkan $c\mathbf{u}\in V$.
+
+Operasi tersebut harus memenuhi sejumlah aksioma, antara lain:
+
+- Komutatif dan asosiatif pada penjumlahan.
+- Adanya vektor nol $\mathbf{0}$ dengan $\mathbf{u}+\mathbf{0}=\mathbf{u}$.
+- Adanya invers aditif $-\mathbf{u}$ dengan $\mathbf{u}+(-\mathbf{u})=\mathbf{0}$.
+- $1\mathbf{u}=\mathbf{u}$.
+- $c(d\mathbf{u})=(cd)\mathbf{u}$.
+- $c(\mathbf{u}+\mathbf{v})=c\mathbf{u}+c\mathbf{v}$.
+- $(c+d)\mathbf{u}=c\mathbf{u}+d\mathbf{u}$.
+
+**Subruang** $W$ adalah himpunan bagian dari ruang vektor $V$ yang juga merupakan ruang vektor dengan operasi yang sama. Untuk menguji subruang, cukup periksa tiga hal:
+
+1. $W$ tidak kosong, khususnya $\mathbf{0}\in W$.
+2. Tertutup terhadap penjumlahan: jika $\mathbf{u},\mathbf{v}\in W$, maka $\mathbf{u}+\mathbf{v}\in W$.
+3. Tertutup terhadap perkalian skalar: jika $\mathbf{u}\in W$ dan $c\in\mathbb{R}$, maka $c\mathbf{u}\in W$.
+
+## Notasi dan Simbol
+
+- $V$: ruang vektor.
+- $W$: subruang.
+- $\mathbb{R}$: himpunan bilangan real.
+- $\in$: anggota himpunan.
+- $\mathbf{0}$: vektor nol dalam ruang tersebut.
+
+Contoh ruang vektor:
+
+- $\mathbb{R}^2$ dan $\mathbb{R}^3$ dengan operasi komponen biasa.
+- Himpunan polinomial berderajat paling tinggi $n$.
+- Himpunan matriks berukuran $2\times2$.
+- Himpunan fungsi bernilai real dengan penjumlahan fungsi.
+
+## Penjelasan Rumus
+
+Aksioma ruang vektor memastikan bahwa manipulasi aljabar yang biasa dilakukan pada bilangan real juga berlaku pada vektor. Tanpa aksioma ini, operasi seperti memindahkan suku atau mengelompokkan penjumlahan bisa menghasilkan kesimpulan yang salah.
+
+Uji subruang menyederhanakan pemeriksaan karena kita tidak perlu memeriksa seluruh aksioma. Jika $W$ memuat vektor nol dan tertutup terhadap penjumlahan serta perkalian skalar, maka aksioma lainnya diwarisi dari $V$.
+
+## Ilustrasi Visual
+
+<SpanDiagram />
+
+Garis yang melalui titik asal merupakan subruang satu dimensi dari $\mathbb{R}^2$. Setiap kelipatan vektor $\mathbf{v}$ tetap berada pada garis tersebut. Sebaliknya, garis yang tidak melalui titik asal bukan subruang karena tidak memuat vektor nol.
+
+## Contoh Bertahap
+
+### Contoh 1 — Menguji subruang
+
+Misalkan $W=\{(x,y)\in\mathbb{R}^2\mid y=2x\}$. Tentukan apakah $W$ subruang dari $\mathbb{R}^2$.
+
+**Langkah 1.** Periksa vektor nol. Jika $x=0$, maka $y=2\cdot0=0$, sehingga $(0,0)\in W$.
+
+**Langkah 2.** Periksa penjumlahan. Ambil $\mathbf{u}=(x_1,2x_1)$ dan $\mathbf{v}=(x_2,2x_2)$:
+
+$$
+\mathbf{u}+\mathbf{v}=(x_1+x_2,\;2x_1+2x_2)=(x_1+x_2,\;2(x_1+x_2))
+$$
+
+Hasilnya masih berbentuk $(x,2x)$, sehingga berada di $W$.
+
+**Langkah 3.** Periksa perkalian skalar. Untuk skalar $c$:
+
+$$
+c\mathbf{u}=(cx_1,\;2cx_1)
+$$
+
+Hasilnya juga berada di $W$. Ketiga syarat terpenuhi, sehingga $W$ adalah subruang.
+
+### Contoh 2 — Bukan subruang
+
+Misalkan $S=\{(x,y)\mid y=x+1\}$. Apakah $S$ subruang?
+
+**Penyelesaian:** Vektor nol $(0,0)$ tidak memenuhi $0=0+1$. Karena $\mathbf{0}\notin S$, himpunan tersebut bukan subruang. Satu syarat saja sudah gagal, sehingga tidak perlu memeriksa syarat lainnya.
+
+## Penerapan Komputasi
+
+- **Aljabar linear:** subruang muncul dalam solusi sistem persamaan homogen dan ruang kolom matriks.
+- **Ilmu data:** ruang fitur berdimensi tinggi adalah ruang vektor.
+- **Grafika:** ruang warna dan ruang koordinat dapat dimodelkan sebagai ruang vektor.
+- **Pembelajaran mesin:** representasi data dan transformasi fitur memanfaatkan struktur ruang vektor.
+
+## Kesalahan Umum
+
+1. **Lupa memeriksa vektor nol.** Subruang wajib memuat vektor nol.
+2. **Hanya memeriksa satu operasi.** Kedua operasi, penjumlahan dan perkalian skalar, harus tertutup.
+3. **Menganggap setiap himpunan bagian adalah subruang.** Banyak himpunan bagian tidak memenuhi syarat.
+4. **Menganggap ruang vektor hanya berisi pasangan bilangan.** Polinomial dan matriks juga dapat menjadi ruang vektor.
+5. **Menganggap garis sembarang adalah subruang.** Garis harus melalui titik asal.
+
+## Latihan Mandiri
+
+### Latihan 1
+
+Tentukan apakah $W=\{(x,y)\mid x=0\}$ adalah subruang dari $\mathbb{R}^2$.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+$W$ adalah sumbu y. Vektor nol berada di $W$. Penjumlahan dua vektor dengan $x=0$ menghasilkan $x=0$, dan perkalian skalar juga mempertahankan $x=0$. Jadi, $W$ adalah subruang.
+
+</details>
+
+### Latihan 2
+
+Tentukan apakah $S=\{(x,y)\mid x+y=1\}$ adalah subruang.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+Vektor nol tidak memenuhi $0+0=1$, sehingga $\mathbf{0}\notin S$. Karena itu, $S$ bukan subruang.
+
+</details>
+
+### Latihan 3
+
+Mengapa himpunan semua polinomial berderajat tepat 2 bukan ruang vektor?
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+Jumlah dua polinomial berderajat tepat 2 dapat menurun derajatnya, misalnya $(x^2+x)+(-x^2+x)=2x$. Hasilnya bukan polinomial berderajat tepat 2, sehingga himpunan tersebut tidak tertutup terhadap penjumlahan. Himpunan polinomial berderajat **paling tinggi** 2 baru membentuk ruang vektor.
+
+</details>
+
+## Kuis Topik
+
+Kuis interaktif untuk topik ini tersedia di [halaman Kuis](/kuis). Setiap kuis berisi lima soal dari modul ini, dengan umpan balik langsung, penjelasan, skor, dan percobaan ulang. Skor terbaik disimpan secara lokal di peramban.
+
+## Ringkasan
+
+- Ruang vektor adalah himpunan dengan operasi penjumlahan dan perkalian skalar yang memenuhi aksioma.
+- Subruang harus memuat vektor nol dan tertutup terhadap kedua operasi.
+- R², R³, polinomial, dan matriks dapat membentuk ruang vektor.
+- Garis hanya menjadi subruang jika melalui titik asal.
+- Uji subruang cukup memakai tiga syarat.
+
+## Referensi Rumus
+
+| Syarat subruang | Ekspresi | Keterangan |
+|---|---|---|
+| Memuat nol | $\mathbf{0}\in W$ | Himpunan tidak kosong dan memuat identitas. |
+| Tertutup penjumlahan | $\mathbf{u},\mathbf{v}\in W\Rightarrow\mathbf{u}+\mathbf{v}\in W$ | Hasil penjumlahan tetap di dalam W. |
+| Tertutup skalar | $\mathbf{u}\in W,\;c\in\mathbb{R}\Rightarrow c\mathbf{u}\in W$ | Hasil perkalian skalar tetap di dalam W. |

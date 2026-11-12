@@ -1,0 +1,42 @@
+<figure class="diagram-figure">
+  <svg viewBox="0 0 640 360" role="img" aria-labelledby="scalar-diagram-title scalar-diagram-desc">
+    <title id="scalar-diagram-title">Pengaruh perkalian skalar terhadap vektor</title>
+    <desc id="scalar-diagram-desc">
+      Vektor v diperpanjang menjadi dua kali lipat oleh skalar positif, dan dibalik arahnya oleh
+      skalar negatif.
+    </desc>
+
+    <defs>
+      <pattern id="scalar-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+        <path d="M32 0H0V32" fill="none" stroke="var(--color-grid)" stroke-width="1" />
+      </pattern>
+      <marker id="scalar-arrow-v" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0 0 10 5 0 10z" fill="var(--color-vector-a)" />
+      </marker>
+      <marker id="scalar-arrow-2v" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0 0 10 5 0 10z" fill="var(--color-vector-result)" />
+      </marker>
+      <marker id="scalar-arrow-neg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0 0 10 5 0 10z" fill="var(--color-vector-b)" />
+      </marker>
+    </defs>
+
+    <rect width="640" height="360" fill="url(#scalar-grid)" rx="12" />
+    <line x1="80" y1="300" x2="570" y2="300" stroke="var(--color-axis)" stroke-width="1.5" />
+    <line x1="80" y1="300" x2="80" y2="55" stroke="var(--color-axis)" stroke-width="1.5" />
+
+    <line x1="150" y1="290" x2="300" y2="190" stroke="var(--color-vector-a)" stroke-width="3" marker-end="url(#scalar-arrow-v)" />
+    <line x1="150" y1="290" x2="450" y2="90" stroke="var(--color-vector-result)" stroke-width="3" marker-end="url(#scalar-arrow-2v)" />
+    <line x1="150" y1="290" x2="75" y2="340" stroke="var(--color-vector-b)" stroke-width="3" marker-end="url(#scalar-arrow-neg)" />
+
+    <circle cx="150" cy="290" r="4.5" fill="var(--color-primary)" />
+    <text x="235" y="186" class="diagram-label diagram-label--a">v</text>
+    <text x="462" y="86" class="diagram-label diagram-label--result">2v</text>
+    <text x="20" y="352" class="diagram-label diagram-label--b">−0,5v</text>
+    <text x="132" y="312" class="diagram-axis">O</text>
+  </svg>
+  <figcaption>
+    Skalar positif memperpanjang atau memendekkan vektor tanpa membalik arah. Skalar negatif
+    membalik arah dan mengubah panjang sesuai nilai absolutnya.
+  </figcaption>
+</figure>

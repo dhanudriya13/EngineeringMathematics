@@ -1,0 +1,42 @@
+<figure class="diagram-figure">
+  <svg viewBox="0 0 640 380" role="img" aria-labelledby="components-diagram-title components-diagram-desc">
+    <title id="components-diagram-title">Penguraian vektor menjadi komponen</title>
+    <desc id="components-diagram-desc">
+      Vektor dengan panjang r dan sudut theta diuraikan menjadi komponen horizontal r cos theta
+      dan komponen vertikal r sin theta.
+    </desc>
+
+    <defs>
+      <pattern id="components-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+        <path d="M32 0H0V32" fill="none" stroke="var(--color-grid)" stroke-width="1" />
+      </pattern>
+      <marker id="components-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0 0 10 5 0 10z" fill="var(--color-vector-a)" />
+      </marker>
+    </defs>
+
+    <rect width="640" height="380" fill="url(#components-grid)" rx="12" />
+    <line x1="80" y1="310" x2="570" y2="310" stroke="var(--color-axis)" stroke-width="1.5" />
+    <line x1="80" y1="310" x2="80" y2="55" stroke="var(--color-axis)" stroke-width="1.5" />
+
+    <line x1="80" y1="310" x2="430" y2="310" stroke="var(--color-vector-b)" stroke-width="3" />
+    <line x1="430" y1="310" x2="430" y2="130" stroke="var(--color-vector-b)" stroke-width="3" stroke-dasharray="7 5" />
+    <line x1="80" y1="310" x2="430" y2="130" stroke="var(--color-vector-a)" stroke-width="3" marker-end="url(#components-arrow)" />
+
+    <path d="M80 220a90 90 0 0 0 82 85" fill="none" stroke="var(--color-text-secondary)" stroke-width="1.5" />
+    <path d="M430 294h16v16" fill="none" stroke="var(--color-text-secondary)" stroke-width="1.5" />
+    <circle cx="80" cy="310" r="4.5" fill="var(--color-primary)" />
+
+    <text x="150" y="278" class="diagram-axis">θ</text>
+    <text x="230" y="334" class="diagram-label diagram-label--b">vₓ = r cos θ</text>
+    <text x="444" y="222" class="diagram-label diagram-label--b">v_y = r sin θ</text>
+    <text x="235" y="200" class="diagram-label diagram-label--a">r</text>
+
+    <text x="94" y="60" class="diagram-axis">sumbu y</text>
+    <text x="520" y="334" class="diagram-axis">sumbu x</text>
+  </svg>
+  <figcaption>
+    Jika panjang vektor adalah r dan sudut terhadap sumbu x positif adalah θ, maka komponennya
+    adalah vₓ = r cos θ dan v_y = r sin θ.
+  </figcaption>
+</figure>

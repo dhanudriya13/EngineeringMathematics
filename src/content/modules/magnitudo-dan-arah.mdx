@@ -1,0 +1,212 @@
+---
+title: 'Magnitudo dan Arah'
+description: 'Menghitung panjang vektor, menentukan arah, dan membentuk vektor satuan melalui normalisasi.'
+order: 4
+difficulty: 'dasar'
+estimatedDuration: 30
+prerequisites:
+  - 'representasi-vektor'
+objectives:
+  - 'Menghitung magnitudo vektor dua dan tiga dimensi.'
+  - 'Menentukan arah vektor dari komponen dan kuadrannya.'
+  - 'Membentuk vektor satuan serta menjelaskan syarat normalisasi.'
+summary: 'Magnitudo sebagai panjang vektor, arah sebagai orientasi, dan normalisasi untuk memperoleh vektor satuan.'
+quizId: 'quiz-magnitudo-dan-arah'
+draft: false
+---
+
+import MagnitudeDiagram from '../../components/mathematics/diagrams/MagnitudeDiagram.astro';
+
+## Konsep dan Intuisi
+
+Magnitudo menjawab pertanyaan "seberapa panjang vektor ini?", sedangkan arah menjawab "ke mana vektor ini menunjuk?". Dua vektor dapat memiliki magnitudo sama tetapi arah berbeda, atau arah sama dengan magnitudo berbeda. Karena itu, kedua informasi harus dibaca secara terpisah.
+
+Magnitudo adalah panjang panah pada representasi geometris. Pada koordinat, magnitudo dihitung dari komponen-komponennya menggunakan teorema Pythagoras. Arah ditentukan oleh perbandingan komponen dan tandanya.
+
+## Definisi Matematis
+
+Untuk vektor dua dimensi $\mathbf{v}=(x,y)$, magnitudo didefinisikan sebagai:
+
+$$
+\lVert \mathbf{v} \rVert = \sqrt{x^2+y^2}
+$$
+
+Untuk vektor tiga dimensi $\mathbf{v}=(x,y,z)$:
+
+$$
+\lVert \mathbf{v} \rVert = \sqrt{x^2+y^2+z^2}
+$$
+
+Magnitudo selalu bernilai tak negatif. Nilainya nol hanya jika seluruh komponen vektor bernilai nol.
+
+**Normalisasi** adalah proses membagi vektor dengan magnitudonya untuk memperoleh vektor satuan:
+
+$$
+\hat{\mathbf{v}} = \frac{\mathbf{v}}{\lVert \mathbf{v} \rVert}
+$$
+
+Vektor satuan $\hat{\mathbf{v}}$ memiliki panjang 1 dan arah yang sama dengan $\mathbf{v}$. Normalisasi tidak terdefinisi untuk vektor nol karena pembagian dengan nol tidak diperbolehkan.
+
+## Notasi dan Simbol
+
+- $\lVert \mathbf{v} \rVert$: magnitudo atau panjang vektor.
+- $\hat{\mathbf{v}}$: vektor satuan dengan panjang 1.
+- $\theta$: sudut antara vektor dengan sumbu x positif.
+- $\operatorname{atan2}(y,x)$: fungsi komputer yang menentukan sudut dari komponen dan tandanya.
+
+Arah vektor sering dinyatakan dengan sudut. Hubungan dasar untuk komponen adalah:
+
+$$
+\tan\theta = \frac{y}{x}
+$$
+
+Namun, rumus ini hanya memberi **sudut acuan**. Sudut sebenarnya bergantung pada kuadran tempat vektor berada.
+
+## Penjelasan Rumus
+
+Rumus magnitudo menjumlahkan kuadrat setiap komponen, lalu mengambil akar kuadrat. Mengapa kuadrat? Karena komponen-komponen saling tegak lurus, sehingga panjang vektor adalah sisi miring segitiga siku-siku. Menjumlahkan komponen secara langsung akan menghasilkan nilai yang salah ketika arahnya tidak sejajar.
+
+Untuk arah, membagi $y$ dengan $x$ menghilangkan informasi tanda. Vektor $(1,1)$ dan $(-1,-1)$ memiliki rasio $y/x$ yang sama, yaitu 1, tetapi arahnya berlawanan. Karena itu, kuadran harus diperiksa:
+
+- Kuadran I: $x>0$, $y>0$
+- Kuadran II: $x<0$, $y>0$
+- Kuadran III: $x<0$, $y<0$
+- Kuadran IV: $x>0$, $y<0$
+
+Dalam pemrograman, $\operatorname{atan2}(y,x)$ menangani tanda komponen secara otomatis dan menghindari pembagian dengan nol ketika $x=0$.
+
+## Ilustrasi Visual
+
+<MagnitudeDiagram />
+
+Diagram menunjukkan vektor sebagai sisi miring segitiga. Kaki horizontal adalah komponen $x$, kaki vertikal adalah komponen $y$, dan sisi miring adalah magnitudo vektor.
+
+## Contoh Bertahap
+
+### Contoh 1 — Magnitudo vektor 2D
+
+Diketahui $\mathbf{v}=(3,4)$. Hitung magnitudo dan vektor satuannya.
+
+**Langkah 1.** Hitung magnitudo:
+
+$$
+\lVert \mathbf{v} \rVert = \sqrt{3^2+4^2} = \sqrt{9+16} = 5
+$$
+
+**Langkah 2.** Bagi setiap komponen dengan magnitudo:
+
+$$
+\hat{\mathbf{v}} = \left(\frac{3}{5},\frac{4}{5}\right)
+$$
+
+**Langkah 3.** Periksa panjang vektor satuan:
+
+$$
+\sqrt{\left(\frac{3}{5}\right)^2+\left(\frac{4}{5}\right)^2} = \sqrt{\frac{9}{25}+\frac{16}{25}} = 1
+$$
+
+Vektor satuan yang diperoleh benar karena panjangnya 1.
+
+### Contoh 2 — Magnitudo vektor 3D
+
+Diketahui $\mathbf{u}=(1,2,2)$. Hitung magnitudo dan vektor satuannya.
+
+$$
+\lVert \mathbf{u} \rVert = \sqrt{1^2+2^2+2^2} = \sqrt{9} = 3
+$$
+
+$$
+\hat{\mathbf{u}} = \left(\frac{1}{3},\frac{2}{3},\frac{2}{3}\right)
+$$
+
+### Contoh 3 — Arah dengan kuadran berbeda
+
+Tentukan arah vektor $\mathbf{w}=(-1,1)$ terhadap sumbu x positif.
+
+**Langkah 1.** Hitung sudut acuan dari $\tan\theta = |1/(-1)| = 1$, yaitu 45°.
+
+**Langkah 2.** Karena $x<0$ dan $y>0$, vektor berada di kuadran II. Sudut sebenarnya adalah:
+
+$$
+\theta = 180^\circ - 45^\circ = 135^\circ
+$$
+
+Jika hanya menggunakan $\tan\theta = y/x$, hasilnya $-45^\circ$ dan kuadran yang benar tidak terlihat.
+
+## Penerapan Komputasi
+
+- **Normalisasi arah gerak:** dalam gim, tombol arah menghasilkan vektor yang dinormalisasi agar kecepatan diagonal tidak lebih besar daripada kecepatan lurus.
+- **Grafika:** normalisasi vektor normal permukaan diperlukan untuk perhitungan pencahayaan.
+- **Ilmu data:** normalisasi fitur membantu menyetarakan skala, meskipun metodenya berbeda dari normalisasi vektor.
+- **Navigasi:** arah menuju target dihitung dari selisih posisi, lalu dinormalisasi untuk memperoleh arah satuan.
+
+## Kesalahan Umum
+
+1. **Menjumlahkan komponen tanpa dikuadratkan.** Magnitudo bukan $x+y$, melainkan $\sqrt{x^2+y^2}$.
+2. **Menghasilkan magnitudo negatif.** Akar kuadrat utama selalu tak negatif.
+3. **Menormalisasi vektor nol.** Pembagian dengan nol tidak terdefinisi; periksa magnitudo sebelum normalisasi.
+4. **Mengabaikan kuadran.** Sudut dari $\tan^{-1}(y/x)$ perlu disesuaikan dengan tanda komponen.
+5. **Menganggap vektor satuan selalu bernilai positif.** Komponen vektor satuan dapat negatif, tergantung arahnya.
+
+## Latihan Mandiri
+
+### Latihan 1
+
+Hitung magnitudo $\mathbf{v}=(-6,8)$ dan tentukan vektor satuannya.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+$$
+\lVert \mathbf{v} \rVert = \sqrt{(-6)^2+8^2} = \sqrt{36+64} = 10
+$$
+
+$$
+\hat{\mathbf{v}} = \left(\frac{-6}{10},\frac{8}{10}\right) = (-0{,}6;\;0{,}8)
+$$
+
+</details>
+
+### Latihan 2
+
+Tentukan magnitudo $\mathbf{u}=(2,-1,2)$.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+$$
+\lVert \mathbf{u} \rVert = \sqrt{2^2+(-1)^2+2^2} = \sqrt{4+1+4} = 3
+$$
+
+</details>
+
+### Latihan 3
+
+Mengapa vektor nol tidak dapat dinormalisasi?
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+Normalisasi membagi vektor dengan magnitudonya. Magnitudo vektor nol adalah 0, sehingga operasi tersebut memerlukan pembagian dengan nol. Selain itu, vektor nol tidak memiliki arah yang dapat dipertahankan.
+
+</details>
+
+## Kuis Topik
+
+Kuis interaktif untuk topik ini tersedia di [halaman Kuis](/kuis). Setiap kuis berisi lima soal dari modul ini, dengan umpan balik langsung, penjelasan, skor, dan percobaan ulang. Skor terbaik disimpan secara lokal di peramban.
+
+## Ringkasan
+
+- Magnitudo adalah panjang vektor dan selalu tak negatif.
+- Vektor 2D: $\lVert \mathbf{v} \rVert=\sqrt{x^2+y^2}$; vektor 3D menambahkan $z^2$.
+- Normalisasi membagi vektor dengan magnitudonya.
+- Vektor satuan memiliki panjang 1 dan arah yang sama dengan vektor asal.
+- Arah memerlukan pemeriksaan kuadran atau fungsi $\operatorname{atan2}$.
+
+## Referensi Rumus
+
+| Nama | Rumus | Keterangan |
+|---|---|---|
+| Magnitudo 2D | $\lVert \mathbf{v} \rVert=\sqrt{x^2+y^2}$ | Panjang vektor dua dimensi. |
+| Magnitudo 3D | $\lVert \mathbf{v} \rVert=\sqrt{x^2+y^2+z^2}$ | Panjang vektor tiga dimensi. |
+| Vektor satuan | $\hat{\mathbf{v}}=\mathbf{v}/\lVert \mathbf{v} \rVert$ | Normalisasi, hanya untuk vektor tak nol. |

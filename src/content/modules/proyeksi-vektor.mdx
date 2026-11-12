@@ -1,0 +1,201 @@
+---
+title: 'Proyeksi Vektor'
+description: 'Menguraikan satu vektor terhadap arah vektor lain melalui proyeksi skalar dan proyeksi vektor.'
+order: 11
+difficulty: 'menengah'
+estimatedDuration: 35
+prerequisites:
+  - 'sudut-antarvektor'
+objectives:
+  - 'Menghitung proyeksi skalar dan proyeksi vektor.'
+  - 'Menjelaskan perbedaan hasil skalar dan hasil vektor pada proyeksi.'
+  - 'Menggunakan proyeksi untuk memecahkan masalah arah dan komponen.'
+summary: 'Proyeksi skalar, proyeksi vektor, interpretasi geometris, dan penerapannya dalam fisika serta komputasi.'
+quizId: 'quiz-proyeksi-vektor'
+draft: false
+---
+
+import ProjectionDiagram from '../../components/mathematics/diagrams/ProjectionDiagram.astro';
+
+## Konsep dan Intuisi
+
+Proyeksi menjawab pertanyaan: "Jika saya melihat vektor a dari arah b, seberapa besar bayangan a pada arah tersebut?" Bayangan ini dapat dinyatakan sebagai panjang (proyeksi skalar) atau sebagai vektor (proyeksi vektor).
+
+Analogi sederhana adalah bayangan sebuah tongkat yang disorot cahaya tegak lurus ke lantai. Bayangan memiliki panjang tertentu dan terletak pada arah tertentu. Dalam matematika, arah proyeksi ditentukan oleh vektor tujuan, dan panjangnya ditentukan oleh sudut antara kedua vektor.
+
+## Definisi Matematis
+
+Proyeksi skalar vektor $\mathbf{a}$ pada arah $\mathbf{b}$ didefinisikan sebagai:
+
+$$
+\operatorname{comp}_{\mathbf{b}}\mathbf{a}=\frac{\mathbf{a}\cdot\mathbf{b}}{\lVert\mathbf{b}\rVert}
+$$
+
+Nilai ini adalah panjang bertanda. Jika sudutnya tumpul, proyeksi skalar bernilai negatif, yang berarti bayangan mengarah ke sisi berlawanan dari $\mathbf{b}$.
+
+Proyeksi vektor $\mathbf{a}$ pada $\mathbf{b}$ adalah:
+
+$$
+\operatorname{proj}_{\mathbf{b}}\mathbf{a}=\frac{\mathbf{a}\cdot\mathbf{b}}{\lVert\mathbf{b}\rVert^2}\,\mathbf{b}
+$$
+
+Hasil proyeksi vektor selalu sejajar dengan $\mathbf{b}$, tetapi arahnya dapat sama atau berlawanan tergantung tanda perkalian titik.
+
+## Notasi dan Simbol
+
+- $\operatorname{comp}_{\mathbf{b}}\mathbf{a}$: proyeksi skalar, hasilnya bilangan.
+- $\operatorname{proj}_{\mathbf{b}}\mathbf{a}$: proyeksi vektor, hasilnya vektor.
+- $\lVert\mathbf{b}\rVert$: magnitudo vektor tujuan.
+- $\lVert\mathbf{b}\rVert^2$: kuadrat magnitudo, muncul karena normalisasi arah.
+
+Perhatikan perbedaan penyebut: proyeksi skalar membagi dengan $\lVert\mathbf{b}\rVert$, sedangkan proyeksi vektor membagi dengan $\lVert\mathbf{b}\rVert^2$ lalu mengalikan dengan $\mathbf{b}$.
+
+## Penjelasan Rumus
+
+Perkalian titik $\mathbf{a}\cdot\mathbf{b}$ mengukur seberapa besar $\mathbf{a}$ searah dengan $\mathbf{b}$. Membaginya dengan $\lVert\mathbf{b}\rVert$ mengubah skala tersebut menjadi panjang bayangan. Untuk memperoleh vektor, hasil skalar dikalikan dengan vektor satuan arah $\mathbf{b}$, yaitu $\mathbf{b}/\lVert\mathbf{b}\rVert$. Hasil akhirnya dapat ditulis sebagai:
+
+$$
+\operatorname{proj}_{\mathbf{b}}\mathbf{a}=\left(\frac{\mathbf{a}\cdot\mathbf{b}}{\lVert\mathbf{b}\rVert}\right)\frac{\mathbf{b}}{\lVert\mathbf{b}\rVert}
+$$
+
+Bentuk ini memperjelas bahwa proyeksi vektor adalah panjang proyeksi skalar dikali arah satuan $\mathbf{b}$.
+
+## Ilustrasi Visual
+
+<ProjectionDiagram />
+
+Diagram menunjukkan vektor $\mathbf{a}$ dan $\mathbf{b}$. Garis putus-putus dari ujung $\mathbf{a}$ tegak lurus terhadap arah $\mathbf{b}$, sehingga titik potongnya menentukan proyeksi. Proyeksi vektor berada tepat pada arah $\mathbf{b}$.
+
+## Contoh Bertahap
+
+### Contoh 1 — Proyeksi pada sumbu x
+
+Diketahui $\mathbf{a}=(3,4)$ dan $\mathbf{b}=(1,0)$. Tentukan proyeksi skalar dan proyeksi vektornya.
+
+**Langkah 1.** Hitung perkalian titik:
+
+$$
+\mathbf{a}\cdot\mathbf{b}=3
+$$
+
+**Langkah 2.** Hitung $\lVert\mathbf{b}\rVert=1$ dan $\lVert\mathbf{b}\rVert^2=1$.
+
+**Langkah 3.** Proyeksi skalar:
+
+$$
+\operatorname{comp}_{\mathbf{b}}\mathbf{a}=\frac{3}{1}=3
+$$
+
+**Langkah 4.** Proyeksi vektor:
+
+$$
+\operatorname{proj}_{\mathbf{b}}\mathbf{a}=\frac{3}{1}(1,0)=(3,0)
+$$
+
+Hasilnya adalah komponen horizontal dari $\mathbf{a}$.
+
+### Contoh 2 — Proyeksi pada arah miring
+
+Diketahui $\mathbf{a}=(1,2)$ dan $\mathbf{b}=(3,1)$.
+
+**Langkah 1.** Hitung perkalian titik:
+
+$$
+\mathbf{a}\cdot\mathbf{b}=1\cdot3+2\cdot1=5
+$$
+
+**Langkah 2.** Hitung $\lVert\mathbf{b}\rVert^2=3^2+1^2=10$.
+
+**Langkah 3.** Proyeksi vektor:
+
+$$
+\operatorname{proj}_{\mathbf{b}}\mathbf{a}=\frac{5}{10}(3,1)=(1{,}5;\;0{,}5)
+$$
+
+**Langkah 4.** Proyeksi skalar:
+
+$$
+\operatorname{comp}_{\mathbf{b}}\mathbf{a}=\frac{5}{\sqrt{10}}\approx1{,}58
+$$
+
+Panjang proyeksi skalar sekitar 1,58, sedangkan proyeksi vektornya adalah $(1{,}5;0{,}5)$.
+
+## Penerapan Komputasi
+
+- **Fisika:** komponen gaya yang bekerja sepanjang arah tertentu dihitung dengan proyeksi.
+- **Grafika:** proyeksi membantu menentukan komponen kecepatan pada arah tertentu.
+- **Ilmu data:** proyeksi ke arah fitur tertentu membantu menganalisis kontribusi data.
+- **Gim:** gerakan sepanjang dinding dapat dihitung dengan memproyeksikan kecepatan ke arah dinding.
+
+## Kesalahan Umum
+
+1. **Menggunakan $\lVert\mathbf{b}\rVert$ sebagai penyebut proyeksi vektor.** Penyebutnya adalah $\lVert\mathbf{b}\rVert^2$.
+2. **Menganggap proyeksi skalar selalu positif.** Nilainya dapat negatif untuk sudut tumpul.
+3. **Menganggap proyeksi vektor sejajar dengan $\mathbf{a}$.** Proyeksi vektor sejajar dengan $\mathbf{b}$.
+4. **Memproyeksikan pada vektor nol.** Arah vektor nol tidak terdefinisi.
+5. **Mengabaikan tanda perkalian titik.** Tanda menentukan arah proyeksi terhadap $\mathbf{b}$.
+
+## Latihan Mandiri
+
+### Latihan 1
+
+Diketahui $\mathbf{a}=(4,2)$ dan $\mathbf{b}=(2,0)$. Tentukan proyeksi vektor $\mathbf{a}$ pada $\mathbf{b}$.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+$$
+\mathbf{a}\cdot\mathbf{b}=4\cdot2+2\cdot0=8,\qquad\lVert\mathbf{b}\rVert^2=4
+$$
+
+$$
+\operatorname{proj}_{\mathbf{b}}\mathbf{a}=\frac{8}{4}(2,0)=2(2,0)=(4,0)
+$$
+
+</details>
+
+### Latihan 2
+
+Diketahui $\mathbf{u}=(1,1)$ dan $\mathbf{v}=(0,2)$. Tentukan proyeksi skalar $\mathbf{u}$ pada $\mathbf{v}$.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+$$
+\mathbf{u}\cdot\mathbf{v}=1\cdot0+1\cdot2=2,\qquad\lVert\mathbf{v}\rVert=2
+$$
+
+$$
+\operatorname{comp}_{\mathbf{v}}\mathbf{u}=\frac{2}{2}=1
+$$
+
+</details>
+
+### Latihan 3
+
+Mengapa proyeksi vektor berada pada arah $\mathbf{b}$, bukan arah $\mathbf{a}$?
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+Proyeksi adalah bayangan $\mathbf{a}$ pada arah $\mathbf{b}$. Karena arah acuannya adalah $\mathbf{b}$, hasil proyeksi harus sejajar dengan $\mathbf{b}$. Panjang bayangan ditentukan oleh komponen $\mathbf{a}$ yang searah dengan $\mathbf{b}$.
+
+</details>
+
+## Kuis Topik
+
+Kuis interaktif untuk topik ini tersedia di [halaman Kuis](/kuis). Setiap kuis berisi lima soal dari modul ini, dengan umpan balik langsung, penjelasan, skor, dan percobaan ulang. Skor terbaik disimpan secara lokal di peramban.
+
+## Ringkasan
+
+- Proyeksi skalar menghasilkan panjang bertanda.
+- Proyeksi vektor menghasilkan vektor sejajar dengan vektor tujuan.
+- Penyebut proyeksi skalar adalah $\lVert\mathbf{b}\rVert$; penyebut proyeksi vektor adalah $\lVert\mathbf{b}\rVert^2$.
+- Proyeksi tidak terdefinisi jika vektor tujuan adalah vektor nol.
+
+## Referensi Rumus
+
+| Nama | Rumus | Keterangan |
+|---|---|---|
+| Proyeksi skalar | $\operatorname{comp}_{\mathbf{b}}\mathbf{a}=\frac{\mathbf{a}\cdot\mathbf{b}}{\lVert\mathbf{b}\rVert}$ | Panjang bayangan a pada b. |
+| Proyeksi vektor | $\operatorname{proj}_{\mathbf{b}}\mathbf{a}=\frac{\mathbf{a}\cdot\mathbf{b}}{\lVert\mathbf{b}\rVert^2}\mathbf{b}$ | Vektor bayangan sejajar b. |

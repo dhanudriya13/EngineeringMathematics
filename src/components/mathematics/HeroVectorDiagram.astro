@@ -1,0 +1,185 @@
+<figure class="vector-figure">
+  <svg
+    viewBox="0 0 560 430"
+    role="img"
+    aria-labelledby="vector-diagram-title vector-diagram-desc"
+  >
+    <title id="vector-diagram-title">Diagram penjumlahan dua vektor</title>
+    <desc id="vector-diagram-desc">
+      Vektor A berarah ke kanan atas, vektor B berarah lebih tegak ke atas, dan vektor A + B
+      merupakan resultan yang membentuk diagonal jajargenjang.
+    </desc>
+
+    <defs>
+      <pattern id="vector-grid" width="28" height="28" patternUnits="userSpaceOnUse">
+        <path d="M28 0H0V28" fill="none" stroke="var(--color-grid)" stroke-width="1" />
+      </pattern>
+      <marker
+        id="arrow-a"
+        viewBox="0 0 10 10"
+        refX="8"
+        refY="5"
+        markerWidth="7"
+        markerHeight="7"
+        orient="auto-start-reverse"
+      >
+        <path d="M0 0 10 5 0 10z" fill="var(--color-vector-a)" />
+      </marker>
+      <marker
+        id="arrow-b"
+        viewBox="0 0 10 10"
+        refX="8"
+        refY="5"
+        markerWidth="7"
+        markerHeight="7"
+        orient="auto-start-reverse"
+      >
+        <path d="M0 0 10 5 0 10z" fill="var(--color-vector-b)" />
+      </marker>
+      <marker
+        id="arrow-r"
+        viewBox="0 0 10 10"
+        refX="8"
+        refY="5"
+        markerWidth="7"
+        markerHeight="7"
+        orient="auto-start-reverse"
+      >
+        <path d="M0 0 10 5 0 10z" fill="var(--color-vector-result)" />
+      </marker>
+    </defs>
+
+    <rect width="560" height="430" fill="url(#vector-grid)" rx="12" />
+
+    <line
+      x1="86"
+      y1="356"
+      x2="520"
+      y2="356"
+      stroke="var(--color-axis)"
+      stroke-width="1.5"
+    />
+    <line
+      x1="86"
+      y1="356"
+      x2="86"
+      y2="48"
+      stroke="var(--color-axis)"
+      stroke-width="1.5"
+    />
+
+    <text x="508" y="380" class="axis-label" text-anchor="end">x</text>
+    <text x="66" y="62" class="axis-label">y</text>
+    <text x="70" y="378" class="axis-label">O</text>
+
+    <line
+      x1="254"
+      y1="280"
+      x2="338"
+      y2="96"
+      stroke="var(--color-vector-result)"
+      stroke-width="1.5"
+      stroke-dasharray="5 6"
+      opacity="0.55"
+    />
+    <line
+      x1="170"
+      y1="172"
+      x2="338"
+      y2="96"
+      stroke="var(--color-vector-result)"
+      stroke-width="1.5"
+      stroke-dasharray="5 6"
+      opacity="0.55"
+    />
+
+    <line
+      x1="86"
+      y1="356"
+      x2="254"
+      y2="280"
+      stroke="var(--color-vector-a)"
+      stroke-width="2.75"
+      marker-end="url(#arrow-a)"
+    />
+    <line
+      x1="86"
+      y1="356"
+      x2="170"
+      y2="172"
+      stroke="var(--color-vector-b)"
+      stroke-width="2.75"
+      marker-end="url(#arrow-b)"
+    />
+    <line
+      x1="86"
+      y1="356"
+      x2="338"
+      y2="96"
+      stroke="var(--color-vector-result)"
+      stroke-width="3"
+      marker-end="url(#arrow-r)"
+    />
+
+    <circle cx="86" cy="356" r="3.5" fill="var(--color-primary)" />
+
+    <text x="264" y="288" class="vector-label label-a">A</text>
+    <text x="142" y="176" class="vector-label label-b">B</text>
+    <text x="350" y="96" class="vector-label label-result">A + B</text>
+  </svg>
+  <figcaption>
+    Aturan jajargenjang: resultan <span class="formula-note">A + B</span> diperoleh dengan
+    menyusun kedua vektor dari titik awal yang sama.
+  </figcaption>
+</figure>
+
+<style>
+  .vector-figure {
+    margin: 0;
+  }
+
+  .vector-figure svg {
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+  }
+
+  .axis-label {
+    fill: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    font-size: 12px;
+  }
+
+  .vector-label {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .label-a {
+    fill: var(--color-vector-a);
+  }
+
+  .label-b {
+    fill: var(--color-vector-b);
+  }
+
+  .label-result {
+    fill: var(--color-vector-result);
+  }
+
+  figcaption {
+    margin-top: var(--space-3);
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+  }
+
+  .formula-note {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    color: var(--color-text);
+  }
+</style>

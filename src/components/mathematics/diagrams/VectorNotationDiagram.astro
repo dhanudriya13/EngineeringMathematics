@@ -1,0 +1,43 @@
+<figure class="diagram-figure">
+  <svg viewBox="0 0 640 360" role="img" aria-labelledby="notation-diagram-title notation-diagram-desc">
+    <title id="notation-diagram-title">Vektor dari titik A ke titik B dan vektor sebaliknya</title>
+    <desc id="notation-diagram-desc">
+      Vektor AB menghubungkan titik A ke titik B. Vektor BA memiliki arah berlawanan dan
+      merupakan negatif dari vektor AB.
+    </desc>
+
+    <defs>
+      <pattern id="notation-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+        <path d="M32 0H0V32" fill="none" stroke="var(--color-grid)" stroke-width="1" />
+      </pattern>
+      <marker id="notation-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0 0 10 5 0 10z" fill="var(--color-vector-a)" />
+      </marker>
+      <marker id="notation-arrow-reverse" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0 0 10 5 0 10z" fill="var(--color-vector-b)" />
+      </marker>
+    </defs>
+
+    <rect width="640" height="360" fill="url(#notation-grid)" rx="12" />
+    <line x1="80" y1="300" x2="570" y2="300" stroke="var(--color-axis)" stroke-width="1.5" />
+    <line x1="80" y1="300" x2="80" y2="55" stroke="var(--color-axis)" stroke-width="1.5" />
+
+    <line x1="220" y1="230" x2="430" y2="130" stroke="var(--color-vector-a)" stroke-width="3" marker-end="url(#notation-arrow)" />
+    <line x1="420" y1="140" x2="232" y2="224" stroke="var(--color-vector-b)" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#notation-arrow-reverse)" />
+
+    <circle cx="220" cy="230" r="5" fill="var(--color-primary)" />
+    <circle cx="430" cy="130" r="5" fill="var(--color-primary)" />
+    <text x="198" y="252" class="diagram-label">A</text>
+    <text x="440" y="126" class="diagram-label">B</text>
+    <text x="315" y="164" class="diagram-label diagram-label--a">AB</text>
+    <text x="300" y="214" class="diagram-label diagram-label--b">BA = −AB</text>
+
+    <text x="535" y="324" class="diagram-axis">x</text>
+    <text x="60" y="68" class="diagram-axis">y</text>
+    <text x="62" y="324" class="diagram-axis">O</text>
+  </svg>
+  <figcaption>
+    Vektor AB bergerak dari A ke B. Membalik urutan titik menghasilkan BA, yang arahnya
+    berlawanan dan sama dengan −AB.
+  </figcaption>
+</figure>

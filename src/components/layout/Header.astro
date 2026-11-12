@@ -1,0 +1,65 @@
+---
+import { navItems } from '../../data/site';
+import MainNav from '../navigation/MainNav.astro';
+import Logo from '../navigation/Logo.astro';
+import MobileNav from './MobileNav';
+
+interface Props {
+  pathname: string;
+}
+
+const { pathname } = Astro.props;
+---
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand-link" href="/" aria-label="Vector Lab — kembali ke beranda">
+      <Logo />
+    </a>
+
+    <div class="header-nav">
+      <MainNav pathname={pathname} />
+      <MobileNav items={navItems} pathname={pathname} client:media="(max-width: 1099.98px)" />
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-bottom: 1px solid var(--color-border);
+    background: color-mix(in srgb, var(--color-surface) 94%, transparent);
+    backdrop-filter: blur(12px);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+    width: min(100% - (var(--gutter) * 2), var(--max-width));
+    min-height: var(--header-height);
+    margin-inline: auto;
+  }
+
+  .brand-link {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .header-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  @media (max-width: 1099.98px) {
+    .header-inner {
+      gap: var(--space-3);
+    }
+  }
+</style>

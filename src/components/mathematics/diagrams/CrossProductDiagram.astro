@@ -1,0 +1,48 @@
+<figure class="diagram-figure">
+  <svg viewBox="0 0 640 400" role="img" aria-labelledby="cross-diagram-title cross-diagram-desc">
+    <title id="cross-diagram-title">Perkalian silang menghasilkan vektor tegak lurus</title>
+    <desc id="cross-diagram-desc">
+      Vektor a dan b berada pada bidang yang dibentuk kedua arah. Hasil a kali b mengarah tegak
+      lurus terhadap bidang tersebut, mengikuti aturan tangan kanan.
+    </desc>
+
+    <defs>
+      <marker id="cross-arrow-axis" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0 0 10 5 0 10z" fill="var(--color-axis)" />
+      </marker>
+      <marker id="cross-arrow-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0 0 10 5 0 10z" fill="var(--color-vector-a)" />
+      </marker>
+      <marker id="cross-arrow-b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0 0 10 5 0 10z" fill="var(--color-vector-b)" />
+      </marker>
+      <marker id="cross-arrow-r" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0 0 10 5 0 10z" fill="var(--color-vector-result)" />
+      </marker>
+    </defs>
+
+    <rect width="640" height="400" fill="var(--color-surface)" rx="12" />
+    <line x1="280" y1="300" x2="560" y2="300" stroke="var(--color-axis)" stroke-width="1.5" marker-end="url(#cross-arrow-axis)" />
+    <line x1="280" y1="300" x2="125" y2="235" stroke="var(--color-axis)" stroke-width="1.5" marker-end="url(#cross-arrow-axis)" />
+    <line x1="280" y1="300" x2="280" y2="70" stroke="var(--color-axis)" stroke-width="1.5" marker-end="url(#cross-arrow-axis)" />
+
+    <line x1="280" y1="300" x2="480" y2="230" stroke="var(--color-vector-a)" stroke-width="3" marker-end="url(#cross-arrow-a)" />
+    <line x1="280" y1="300" x2="190" y2="135" stroke="var(--color-vector-b)" stroke-width="3" marker-end="url(#cross-arrow-b)" />
+    <line x1="280" y1="300" x2="400" y2="100" stroke="var(--color-vector-result)" stroke-width="3" marker-end="url(#cross-arrow-r)" />
+
+    <line x1="480" y1="230" x2="400" y2="100" stroke="var(--color-border-strong)" stroke-width="1.5" stroke-dasharray="5 5" />
+    <line x1="190" y1="135" x2="400" y2="100" stroke="var(--color-border-strong)" stroke-width="1.5" stroke-dasharray="5 5" />
+
+    <circle cx="280" cy="300" r="4.5" fill="var(--color-primary)" />
+    <text x="492" y="224" class="diagram-label diagram-label--a">a</text>
+    <text x="168" y="128" class="diagram-label diagram-label--b">b</text>
+    <text x="412" y="94" class="diagram-label diagram-label--result">a × b</text>
+    <text x="570" y="304" class="diagram-axis">x</text>
+    <text x="106" y="238" class="diagram-axis">y</text>
+    <text x="266" y="62" class="diagram-axis">z</text>
+  </svg>
+  <figcaption>
+    Hasil a × b tegak lurus terhadap a dan b. Arahnya mengikuti aturan tangan kanan, dan
+    panjangnya sama dengan luas jajargenjang yang dibentuk a dan b.
+  </figcaption>
+</figure>

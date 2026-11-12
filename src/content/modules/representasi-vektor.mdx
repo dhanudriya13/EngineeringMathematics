@@ -1,0 +1,191 @@
+---
+title: 'Representasi dan Notasi Vektor'
+description: 'Membaca dan menulis vektor dalam bentuk geometris, pasangan komponen, dan vektor kolom.'
+order: 3
+difficulty: 'dasar'
+estimatedDuration: 30
+prerequisites:
+  - 'skalar-dan-vektor'
+objectives:
+  - 'Menyatakan vektor dengan panah, pasangan komponen, dan vektor kolom.'
+  - 'Menentukan vektor dari dua titik serta memahami vektor nol dan vektor negatif.'
+  - 'Membedakan titik, vektor posisi, dan vektor perpindahan.'
+summary: 'Berbagai cara merepresentasikan vektor, aturan kesamaan, serta makna vektor nol dan vektor negatif.'
+quizId: 'quiz-representasi-vektor'
+draft: false
+---
+
+import VectorNotationDiagram from '../../components/mathematics/diagrams/VectorNotationDiagram.astro';
+
+## Konsep dan Intuisi
+
+Vektor dapat dipandang dari dua sudut yang saling melengkapi. Secara **geometris**, vektor adalah panah yang memiliki titik awal dan titik ujung. Secara **aljabar**, vektor adalah daftar komponen yang menyatakan perpindahan pada setiap sumbu. Kedua representasi ini menggambarkan objek yang sama.
+
+Sebuah vektor tidak terikat pada posisi tertentu. Panah $(2, 3)$ dapat digambar mulai dari titik asal, dari titik $(1, 1)$, atau dari titik mana pun. Selama panjang dan arahnya sama, vektor tersebut tetap dianggap sama. Inilah perbedaan penting antara vektor dan titik: titik terikat pada lokasi, sedangkan vektor menyatakan perpindahan.
+
+## Definisi Matematis
+
+Misalkan $A(x_A, y_A)$ dan $B(x_B, y_B)$ adalah dua titik. Vektor dari $A$ ke $B$ didefinisikan sebagai:
+
+$$
+\overrightarrow{AB} = (x_B - x_A,\; y_B - y_A)
+$$
+
+Urutan pengurangan sangat penting. Vektor $\overrightarrow{BA}$ adalah kebalikannya:
+
+$$
+\overrightarrow{BA} = (x_A - x_B,\; y_A - y_B) = -\overrightarrow{AB}
+$$
+
+Dua vektor $\mathbf{u}=(u_1,u_2)$ dan $\mathbf{v}=(v_1,v_2)$ sama jika dan hanya jika $u_1=v_1$ dan $u_2=v_2$. Kesamaan vektor tidak bergantung pada titik awal gambar.
+
+Vektor nol adalah vektor yang seluruh komponennya nol:
+
+$$
+\mathbf{0} = (0, 0)
+$$
+
+Vektor nol tidak memiliki arah yang terdefinisi. Vektor negatif dari $\mathbf{v}$ adalah $-\mathbf{v}$, yang memiliki magnitudo sama tetapi arah berlawanan.
+
+## Notasi dan Simbol
+
+Vektor dapat ditulis sebagai:
+
+- Pasangan komponen: $(3, 4)$
+- Vektor kolom: $\begin{pmatrix} 3 \\ 4 \end{pmatrix}$
+- Kombinasi vektor satuan: $3\mathbf{i} + 4\mathbf{j}$
+
+Simbol $\mathbf{i}$ dan $\mathbf{j}$ menyatakan vektor satuan pada sumbu x dan y. Penulisan ini menegaskan bahwa vektor memiliki komponen pada masing-masing arah.
+
+Vektor posisi titik $P(x,y)$ relatif terhadap titik asal adalah $\overrightarrow{OP}=(x,y)$. Vektor perpindahan dari $A$ ke $B$ adalah selisih kedua vektor posisi tersebut.
+
+## Penjelasan Rumus
+
+Rumus $\overrightarrow{AB}=(x_B-x_A,\;y_B-y_A)$ bekerja dengan mengurangkan koordinat titik awal dari koordinat titik ujung. Komponen horizontal menyatakan perubahan pada sumbu x, sedangkan komponen vertikal menyatakan perubahan pada sumbu y.
+
+Jika hasil komponen horizontal negatif, perpindahan terjadi ke arah kiri. Jika komponen vertikal negatif, perpindahan terjadi ke arah bawah. Tanda komponen bukan kesalahan; tanda tersebut membawa informasi arah.
+
+Magnitudo vektor perpindahan dihitung dari komponennya:
+
+$$
+\lVert \overrightarrow{AB} \rVert = \sqrt{(x_B-x_A)^2 + (y_B-y_A)^2}
+$$
+
+Rumus ini sama dengan jarak Euclidean antara dua titik, karena panjang vektor perpindahan adalah jarak antara titik awal dan titik ujung.
+
+## Ilustrasi Visual
+
+<VectorNotationDiagram />
+
+Perhatikan bahwa panah dari $A$ ke $B$ dan panah dari $B$ ke $A$ memiliki panjang yang sama tetapi arah berlawanan. Keduanya bukan vektor yang sama, melainkan saling negatif.
+
+## Contoh Bertahap
+
+### Contoh 1 — Vektor dari dua titik
+
+Diketahui $A(2, 1)$ dan $B(5, 4)$. Tentukan $\overrightarrow{AB}$, $\overrightarrow{BA}$, dan magnitudonya.
+
+**Langkah 1.** Hitung $\overrightarrow{AB}$:
+
+$$
+\overrightarrow{AB} = (5-2,\;4-1) = (3,3)
+$$
+
+**Langkah 2.** Hitung $\overrightarrow{BA}$:
+
+$$
+\overrightarrow{BA} = (2-5,\;1-4) = (-3,-3) = -\overrightarrow{AB}
+$$
+
+**Langkah 3.** Hitung magnitudo:
+
+$$
+\lVert \overrightarrow{AB} \rVert = \sqrt{3^2+3^2} = \sqrt{18} = 3\sqrt{2}
+$$
+
+Magnitudo $\overrightarrow{BA}$ sama, yaitu $3\sqrt{2}$, karena membalik arah tidak mengubah panjang.
+
+### Contoh 2 — Kesamaan vektor
+
+Apakah vektor dari $A(1,2)$ ke $B(4,6)$ sama dengan vektor dari $C(0,0)$ ke $D(3,4)$?
+
+**Penyelesaian:**
+
+$$
+\overrightarrow{AB} = (4-1,\;6-2) = (3,4)
+$$
+
+$$
+\overrightarrow{CD} = (3-0,\;4-0) = (3,4)
+$$
+
+Kedua vektor memiliki komponen yang sama, sehingga keduanya **sama** meskipun digambar dari titik awal berbeda.
+
+## Penerapan Komputasi
+
+- **Grafika:** perpindahan objek dari satu frame ke frame berikutnya dihitung sebagai selisih vektor posisi.
+- **Gim:** arah tembakan dapat dinyatakan sebagai vektor dari posisi pemain ke posisi target.
+- **Sistem koordinat UI:** posisi elemen disimpan sebagai titik, sedangkan pergeseran saat animasi disimpan sebagai vektor.
+- **Navigasi:** rute dari satu titik ke titik lain dapat diringkas sebagai vektor perpindahan, terlepas dari jalan yang ditempuh.
+
+## Kesalahan Umum
+
+1. **Mengurangi dengan urutan terbalik.** $\overrightarrow{AB}$ dan $\overrightarrow{BA}$ berbeda tanda.
+2. **Menganggap titik ujung sebagai vektor.** Titik $B(5,4)$ bukan vektor; vektor $\overrightarrow{AB}$ bergantung pada kedua titik.
+3. **Menganggap vektor nol memiliki arah.** Vektor nol tidak memiliki arah yang terdefinisi.
+4. **Menulis vektor kolom sebagai baris.** Vektor baris dan vektor kolom memiliki bentuk matriks berbeda, meskipun komponennya sama.
+5. **Menyimpulkan dua vektor berbeda hanya karena posisi gambarnya berbeda.** Vektor ditentukan oleh komponen, bukan lokasi gambar.
+
+## Latihan Mandiri
+
+### Latihan 1
+
+Diketahui $P(-1, 4)$ dan $Q(2, 0)$. Tentukan $\overrightarrow{PQ}$, $\overrightarrow{QP}$, dan magnitudo $\overrightarrow{PQ}$.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+$$
+\overrightarrow{PQ} = (2-(-1),\;0-4) = (3,-4)
+$$
+
+$$
+\overrightarrow{QP} = (-1-2,\;4-0) = (-3,4) = -\overrightarrow{PQ}
+$$
+
+$$
+\lVert \overrightarrow{PQ} \rVert = \sqrt{3^2+(-4)^2} = \sqrt{9+16} = 5
+$$
+
+</details>
+
+### Latihan 2
+
+Tuliskan vektor $(5, -2)$ dalam bentuk kombinasi $\mathbf{i}$ dan $\mathbf{j}$, lalu tentukan vektor negatifnya.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+Bentuk kombinasi vektor satuan adalah $5\mathbf{i} - 2\mathbf{j}$. Vektor negatifnya adalah $(-5, 2)$, atau $-5\mathbf{i} + 2\mathbf{j}$.
+
+</details>
+
+## Kuis Topik
+
+Kuis interaktif untuk topik ini tersedia di [halaman Kuis](/kuis). Setiap kuis berisi lima soal dari modul ini, dengan umpan balik langsung, penjelasan, skor, dan percobaan ulang. Skor terbaik disimpan secara lokal di peramban.
+
+## Ringkasan
+
+- Vektor dapat digambarkan sebagai panah atau ditulis sebagai komponen.
+- Vektor dari $A$ ke $B$ adalah $(x_B-x_A,\;y_B-y_A)$.
+- Vektor negatif memiliki arah berlawanan dan magnitudo yang sama.
+- Vektor nol tidak memiliki arah yang terdefinisi.
+- Kesamaan vektor ditentukan oleh komponen, bukan lokasi gambar.
+
+## Referensi Rumus
+
+| Nama | Rumus | Keterangan |
+|---|---|---|
+| Vektor dari dua titik | $\overrightarrow{AB}=(x_B-x_A,\;y_B-y_A)$ | Perpindahan dari A ke B. |
+| Vektor negatif | $-\mathbf{v}=(-v_1,-v_2)$ | Arah berlawanan, magnitudo sama. |
+| Magnitudo | $\lVert \mathbf{v} \rVert=\sqrt{x^2+y^2}$ | Panjang vektor dari komponennya. |

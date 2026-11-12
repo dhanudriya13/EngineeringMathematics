@@ -1,0 +1,149 @@
+---
+import Formula from '../mathematics/Formula.astro';
+import HeroVectorDiagram from '../mathematics/HeroVectorDiagram.astro';
+import Badge from '../ui/Badge.astro';
+import ButtonLink from '../ui/ButtonLink.astro';
+---
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <Badge variant="accent">16 modul · Bahasa Indonesia</Badge>
+      <h1>
+        Pahami vektor dari <span class="accent">konsep</span> hingga <span class="accent">komputasi</span>.
+      </h1>
+      <p class="lede">
+        Vector Lab memandu mahasiswa Sistem Informasi memahami vektor secara bertahap: intuisi
+        geometris, notasi matematika, perhitungan, lalu penerapan di dunia komputasi.
+      </p>
+      <div class="hero-actions">
+        <ButtonLink href="/materi">Jelajahi kurikulum</ButtonLink>
+        <ButtonLink href="/playground" variant="secondary">Kenali playground</ButtonLink>
+      </div>
+      <p class="hero-note">
+        Tanpa akun dan tanpa server. Modul, latihan, kuis, dan playground dapat digunakan
+        langsung; progres tersimpan di peramban Anda.
+      </p>
+    </div>
+
+    <div class="hero-visual">
+      <HeroVectorDiagram />
+      <div class="formula-card">
+        <p class="formula-card-label">Resultan dua vektor</p>
+        <Formula
+          tex="\mathbf{a}+\mathbf{b}=(a_1+b_1,\;a_2+b_2)"
+          display
+          label="Penjumlahan dilakukan per komponen."
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    padding-block: clamp(48px, 7vw, 96px) clamp(48px, 7vw, 88px);
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-background);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+    align-items: center;
+    gap: clamp(40px, 6vw, 88px);
+  }
+
+  .hero-copy {
+    display: grid;
+    justify-items: start;
+    gap: var(--space-5);
+  }
+
+  .hero-copy h1 {
+    max-width: 720px;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: -0.045em;
+    line-height: 1.06;
+  }
+
+  .accent {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 3px;
+    text-underline-offset: 7px;
+  }
+
+  .hero-copy .lede {
+    max-width: 620px;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-2);
+  }
+
+  .hero-note {
+    color: var(--color-text-secondary);
+    font-size: var(--text-xs);
+    line-height: var(--leading-normal);
+  }
+
+  .hero-visual {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .formula-card {
+    padding: var(--space-2);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .formula-card-label {
+    padding: var(--space-2) var(--space-3) 0;
+    color: var(--color-text-secondary);
+    font-size: 0.6875rem;
+    font-weight: 650;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .formula-card :global(.formula) {
+    border: 0;
+    padding: var(--space-3);
+  }
+
+  .formula-card :global(figcaption) {
+    text-align: left;
+    padding-inline: var(--space-2);
+  }
+
+  @media (max-width: 1000px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-10);
+    }
+
+    .hero-visual {
+      max-width: 640px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .hero-actions {
+      width: 100%;
+      flex-direction: column;
+    }
+
+    .hero-actions :global(.button-link) {
+      width: 100%;
+    }
+  }
+</style>

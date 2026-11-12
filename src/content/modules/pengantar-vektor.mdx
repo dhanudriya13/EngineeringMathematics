@@ -1,0 +1,200 @@
+---
+title: 'Pengantar Vektor'
+description: 'Mengapa vektor penting dan bagaimana vektor merepresentasikan besaran yang memiliki besar dan arah.'
+order: 1
+difficulty: 'dasar'
+estimatedDuration: 25
+prerequisites: []
+objectives:
+  - 'Menjelaskan perbedaan besaran skalar dan besaran vektor.'
+  - 'Membaca representasi geometris vektor sebagai panah berarah.'
+  - 'Menghubungkan konsep vektor dengan koordinat dan penerapan komputasi.'
+summary: 'Modul pembuka tentang makna vektor, representasi dasar, dan alasan vektor digunakan dalam matematika serta komputasi.'
+quizId: 'quiz-pengantar-vektor'
+draft: false
+---
+
+import VectorIntroDiagram from '../../components/mathematics/diagrams/VectorIntroDiagram.astro';
+
+## Konsep dan Intuisi
+
+Bayangkan Anda berjalan dari rumah ke kampus. Jarak yang ditempuh mungkin 2 kilometer, tetapi perpindahan Anda dari titik awal ke titik akhir bisa jauh lebih kecil jika jalannya berbelok. Jarak hanya memberi tahu **seberapa jauh**, sedangkan perpindahan juga memberi tahu **ke arah mana**. Perbedaan inilah yang menjadi titik awal konsep vektor.
+
+Dalam kehidupan sehari-hari, kita sering menemui besaran yang tidak cukup dijelaskan oleh satu angka. Suhu 30 derajat Celsius cukup dinyatakan dengan angka karena tidak memiliki arah. Sebaliknya, gaya 10 newton belum lengkap jika tidak diketahui arahnya: mendorong ke kanan dan mendorong ke kiri menghasilkan efek yang berbeda.
+
+Vektor adalah objek matematika yang membawa dua informasi sekaligus: **magnitudo** (besar) dan **arah**. Secara geometris, vektor dapat digambarkan sebagai panah. Panjang panah menyatakan magnitudo, sedangkan ujung panah menunjukkan arah.
+
+## Definisi Matematis
+
+Dalam ruang dua dimensi, vektor dinyatakan sebagai pasangan terurut bilangan real:
+
+$$
+\mathbf{v} = (x, y)
+$$
+
+Dalam ruang tiga dimensi, vektor dinyatakan sebagai tripel terurut:
+
+$$
+\mathbf{v} = (x, y, z)
+$$
+
+Bilangan $x$, $y$, dan $z$ disebut **komponen** vektor. Dua vektor dianggap sama jika dan hanya jika semua komponen yang bersesuaian sama. Dengan demikian, $(2, 3)$ sama dengan $(2, 3)$, tetapi tidak sama dengan $(3, 2)$ karena urutan komponen penting.
+
+Sebuah **skalar** adalah bilangan tunggal yang tidak memiliki arah. Suhu, massa, panjang, dan waktu adalah contoh skalar. Vektor dan skalar dapat dikaitkan melalui operasi seperti perkalian skalar, tetapi keduanya bukan objek yang sama.
+
+Perlu dibedakan pula antara **titik** dan **vektor**. Titik menyatakan posisi, misalnya titik $A(1, 2)$. Vektor menyatakan perpindahan atau arah, misalnya vektor dari $A$ ke $B$. Titik tidak memiliki arah, sedangkan vektor memiliki arah.
+
+## Notasi dan Simbol
+
+Beberapa cara penulisan vektor yang umum digunakan:
+
+- Huruf tebal: $\mathbf{v}$
+- Panah di atas huruf: $\vec{v}$
+- Vektor kolom: $\begin{pmatrix} x \\ y \end{pmatrix}$
+- Pasangan komponen: $(x, y)$
+
+Magnitudo vektor $\mathbf{v}$ ditulis $\lVert \mathbf{v} \rVert$. Vektor nol ditulis $\mathbf{0}$ dan seluruh komponennya bernilai nol. Vektor negatif $-\mathbf{v}$ memiliki magnitudo sama dengan $\mathbf{v}$, tetapi arahnya berlawanan.
+
+## Penjelasan Rumus
+
+Magnitudo vektor dua dimensi dihitung dengan teorema Pythagoras:
+
+$$
+\lVert \mathbf{v} \rVert = \sqrt{x^2 + y^2}
+$$
+
+Di sini, $x$ dan $y$ adalah komponen horizontal dan vertikal. Keduanya membentuk kaki segitiga siku-siku, sedangkan magnitudo vektor adalah sisi miringnya. Rumus ini menjelaskan mengapa magnitudo selalu bernilai tak negatif: hasil akar kuadrat tidak pernah negatif.
+
+Untuk vektor tiga dimensi, rumusnya diperluas menjadi:
+
+$$
+\lVert \mathbf{v} \rVert = \sqrt{x^2 + y^2 + z^2}
+$$
+
+Penambahan $z^2$ memperhitungkan komponen pada sumbu ketiga. Selama komponen-komponennya diketahui, panjang vektor dapat dihitung tanpa menggambar panahnya.
+
+## Ilustrasi Visual
+
+<VectorIntroDiagram />
+
+Pada diagram, titik $O$ adalah titik awal dan titik $P$ adalah titik ujung. Panah dari $O$ ke $P$ merepresentasikan vektor. Panjang panah menunjukkan magnitudo, sedangkan kemiringannya menunjukkan arah.
+
+## Contoh Bertahap
+
+### Contoh 1 — Membedakan skalar dan vektor
+
+Tentukan apakah besaran berikut termasuk skalar atau vektor:
+
+1. Massa 5 kg
+2. Kecepatan 60 km/jam ke utara
+3. Suhu 28 derajat Celsius
+4. Gaya 10 newton ke kanan
+
+**Penyelesaian:**
+
+1. Massa hanya memiliki besar, sehingga termasuk **skalar**.
+2. Kecepatan memiliki besar dan arah, sehingga termasuk **vektor**.
+3. Suhu hanya memiliki besar, sehingga termasuk **skalar**.
+4. Gaya memiliki besar dan arah, sehingga termasuk **vektor**.
+
+### Contoh 2 — Menghitung perpindahan dan magnitudo
+
+Sebuah partikel bergerak dari titik $A(1, 2)$ ke titik $B(4, 6)$. Tentukan vektor perpindahan dan magnitudonya.
+
+**Langkah 1.** Kurangkan koordinat titik awal dari koordinat titik ujung:
+
+$$
+\overrightarrow{AB} = (4 - 1,\; 6 - 2) = (3, 4)
+$$
+
+**Langkah 2.** Hitung magnitudo vektor perpindahan:
+
+$$
+\lVert \overrightarrow{AB} \rVert = \sqrt{3^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = 5
+$$
+
+Jadi, perpindahannya adalah $(3, 4)$ dengan magnitudo 5 satuan. Perhatikan bahwa hasil ini tidak bergantung pada jalur yang ditempuh partikel; yang digunakan hanya posisi awal dan posisi akhir.
+
+## Penerapan Komputasi
+
+- **Antarmuka pengguna:** posisi elemen di layar dapat dinyatakan sebagai vektor $(x, y)$. Perpindahan elemen saat digeser juga merupakan vektor.
+- **Pengembangan gim:** kecepatan karakter adalah vektor yang menentukan seberapa cepat dan ke arah mana karakter bergerak setiap frame.
+- **Ilmu data:** satu baris data dapat direpresentasikan sebagai vektor fitur, misalnya $(tinggi, berat, usia)$.
+- **Grafika komputer:** arah kamera dan perpindahan objek dihitung menggunakan operasi vektor.
+
+Contoh-contoh ini bukan sekadar perumpamaan. Nilai-nilai tersebut benar-benar diproses sebagai vektor oleh perangkat lunak.
+
+## Kesalahan Umum
+
+1. **Menganggap titik sebagai vektor.** Titik menyatakan posisi, sedangkan vektor menyatakan perpindahan atau arah.
+2. **Menjumlahkan magnitudo secara langsung.** Dua vektor dengan arah berbeda tidak dapat dijumlahkan hanya dengan menjumlahkan panjangnya.
+3. **Mengabaikan tanda komponen.** Komponen negatif menunjukkan arah pada sumbu negatif dan tidak boleh dihilangkan.
+4. **Menganggap vektor dengan komponen berbeda selalu berbeda arah.** Vektor $(3, 4)$ dan $(6, 8)$ memiliki arah yang sama, tetapi magnitudonya berbeda.
+
+## Latihan Mandiri
+
+### Latihan 1
+
+Kelompokkan besaran berikut sebagai skalar atau vektor: waktu, berat, percepatan, volume, kecepatan angin.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+- Waktu: skalar
+- Berat: vektor, karena berat adalah gaya yang memiliki arah
+- Percepatan: vektor
+- Volume: skalar
+- Kecepatan angin: vektor
+
+</details>
+
+### Latihan 2
+
+Tentukan vektor dari $A(2, -1)$ ke $B(5, 3)$ dan hitung magnitudonya.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+$$
+\overrightarrow{AB} = (5 - 2,\; 3 - (-1)) = (3, 4)
+$$
+
+$$
+\lVert \overrightarrow{AB} \rVert = \sqrt{3^2 + 4^2} = 5
+$$
+
+Vektor perpindahannya adalah $(3, 4)$ dengan magnitudo 5 satuan.
+
+</details>
+
+### Latihan 3
+
+Jelaskan mengapa $(3, 4)$ dan $(6, 8)$ memiliki arah yang sama tetapi magnitudo yang berbeda.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+Vektor $(6, 8)$ adalah hasil perkalian skalar $2$ dengan $(3, 4)$. Perkalian dengan skalar positif tidak mengubah arah, tetapi mengalikan magnitudo dengan faktor yang sama. Magnitudo $(3, 4)$ adalah 5, sedangkan magnitudo $(6, 8)$ adalah 10.
+
+</details>
+
+## Kuis Topik
+
+Kuis interaktif untuk topik ini tersedia di [halaman Kuis](/kuis). Setiap kuis berisi lima soal dari modul ini, dengan umpan balik langsung, penjelasan, skor, dan percobaan ulang. Skor terbaik disimpan secara lokal di peramban.
+
+## Ringkasan
+
+- Vektor memiliki magnitudo dan arah; skalar hanya memiliki magnitudo.
+- Vektor dapat ditulis sebagai pasangan atau tripel komponen terurut.
+- Panah geometris dan pasangan komponen adalah dua representasi dari objek yang sama.
+- Magnitudo vektor dua dimensi adalah $\sqrt{x^2+y^2}$.
+- Vektor digunakan secara langsung dalam grafika, gim, ilmu data, dan rekayasa.
+
+## Referensi Rumus
+
+| Nama | Rumus | Keterangan |
+|---|---|---|
+| Magnitudo 2D | $\lVert \mathbf{v} \rVert = \sqrt{x^2+y^2}$ | Panjang vektor dari komponen x dan y. |
+| Vektor posisi | $\overrightarrow{AB}=(x_B-x_A,\;y_B-y_A)$ | Perpindahan dari titik A ke titik B. |
+
+Kedua rumus menggunakan komponen sebagai dasar. Penjelasan lengkap setiap simbol diberikan pada bagian penjelasan rumus di atas.

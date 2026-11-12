@@ -1,0 +1,176 @@
+---
+title: 'Perkalian Titik (Dot Product)'
+description: 'Menghitung perkalian titik dari komponen dan menafsirkan makna geometrisnya.'
+order: 9
+difficulty: 'menengah'
+estimatedDuration: 35
+prerequisites:
+  - 'koordinat-2d-3d'
+objectives:
+  - 'Menghitung perkalian titik dua vektor dari komponennya.'
+  - 'Menjelaskan hubungan perkalian titik dengan sudut dan ortogonalitas.'
+  - 'Menggunakan perkalian titik untuk menyelesaikan masalah arah dan kemiripan.'
+summary: 'Definisi aljabar dan geometris perkalian titik, sifat-sifatnya, serta penerapannya pada sudut dan ortogonalitas.'
+quizId: 'quiz-perkalian-titik'
+draft: false
+---
+
+import DotProductAngleDiagram from '../../components/mathematics/diagrams/DotProductAngleDiagram.astro';
+
+## Konsep dan Intuisi
+
+Perkalian titik mengukur seberapa besar dua vektor "searah". Jika dua vektor menunjuk ke arah yang sama, hasilnya positif dan besar. Jika tegak lurus, hasilnya nol. Jika berlawanan arah, hasilnya negatif. Perkalian titik menghasilkan **skalar**, bukan vektor.
+
+Karena hasilnya berupa satu angka, perkalian titik cocok untuk mengukur sudut, menguji ortogonalitas, dan menghitung proyeksi. Dalam grafika komputer, perkalian titik dipakai untuk menentukan apakah permukaan menghadap sumber cahaya.
+
+## Definisi Matematis
+
+Untuk vektor dua dimensi $\mathbf{a}=(a_1,a_2)$ dan $\mathbf{b}=(b_1,b_2)$:
+
+$$
+\mathbf{a}\cdot\mathbf{b}=a_1b_1+a_2b_2
+$$
+
+Untuk vektor tiga dimensi:
+
+$$
+\mathbf{a}\cdot\mathbf{b}=a_1b_1+a_2b_2+a_3b_3
+$$
+
+Secara geometris, perkalian titik juga dapat dinyatakan sebagai:
+
+$$
+\mathbf{a}\cdot\mathbf{b}=\lVert\mathbf{a}\rVert\,\lVert\mathbf{b}\rVert\cos\theta
+$$
+
+dengan $\theta$ adalah sudut antara kedua vektor.
+
+Beberapa sifat perkalian titik:
+
+- **Komutatif:** $\mathbf{a}\cdot\mathbf{b}=\mathbf{b}\cdot\mathbf{a}$
+- **Distributif:** $\mathbf{a}\cdot(\mathbf{b}+\mathbf{c})=\mathbf{a}\cdot\mathbf{b}+\mathbf{a}\cdot\mathbf{c}$
+- **Homogen:** $(k\mathbf{a})\cdot\mathbf{b}=k(\mathbf{a}\cdot\mathbf{b})$
+- **Ortogonal:** $\mathbf{a}\cdot\mathbf{b}=0$ jika dan hanya jika kedua vektor tak nol saling tegak lurus.
+
+## Notasi dan Simbol
+
+- $\mathbf{a}\cdot\mathbf{b}$: perkalian titik, ditulis dengan titik di tengah.
+- $\theta$: sudut antara kedua vektor.
+- $\lVert\mathbf{a}\rVert$: magnitudo vektor a.
+- Hasil perkalian titik adalah bilangan real, bukan vektor.
+
+Jangan menuliskan hasil perkalian titik sebagai vektor. Jika jawaban yang diharapkan adalah vektor, kemungkinan operasi yang dimaksud adalah perkalian silang atau perkalian skalar.
+
+## Penjelasan Rumus
+
+Bentuk aljabar menjumlahkan hasil kali komponen yang bersesuaian. Komponen x dikalikan dengan komponen x, komponen y dengan y, dan seterusnya. Penjumlahan ini menghasilkan satu angka yang merangkum seberapa besar kedua vektor sejajar.
+
+Bentuk geometris menjelaskan mengapa hasilnya bisa negatif. Kosinus sudut tumpul bernilai negatif, sehingga perkalian titik juga negatif. Ketika sudutnya 90°, kosinusnya nol, sehingga kedua vektor ortogonal.
+
+## Ilustrasi Visual
+
+<DotProductAngleDiagram />
+
+Diagram menunjukkan dua vektor dari titik awal yang sama. Sudut $\theta$ di antara keduanya menentukan nilai kosinus, yang kemudian menentukan tanda dan besar perkalian titik.
+
+## Contoh Bertahap
+
+### Contoh 1 — Perkalian titik 2D
+
+Diketahui $\mathbf{a}=(1,2)$ dan $\mathbf{b}=(3,4)$. Hitung $\mathbf{a}\cdot\mathbf{b}$.
+
+$$
+\mathbf{a}\cdot\mathbf{b}=1\cdot3+2\cdot4=3+8=11
+$$
+
+Hasilnya adalah skalar 11.
+
+### Contoh 2 — Perkalian titik 3D
+
+Diketahui $\mathbf{u}=(1,2,3)$ dan $\mathbf{v}=(4,-5,6)$.
+
+$$
+\mathbf{u}\cdot\mathbf{v}=1\cdot4+2\cdot(-5)+3\cdot6=4-10+18=12
+$$
+
+### Contoh 3 — Menguji ortogonalitas
+
+Apakah $\mathbf{p}=(2,-3)$ dan $\mathbf{q}=(3,2)$ tegak lurus?
+
+$$
+\mathbf{p}\cdot\mathbf{q}=2\cdot3+(-3)\cdot2=6-6=0
+$$
+
+Karena hasilnya nol dan kedua vektor tak nol, keduanya saling tegak lurus.
+
+## Penerapan Komputasi
+
+- **Grafika:** perkalian titik antara vektor normal permukaan dan arah cahaya menentukan intensitas pencahayaan.
+- **Ilmu data:** kemiripan dua vektor fitur dapat diukur dengan kosinus sudut, yang dihitung dari perkalian titik.
+- **Fisika:** usaha adalah perkalian titik antara gaya dan perpindahan.
+- **Gim:** perkalian titik membantu menentukan apakah dua arah menghadap ke sisi yang sama.
+
+## Kesalahan Umum
+
+1. **Menganggap hasilnya vektor.** Perkalian titik menghasilkan skalar.
+2. **Menjumlahkan komponen yang tidak sejenis.** Kalikan komponen yang bersesuaian terlebih dahulu.
+3. **Mengabaikan tanda negatif.** Tanda komponen sangat memengaruhi hasil.
+4. **Menganggap hasil nol selalu berarti salah satu vektor nol.** Hasil nol juga dapat berarti kedua vektor ortogonal.
+5. **Mencampur dimensi.** Vektor 2D tidak dapat dikalikan titik dengan vektor 3D tanpa penyesuaian dimensi yang jelas.
+
+## Latihan Mandiri
+
+### Latihan 1
+
+Hitung $(2,-1,3)\cdot(1,4,-2)$.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+$$
+2\cdot1+(-1)\cdot4+3\cdot(-2)=2-4-6=-8
+$$
+
+</details>
+
+### Latihan 2
+
+Tentukan nilai $k$ sehingga $(1,k)$ tegak lurus dengan $(4,-2)$.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+Syarat ortogonal: $1\cdot4+k\cdot(-2)=0$, sehingga $4-2k=0$ dan $k=2$.
+
+</details>
+
+### Latihan 3
+
+Mengapa $\mathbf{a}\cdot\mathbf{a}=\lVert\mathbf{a}\rVert^2$?
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+Karena $\mathbf{a}\cdot\mathbf{a}=\lVert\mathbf{a}\rVert\lVert\mathbf{a}\rVert\cos0^\circ=\lVert\mathbf{a}\rVert^2$. Secara aljabar, hasilnya adalah jumlah kuadrat semua komponen, yang sama dengan kuadrat magnitudo.
+
+</details>
+
+## Kuis Topik
+
+Kuis interaktif untuk topik ini tersedia di [halaman Kuis](/kuis). Setiap kuis berisi lima soal dari modul ini, dengan umpan balik langsung, penjelasan, skor, dan percobaan ulang. Skor terbaik disimpan secara lokal di peramban.
+
+## Ringkasan
+
+- Perkalian titik menjumlahkan hasil kali komponen yang bersesuaian.
+- Hasilnya adalah skalar.
+- Bentuk geometrisnya melibatkan kosinus sudut.
+- Hasil nol menunjukkan ortogonalitas untuk vektor tak nol.
+- Perkalian titik digunakan untuk sudut, proyeksi, pencahayaan, dan kemiripan data.
+
+## Referensi Rumus
+
+| Nama | Rumus | Keterangan |
+|---|---|---|
+| Aljabar | $\mathbf{a}\cdot\mathbf{b}=a_1b_1+a_2b_2+a_3b_3$ | Jumlah hasil kali komponen. |
+| Geometris | $\mathbf{a}\cdot\mathbf{b}=\lVert\mathbf{a}\rVert\lVert\mathbf{b}\rVert\cos\theta$ | Hubungan dengan sudut. |
+| Ortogonal | $\mathbf{a}\cdot\mathbf{b}=0$ | Syarat tegak lurus untuk vektor tak nol. |

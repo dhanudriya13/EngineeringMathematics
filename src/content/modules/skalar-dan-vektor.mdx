@@ -1,0 +1,168 @@
+---
+title: 'Besaran Skalar dan Vektor'
+description: 'Membedakan besaran skalar dan vektor serta memahami peran magnitudo dan arah pada besaran nyata.'
+order: 2
+difficulty: 'dasar'
+estimatedDuration: 25
+prerequisites:
+  - 'pengantar-vektor'
+objectives:
+  - 'Membedakan besaran skalar dan vektor berdasarkan informasi yang dibawanya.'
+  - 'Menjelaskan magnitudo dan arah pada posisi, perpindahan, kecepatan, dan gaya.'
+  - 'Menerjemahkan besaran nyata menjadi representasi vektor yang tepat.'
+summary: 'Perbedaan skalar dan vektor, termasuk cara membaca magnitudo dan arah pada besaran fisika dan komputasi.'
+quizId: 'quiz-skalar-dan-vektor'
+draft: false
+---
+
+import VectorIntroDiagram from '../../components/mathematics/diagrams/VectorIntroDiagram.astro';
+
+## Konsep dan Intuisi
+
+Angka saja tidak selalu cukup. Jika seseorang mengatakan "saya berjalan 3 kilometer", Anda belum tahu ke mana ia pergi. Jika ia mengatakan "saya berjalan 3 kilometer ke timur", informasi menjadi lengkap karena ada besar dan arah. Besaran yang membutuhkan kedua informasi itu disebut **besaran vektor**.
+
+Besaran yang cukup dijelaskan oleh satu angka disebut **besaran skalar**. Massa 60 kilogram, suhu 27 derajat Celsius, dan waktu 45 detik adalah skalar. Tidak ada arah yang melekat pada nilai-nilai tersebut.
+
+Perbedaan ini penting karena operasi matematisnya berbeda. Dua massa dapat dijumlahkan sebagai bilangan biasa. Dua vektor harus dijumlahkan dengan memperhatikan arah masing-masing.
+
+## Definisi Matematis
+
+Skalar adalah bilangan real tunggal. Dalam notasi matematika, skalar sering dilambangkan dengan huruf biasa seperti $m$, $t$, atau $k$. Skalar dapat bernilai negatif, misalnya suhu $-5$ derajat Celsius.
+
+Vektor adalah objek yang memiliki magnitudo dan arah. Dalam ruang dua dimensi, vektor dinyatakan sebagai pasangan terurut $(x, y)$. Dalam ruang tiga dimensi, vektor dinyatakan sebagai $(x, y, z)$.
+
+Beberapa besaran vektor yang penting:
+
+- **Posisi:** letak suatu titik relatif terhadap titik asal, misalnya $(4, 2)$.
+- **Perpindahan:** perubahan posisi dari titik awal ke titik akhir.
+- **Kecepatan:** perpindahan per satuan waktu, memiliki besar dan arah.
+- **Gaya:** dorongan atau tarikan yang memiliki besar dan arah.
+
+**Kelajuan** berbeda dari **kecepatan**. Kelajuan adalah skalar yang hanya menyatakan seberapa cepat benda bergerak, sedangkan kecepatan juga menyatakan arah gerak.
+
+## Notasi dan Simbol
+
+Vektor ditulis dengan huruf tebal seperti $\mathbf{v}$ atau dengan panah seperti $\vec{v}$. Magnitudonya ditulis $\lVert \mathbf{v} \rVert$. Arah dapat dinyatakan sebagai sudut terhadap sumbu x positif, atau melalui tanda komponen.
+
+Sebagai contoh, vektor kecepatan $\mathbf{v} = (3, 4)$ memiliki komponen horizontal 3 dan komponen vertikal 4. Magnitudonya adalah 5, dan arahnya dapat dihitung dari perbandingan komponen tersebut.
+
+## Penjelasan Rumus
+
+Magnitudo vektor dua dimensi dihitung dengan:
+
+$$
+\lVert \mathbf{v} \rVert = \sqrt{x^2 + y^2}
+$$
+
+Simbol $x$ dan $y$ menyatakan komponen vektor. Rumus ini tidak memberi arah secara langsung; arah harus ditentukan dari tanda komponen atau sudut. Dua vektor dapat memiliki magnitudo sama tetapi arah berbeda.
+
+Arah vektor dapat dinyatakan dengan sudut $\theta$ terhadap sumbu x positif. Untuk komponen yang diketahui, hubungan komponen dan sudut dibahas pada Modul 7. Pada tahap ini, yang perlu dipahami adalah bahwa magnitudo dan arah adalah dua informasi terpisah yang bersama-sama membentuk vektor.
+
+## Ilustrasi Visual
+
+<VectorIntroDiagram />
+
+Diagram menunjukkan vektor perpindahan dari titik awal ke titik ujung. Panjang panah adalah magnitudo, sedangkan arah panah menunjukkan arah perpindahan. Jika titik ujungnya berbeda, vektornya juga berbeda meskipun panjang panahnya sama.
+
+## Contoh Bertahap
+
+### Contoh 1 — Mengelompokkan besaran
+
+Tentukan jenis besaran berikut:
+
+1. Berat badan 65 kg
+2. Angin berkecepatan 20 km/jam ke arah barat
+3. Volume air 2 liter
+4. Tarikan tali 50 newton ke atas
+
+**Penyelesaian:**
+
+1. Berat badan dalam kilogram pada percakapan sehari-hari merujuk pada massa, sehingga **skalar**.
+2. Angin memiliki besar dan arah, sehingga **vektor**.
+3. Volume hanya memiliki besar, sehingga **skalar**.
+4. Tarikan tali memiliki besar dan arah, sehingga **vektor**.
+
+### Contoh 2 — Perpindahan berbeda dari jarak
+
+Seorang siswa berjalan 4 meter ke timur, lalu 3 meter ke utara. Tentukan besar perpindahannya.
+
+**Langkah 1.** Susun perpindahan total sebagai vektor:
+
+$$
+\mathbf{d} = (4, 3)
+$$
+
+**Langkah 2.** Hitung magnitudonya:
+
+$$
+\lVert \mathbf{d} \rVert = \sqrt{4^2 + 3^2} = \sqrt{16 + 9} = 5
+$$
+
+Perpindahannya 5 meter. Jarak yang ditempuh adalah $4 + 3 = 7$ meter karena jarak menjumlahkan panjang lintasan, bukan resultan perpindahan.
+
+## Penerapan Komputasi
+
+- **Fisika dan simulasi:** gaya dan kecepatan disimpan sebagai vektor agar arahnya ikut dihitung.
+- **Gim:** kecepatan karakter perlu diubah arahnya tanpa mengubah besar kecepatan. Operasi ini memerlukan vektor, bukan skalar.
+- **Antarmuka:** perpindahan elemen saat digeser adalah vektor; jarak geser saja tidak cukup untuk mengembalikan elemen ke posisi semula.
+- **Ilmu data:** skalar seperti suhu dapat menjadi salah satu komponen vektor fitur, misalnya $(suhu, kelembapan, tekanan)$.
+
+## Kesalahan Umum
+
+1. **Menganggap kelajuan sama dengan kecepatan.** Kelajuan tidak memiliki arah, sedangkan kecepatan memiliki arah.
+2. **Menganggap massa sama dengan berat.** Massa adalah skalar; berat adalah gaya dan memiliki arah.
+3. **Menjumlahkan jarak sebagai perpindahan.** Jarak menjumlahkan panjang lintasan, perpindahan hanya melihat posisi awal dan akhir.
+4. **Mengabaikan arah saat membandingkan vektor.** Dua vektor dengan magnitudo sama belum tentu sama jika arahnya berbeda.
+
+## Latihan Mandiri
+
+### Latihan 1
+
+Tentukan mana yang skalar dan mana yang vektor: percepatan gravitasi, massa jenis, kecepatan cahaya, momen gaya.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+- Percepatan gravitasi: vektor, karena memiliki arah menuju pusat massa.
+- Massa jenis: skalar.
+- Kecepatan cahaya: vektor jika arah rambatnya diperhitungkan; dalam banyak konteks besarnya dibahas sebagai skalar.
+- Momen gaya: vektor, karena memiliki sumbu dan arah putaran.
+
+</details>
+
+### Latihan 2
+
+Sebuah benda berpindah 6 satuan ke kanan dan 8 satuan ke atas. Hitung magnitudo perpindahannya.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+Vektor perpindahan adalah $(6, 8)$.
+
+$$
+\lVert \mathbf{d} \rVert = \sqrt{6^2 + 8^2} = \sqrt{36 + 64} = 10
+$$
+
+Magnitudo perpindahannya adalah 10 satuan.
+
+</details>
+
+## Kuis Topik
+
+Kuis interaktif untuk topik ini tersedia di [halaman Kuis](/kuis). Setiap kuis berisi lima soal dari modul ini, dengan umpan balik langsung, penjelasan, skor, dan percobaan ulang. Skor terbaik disimpan secara lokal di peramban.
+
+## Ringkasan
+
+- Skalar hanya memiliki besar; vektor memiliki besar dan arah.
+- Posisi, perpindahan, kecepatan, dan gaya adalah besaran vektor.
+- Jarak dan kelajuan adalah besaran skalar yang tidak membawa arah.
+- Magnitudo vektor dihitung dari komponennya, tetapi arah tetap merupakan informasi terpisah.
+
+## Referensi Rumus
+
+| Nama | Rumus | Keterangan |
+|---|---|---|
+| Magnitudo 2D | $\lVert \mathbf{v} \rVert = \sqrt{x^2+y^2}$ | Panjang vektor dari komponen x dan y. |
+| Vektor perpindahan | $\overrightarrow{AB}=(x_B-x_A,\;y_B-y_A)$ | Perubahan posisi dari A ke B. |
+
+Arah tidak dihitung oleh rumus magnitudo. Arah harus ditentukan dari tanda komponen atau sudut yang sesuai.

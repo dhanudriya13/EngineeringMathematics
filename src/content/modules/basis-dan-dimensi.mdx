@@ -1,0 +1,194 @@
+---
+title: 'Basis dan Dimensi'
+description: 'Memahami basis sebagai himpunan vektor yang bebas linear dan merentang, serta dimensi sebagai jumlah vektor basis.'
+order: 15
+difficulty: 'lanjut'
+estimatedDuration: 35
+prerequisites:
+  - 'ruang-vektor'
+objectives:
+  - 'Menjelaskan syarat suatu himpunan menjadi basis.'
+  - 'Menentukan koordinat vektor terhadap basis tertentu.'
+  - 'Menghubungkan dimensi dengan banyaknya arah bebas dalam ruang.'
+summary: 'Basis, kebebasan linear, rentang, dimensi, basis standar, dan koordinat relatif terhadap basis.'
+quizId: 'quiz-basis-dan-dimensi'
+draft: false
+---
+
+import SpanDiagram from '../../components/mathematics/diagrams/SpanDiagram.astro';
+
+## Konsep dan Intuisi
+
+Basis adalah "kerangka arah" untuk sebuah ruang vektor. Dengan basis, setiap vektor dapat dituliskan secara unik sebagai kombinasi linear dari vektor-vektor basis. Bayangkan peta dengan arah timur dan utara: setiap perpindahan dapat dijelaskan dengan dua angka, yaitu berapa banyak ke timur dan berapa banyak ke utara. Dua arah itu membentuk basis bagi bidang.
+
+Agar menjadi basis, sekumpulan vektor harus memenuhi dua syarat: **cukup** untuk mencapai seluruh ruang (merentang) dan **tidak berlebihan** (bebas linear). Jika ada vektor berlebih, representasi tidak lagi unik. Jika kurang, ada bagian ruang yang tidak dapat dicapai.
+
+## Definisi Matematis
+
+Himpunan vektor $\{\mathbf{b}_1,\mathbf{b}_2,\ldots,\mathbf{b}_n\}$ disebut basis bagi ruang vektor $V$ jika:
+
+1. Vektor-vektor tersebut **bebas linear**.
+2. Vektor-vektor tersebut **merentang** $V$.
+
+Setiap vektor $\mathbf{v}\in V$ dapat dinyatakan secara unik sebagai:
+
+$$
+\mathbf{v}=c_1\mathbf{b}_1+c_2\mathbf{b}_2+\cdots+c_n\mathbf{b}_n
+$$
+
+Koefisien $(c_1,c_2,\ldots,c_n)$ disebut **koordinat** vektor terhadap basis tersebut.
+
+**Dimensi** ruang vektor adalah jumlah vektor dalam basisnya. Semua basis untuk ruang yang sama memiliki jumlah vektor yang sama.
+
+Basis standar untuk $\mathbb{R}^2$ adalah:
+
+$$
+\{\mathbf{e}_1,\mathbf{e}_2\}=\{(1,0),(0,1)\}
+$$
+
+Basis standar untuk $\mathbb{R}^3$ adalah $\{(1,0,0),(0,1,0),(0,0,1)\}$.
+
+## Notasi dan Simbol
+
+- $\{\mathbf{b}_1,\ldots,\mathbf{b}_n\}$: himpunan vektor basis.
+- $c_i$: koordinat terhadap basis.
+- $\dim V$: dimensi ruang vektor.
+- $\mathbf{e}_i$: vektor basis standar.
+
+Koordinat bergantung pada basis. Vektor yang sama dapat memiliki koordinat berbeda jika basisnya berbeda.
+
+## Penjelasan Rumus
+
+Rumus representasi basis menyatakan bahwa setiap vektor adalah kombinasi linear dari vektor basis. Keunikan berasal dari kebebasan linear: jika ada dua representasi berbeda, selisihnya memberikan kombinasi linear nontrivial yang sama dengan vektor nol. Hal itu bertentangan dengan sifat bebas linear.
+
+Dimensi menunjukkan banyaknya "derajat kebebasan" ruang. Garis memiliki dimensi 1, bidang dimensi 2, dan ruang tiga dimensi memiliki dimensi 3. Dimensi bukan jumlah vektor dalam sembarang himpunan, melainkan jumlah vektor dalam basis.
+
+## Ilustrasi Visual
+
+<SpanDiagram />
+
+Garis yang direntang satu vektor memiliki dimensi 1. Untuk mencapai titik di luar garis, dibutuhkan vektor kedua yang bebas linear. Dua vektor bebas linear dalam bidang membentuk basis bagi $\mathbb{R}^2$.
+
+## Contoh Bertahap
+
+### Contoh 1 — Koordinat pada basis standar
+
+Tentukan koordinat $\mathbf{v}=(3,4)$ terhadap basis standar $\{(1,0),(0,1)\}$.
+
+**Penyelesaian:**
+
+$$
+(3,4)=3(1,0)+4(0,1)
+$$
+
+Koordinatnya adalah $(3,4)$. Pada basis standar, koordinat sama dengan komponen vektor.
+
+### Contoh 2 — Koordinat pada basis lain
+
+Tentukan koordinat $\mathbf{v}=(3,1)$ terhadap basis $B=\{(1,1),(1,-1)\}$.
+
+**Langkah 1.** Susun persamaan:
+
+$$
+c_1(1,1)+c_2(1,-1)=(3,1)
+$$
+
+**Langkah 2.** Tulis persamaan komponen:
+
+$$
+c_1+c_2=3
+$$
+
+$$
+c_1-c_2=1
+$$
+
+**Langkah 3.** Selesaikan:
+
+$$
+c_1=2,\qquad c_2=1
+$$
+
+**Langkah 4.** Periksa:
+
+$$
+2(1,1)+1(1,-1)=(2,2)+(1,-1)=(3,1)
+$$
+
+Koordinat $\mathbf{v}$ terhadap basis $B$ adalah $(2,1)$. Koordinat ini berbeda dari $(3,1)$ pada basis standar, meskipun vektornya sama.
+
+### Contoh 3 — Menentukan dimensi
+
+Tentukan dimensi ruang yang direntang oleh $\{(1,0,0),(0,1,0)\}$.
+
+**Penyelesaian:** Kedua vektor bebas linear dan hanya merentang bidang $xy$. Dimensi rentangnya adalah 2, bukan 3.
+
+## Penerapan Komputasi
+
+- **Ilmu data:** data direpresentasikan dalam basis fitur tertentu; perubahan basis dapat menyederhanakan analisis.
+- **Kompresi data:** memilih basis yang tepat dapat mengurangi jumlah koordinat yang perlu disimpan.
+- **Grafika:** sistem koordinat lokal objek dibentuk oleh basis vektor.
+- **Pembelajaran mesin:** analisis komponen utama mencari basis baru yang menangkap variasi data.
+
+## Kesalahan Umum
+
+1. **Menganggap himpunan yang merentang selalu basis.** Himpunan juga harus bebas linear.
+2. **Menganggap himpunan bebas linear selalu basis.** Himpunan harus merentang seluruh ruang.
+3. **Mengira dimensi sama dengan jumlah vektor dalam sembarang himpunan.** Dimensi adalah jumlah vektor dalam basis.
+4. **Menganggap koordinat selalu sama dengan komponen.** Koordinat bergantung pada basis yang dipilih.
+5. **Menganggap hanya ada satu basis.** Setiap ruang tak nol memiliki banyak basis.
+
+## Latihan Mandiri
+
+### Latihan 1
+
+Tentukan apakah $\{(1,0),(0,1)\}$ merupakan basis bagi $\mathbb{R}^2$.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+Kedua vektor bebas linear dan merentang seluruh $\mathbb{R}^2$. Jadi, himpunan tersebut adalah basis, yaitu basis standar.
+
+</details>
+
+### Latihan 2
+
+Tentukan koordinat $(5,2)$ terhadap basis $\{(1,1),(1,-1)\}$.
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+Selesaikan $c_1+c_2=5$ dan $c_1-c_2=2$. Dengan menjumlahkan, $2c_1=7$ sehingga $c_1=3{,}5$. Kemudian $c_2=1{,}5$. Koordinatnya adalah $(3{,}5;\;1{,}5)$.
+
+</details>
+
+### Latihan 3
+
+Mengapa tiga vektor di $\mathbb{R}^2$ selalu bergantung linear?
+
+<details>
+<summary>Lihat jawaban dan pembahasan</summary>
+
+Dimensi $\mathbb{R}^2$ adalah 2, sehingga basisnya terdiri atas dua vektor. Himpunan tiga vektor di ruang berdimensi 2 pasti memiliki setidaknya satu vektor yang dapat dinyatakan sebagai kombinasi linear vektor lainnya. Karena itu, himpunan tersebut bergantung linear.
+
+</details>
+
+## Kuis Topik
+
+Kuis interaktif untuk topik ini tersedia di [halaman Kuis](/kuis). Setiap kuis berisi lima soal dari modul ini, dengan umpan balik langsung, penjelasan, skor, dan percobaan ulang. Skor terbaik disimpan secara lokal di peramban.
+
+## Ringkasan
+
+- Basis harus bebas linear dan merentang ruang.
+- Setiap vektor memiliki koordinat unik terhadap suatu basis.
+- Dimensi adalah jumlah vektor dalam basis.
+- Basis standar R² adalah $\{(1,0),(0,1)\}$.
+- Koordinat bergantung pada basis yang dipilih.
+
+## Referensi Rumus
+
+| Nama | Rumus | Keterangan |
+|---|---|---|
+| Representasi basis | $\mathbf{v}=c_1\mathbf{b}_1+\cdots+c_n\mathbf{b}_n$ | Setiap vektor sebagai kombinasi basis. |
+| Dimensi | $\dim V=n$ | Jumlah vektor dalam basis. |
+| Basis standar R² | $\{(1,0),(0,1)\}$ | Basis paling umum pada bidang. |

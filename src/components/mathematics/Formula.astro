@@ -1,0 +1,65 @@
+---
+import katex from 'katex';
+
+interface Props {
+  tex: string;
+  display?: boolean;
+  label?: string;
+  class?: string;
+}
+
+const { tex, display = false, label, class: className } = Astro.props;
+const html = katex.renderToString(tex, {
+  displayMode: display,
+  throwOnError: false,
+  strict: false,
+});
+---
+
+{
+  display ? (
+    <figure class:list={['formula', className]}>
+      <div class="formula-expression" set:html={html} />
+      {label && <figcaption>{label}</figcaption>}
+    </figure>
+  ) : (
+    <span class:list={['formula-inline', className]} set:html={html} />
+  )
+}
+
+<style>
+  .formula {
+    margin: 0;
+    overflow-x: auto;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    padding: var(--space-5) var(--space-6);
+  }
+
+  .formula-expression {
+    overflow-x: auto;
+  }
+
+  .formula :global(.katex-display) {
+    margin: 0;
+  }
+
+  .formula figcaption {
+    margin-top: var(--space-3);
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+    text-align: center;
+  }
+
+  .formula-inline {
+    display: inline;
+  }
+
+  @media (max-width: 560px) {
+    .formula {
+      padding: var(--space-4);
+    }
+  }
+</style>

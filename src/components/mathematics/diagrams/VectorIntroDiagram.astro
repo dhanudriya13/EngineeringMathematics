@@ -1,0 +1,38 @@
+<figure class="diagram-figure">
+  <svg viewBox="0 0 640 360" role="img" aria-labelledby="intro-diagram-title intro-diagram-desc">
+    <title id="intro-diagram-title">Vektor sebagai panah berarah</title>
+    <desc id="intro-diagram-desc">
+      Sebuah vektor digambarkan sebagai panah dari titik awal O menuju titik ujung P. Panah
+      menunjukkan besar dan arah perpindahan.
+    </desc>
+
+    <defs>
+      <pattern id="intro-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+        <path d="M32 0H0V32" fill="none" stroke="var(--color-grid)" stroke-width="1" />
+      </pattern>
+      <marker id="intro-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0 0 10 5 0 10z" fill="var(--color-vector-a)" />
+      </marker>
+    </defs>
+
+    <rect width="640" height="360" fill="url(#intro-grid)" rx="12" />
+    <line x1="90" y1="290" x2="570" y2="290" stroke="var(--color-axis)" stroke-width="1.5" />
+    <line x1="90" y1="290" x2="90" y2="55" stroke="var(--color-axis)" stroke-width="1.5" />
+    <text x="552" y="314" class="diagram-axis" text-anchor="end">x</text>
+    <text x="70" y="70" class="diagram-axis">y</text>
+    <text x="74" y="314" class="diagram-axis">O</text>
+
+    <line x1="90" y1="290" x2="450" y2="110" stroke="var(--color-vector-a)" stroke-width="3" marker-end="url(#intro-arrow)" />
+    <circle cx="90" cy="290" r="5" fill="var(--color-primary)" />
+    <circle cx="450" cy="110" r="5" fill="var(--color-vector-a)" />
+
+    <text x="470" y="105" class="diagram-label diagram-label--a">P</text>
+    <text x="245" y="184" class="diagram-label diagram-label--a">v</text>
+    <text x="100" y="330" class="diagram-axis">titik awal</text>
+    <text x="470" y="145" class="diagram-axis">titik ujung</text>
+  </svg>
+  <figcaption>
+    Vektor <strong>v</strong> menyatakan perpindahan dari titik awal ke titik ujung. Panjang
+    panah adalah magnitudo, sedangkan arah panah adalah arah vektor.
+  </figcaption>
+</figure>

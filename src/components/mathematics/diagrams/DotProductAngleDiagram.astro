@@ -1,0 +1,39 @@
+<figure class="diagram-figure">
+  <svg viewBox="0 0 640 360" role="img" aria-labelledby="dot-diagram-title dot-diagram-desc">
+    <title id="dot-diagram-title">Sudut antara dua vektor</title>
+    <desc id="dot-diagram-desc">
+      Vektor a dan b berbagi titik awal. Sudut theta di antara keduanya berhubungan dengan
+      perkalian titik melalui kosinus.
+    </desc>
+
+    <defs>
+      <pattern id="dot-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+        <path d="M32 0H0V32" fill="none" stroke="var(--color-grid)" stroke-width="1" />
+      </pattern>
+      <marker id="dot-arrow-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0 0 10 5 0 10z" fill="var(--color-vector-a)" />
+      </marker>
+      <marker id="dot-arrow-b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0 0 10 5 0 10z" fill="var(--color-vector-b)" />
+      </marker>
+    </defs>
+
+    <rect width="640" height="360" fill="url(#dot-grid)" rx="12" />
+    <line x1="90" y1="300" x2="560" y2="300" stroke="var(--color-axis)" stroke-width="1.5" />
+    <line x1="90" y1="300" x2="90" y2="60" stroke="var(--color-axis)" stroke-width="1.5" />
+
+    <line x1="90" y1="300" x2="480" y2="300" stroke="var(--color-vector-a)" stroke-width="3" marker-end="url(#dot-arrow-a)" />
+    <line x1="90" y1="300" x2="340" y2="125" stroke="var(--color-vector-b)" stroke-width="3" marker-end="url(#dot-arrow-b)" />
+
+    <path d="M190 300a100 100 0 0 0 70 -47" fill="none" stroke="var(--color-text-secondary)" stroke-width="1.5" />
+    <circle cx="90" cy="300" r="4.5" fill="var(--color-primary)" />
+
+    <text x="185" y="275" class="diagram-axis">θ</text>
+    <text x="285" y="296" class="diagram-label diagram-label--a">a</text>
+    <text x="220" y="180" class="diagram-label diagram-label--b">b</text>
+  </svg>
+  <figcaption>
+    Sudut θ memenuhi cos θ = (a · b) / (‖a‖ ‖b‖). Nilai kosinus menunjukkan apakah sudut lancip,
+    siku-siku, atau tumpul.
+  </figcaption>
+</figure>

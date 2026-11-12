@@ -1,0 +1,46 @@
+<figure class="diagram-figure">
+  <svg viewBox="0 0 640 360" role="img" aria-labelledby="projection-diagram-title projection-diagram-desc">
+    <title id="projection-diagram-title">Proyeksi vektor a pada arah b</title>
+    <desc id="projection-diagram-desc">
+      Vektor a diproyeksikan tegak lurus ke arah vektor b. Bayangan sepanjang b adalah proyeksi
+      vektor a pada b.
+    </desc>
+
+    <defs>
+      <pattern id="projection-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+        <path d="M32 0H0V32" fill="none" stroke="var(--color-grid)" stroke-width="1" />
+      </pattern>
+      <marker id="projection-arrow-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0 0 10 5 0 10z" fill="var(--color-vector-a)" />
+      </marker>
+      <marker id="projection-arrow-b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0 0 10 5 0 10z" fill="var(--color-vector-b)" />
+      </marker>
+      <marker id="projection-arrow-p" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0 0 10 5 0 10z" fill="var(--color-vector-projection)" />
+      </marker>
+    </defs>
+
+    <rect width="640" height="360" fill="url(#projection-grid)" rx="12" />
+    <line x1="80" y1="300" x2="560" y2="300" stroke="var(--color-axis)" stroke-width="1.5" />
+    <line x1="80" y1="300" x2="80" y2="60" stroke="var(--color-axis)" stroke-width="1.5" />
+
+    <line x1="80" y1="300" x2="520" y2="300" stroke="var(--color-vector-b)" stroke-width="3" marker-end="url(#projection-arrow-b)" />
+    <line x1="80" y1="300" x2="350" y2="110" stroke="var(--color-vector-a)" stroke-width="3" marker-end="url(#projection-arrow-a)" />
+    <line x1="80" y1="300" x2="350" y2="300" stroke="var(--color-vector-projection)" stroke-width="5" marker-end="url(#projection-arrow-p)" />
+    <line x1="350" y1="110" x2="350" y2="300" stroke="var(--color-text-secondary)" stroke-width="1.5" stroke-dasharray="5 5" />
+
+    <path d="M350 284h16v16" fill="none" stroke="var(--color-text-secondary)" stroke-width="1.5" />
+    <path d="M160 300a80 80 0 0 0 58 -56" fill="none" stroke="var(--color-text-secondary)" stroke-width="1.5" />
+    <circle cx="80" cy="300" r="4.5" fill="var(--color-primary)" />
+
+    <text x="160" y="278" class="diagram-axis">θ</text>
+    <text x="225" y="180" class="diagram-label diagram-label--a">a</text>
+    <text x="420" y="324" class="diagram-label diagram-label--b">b</text>
+    <text x="130" y="290" class="diagram-label diagram-label--projection">proj_b a</text>
+  </svg>
+  <figcaption>
+    Proyeksi vektor a pada b jatuh pada arah b. Garis putus-putus dari ujung a ke arah b tegak
+    lurus terhadap b.
+  </figcaption>
+</figure>

@@ -1,0 +1,43 @@
+<figure class="diagram-figure">
+  <svg viewBox="0 0 640 400" role="img" aria-labelledby="coordinate3d-title coordinate3d-desc">
+    <title id="coordinate3d-title">Sistem koordinat tiga dimensi</title>
+    <desc id="coordinate3d-desc">
+      Sumbu x, y, dan z bertemu di titik asal O. Sebuah titik P diproyeksikan ke bidang xy dan
+      ke masing-masing sumbu untuk menunjukkan koordinatnya.
+    </desc>
+
+    <defs>
+      <marker id="coord3d-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0 0 10 5 0 10z" fill="var(--color-axis)" />
+      </marker>
+      <marker id="coord3d-vector" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0 0 10 5 0 10z" fill="var(--color-vector-a)" />
+      </marker>
+    </defs>
+
+    <rect width="640" height="400" fill="var(--color-surface)" rx="12" />
+    <line x1="290" y1="300" x2="570" y2="300" stroke="var(--color-axis)" stroke-width="1.5" marker-end="url(#coord3d-arrow)" />
+    <line x1="290" y1="300" x2="135" y2="235" stroke="var(--color-axis)" stroke-width="1.5" marker-end="url(#coord3d-arrow)" />
+    <line x1="290" y1="300" x2="290" y2="60" stroke="var(--color-axis)" stroke-width="1.5" marker-end="url(#coord3d-arrow)" />
+
+    <text x="580" y="304" class="diagram-axis">x</text>
+    <text x="115" y="236" class="diagram-axis">y</text>
+    <text x="276" y="52" class="diagram-axis">z</text>
+    <text x="270" y="325" class="diagram-axis">O</text>
+
+    <line x1="290" y1="300" x2="445" y2="225" stroke="var(--color-border-strong)" stroke-width="1.5" stroke-dasharray="5 5" />
+    <line x1="445" y1="225" x2="445" y2="120" stroke="var(--color-border-strong)" stroke-width="1.5" stroke-dasharray="5 5" />
+    <line x1="290" y1="300" x2="445" y2="120" stroke="var(--color-vector-a)" stroke-width="3" marker-end="url(#coord3d-vector)" />
+
+    <circle cx="445" cy="120" r="5" fill="var(--color-vector-a)" />
+    <circle cx="445" cy="225" r="4" fill="var(--color-vector-b)" />
+    <circle cx="290" cy="300" r="4.5" fill="var(--color-primary)" />
+
+    <text x="458" y="116" class="diagram-label diagram-label--a">P(x, y, z)</text>
+    <text x="458" y="244" class="diagram-axis">proyeksi pada bidang xy</text>
+  </svg>
+  <figcaption>
+    Dalam sistem tangan kanan, sumbu x, y, dan z saling tegak lurus. Koordinat titik P
+    menyatakan perpindahan dari titik asal sepanjang masing-masing sumbu.
+  </figcaption>
+</figure>

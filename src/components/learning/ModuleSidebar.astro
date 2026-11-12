@@ -1,0 +1,150 @@
+---
+import type { ModuleSummary } from '../../types';
+
+interface Props {
+  modules: readonly ModuleSummary[];
+  currentId: string;
+}
+
+const { modules, currentId } = Astro.props;
+---
+
+<aside class="module-sidebar">
+  <div class="sidebar-header">
+    <p class="sidebar-eyebrow">Kurikulum</p>
+    <a class="sidebar-all" href="/materi">Ringkasan semua modul</a>
+  </div>
+
+  <nav aria-label="Daftar modul">
+    <ol>
+      {
+        modules.map((module) => {
+          const active = module.id === currentId;
+
+          return (
+            <li>
+              <a
+                href={`/materi/${module.id}`}
+                class:list={['module-link', { 'is-active': active }]}
+                aria-current={active ? 'page' : undefined}
+              >
+                <span class="module-number">{String(module.order).padStart(2, '0')}</span>
+                <span>{module.title}</span>
+              </a>
+            </li>
+          );
+        })
+      }
+    </ol>
+  </nav>
+
+  <p class="sidebar-note">
+    Materi ditulis berurutan. Anda tetap dapat membuka modul mana pun, tetapi prasyarat
+    membantu menjaga alur belajar.
+  </p>
+</aside>
+
+<style>
+  .module-sidebar {
+    position: sticky;
+    top: calc(var(--header-height) + 28px);
+    display: grid;
+    gap: var(--space-5);
+    max-height: calc(100vh - var(--header-height) - 56px);
+    padding: var(--space-5);
+    overflow-y: auto;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+  }
+
+  .sidebar-header {
+    display: grid;
+    gap: 4px;
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .sidebar-eyebrow {
+    color: var(--color-text-secondary);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .sidebar-all {
+    color: var(--color-primary);
+    font-size: var(--text-sm);
+    font-weight: 650;
+    text-decoration: none;
+  }
+
+  .sidebar-all:hover {
+    text-decoration: underline;
+  }
+
+  .module-sidebar ol {
+    display: grid;
+    gap: 2px;
+    list-style: none;
+  }
+
+  .module-link {
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr);
+    gap: var(--space-2);
+    align-items: start;
+    padding: 8px 9px;
+    border-radius: var(--radius-sm);
+    color: var(--color-text-secondary);
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    text-decoration: none;
+  }
+
+  .module-link:hover {
+    background: var(--color-surface-muted);
+    color: var(--color-primary);
+  }
+
+  .module-link.is-active {
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+    font-weight: 650;
+  }
+
+  .module-number {
+    color: var(--color-accent-strong);
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 650;
+    line-height: 1.6;
+  }
+
+  .sidebar-note {
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    font-size: var(--text-xs);
+    line-height: var(--leading-normal);
+  }
+
+  @media (max-width: 1040px) {
+    .module-sidebar {
+      position: static;
+      max-height: none;
+      overflow: visible;
+    }
+
+    .module-sidebar ol {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 620px) {
+    .module-sidebar ol {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
